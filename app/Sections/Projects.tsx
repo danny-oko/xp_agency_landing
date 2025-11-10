@@ -64,14 +64,14 @@ const logos = [
 ];
 export default function Projects() {
   return (
-    <div className="w-full h-[90vh] bg-black/20 flex flex-col px-4 mt-8 bg-xp-bgSoft rounded-8xl">
-      <div className="sections-container w-full flex-1 flex items-center justify-center overflow-hidden">
+    <div className="w-full bg-black/20 bg-xp-bgSoft rounded-8xl px-4 sm:px-6 lg:px-10 py-12 md:py-16 mt-8">
+      <div className="sections-container w-full flex flex-col lg:flex-row items-center justify-between gap-12 overflow-hidden">
         {/* Text left side */}
-        <section className="text-white text-left w-1/2 flex flex-col justify-center px-4 ml-3">
-          <div className="text-left mb-8 w-full px-4 pt-8">
+        <section className="text-white w-full lg:w-1/2 flex flex-col justify-center px-2 sm:px-4">
+          <div className="text-left mb-8 w-full">
             <SplitText
               text="Төслүүд"
-              className="text-5xl font-bold text-left mb-4"
+              className="text-4xl sm:text-5xl font-bold text-left mb-4"
               delay={100}
               duration={0.2}
               ease="power3.out"
@@ -90,7 +90,6 @@ export default function Projects() {
               className="text-md text-gray-300 leading-relaxed text-left text-lg"
             />
           </div>
-
           <LogoLoop
             logos={logos}
             speed={120}
@@ -102,10 +101,10 @@ export default function Projects() {
           />
 
           {/* Buttons below logo loop */}
-          <div className="flex gap-3 mt-6 relative z-50 w-full items-start justify-start">
+          <div className="flex flex-col sm:flex-row gap-3 mt-6 w-full items-start sm:items-center justify-start">
             <button
               onClick={() => (window.location.href = "/projects")}
-              className="bg-gradient-to-b from-white to-gray-100 text-gray-800 border border-gray-300 rounded-full px-6 py-2 text-lg font-normal cursor-pointer shadow-inner transition-all duration-300 min-w-[160px] h-12 flex items-center justify-center gap-2 hover:bg-white relative z-50 group overflow-hidden"
+              className="bg-gradient-to-b from-white to-gray-100 text-gray-800 border border-gray-300 rounded-full px-6 py-3 text-base sm:text-lg font-normal cursor-pointer shadow-inner transition-all duration-300 min-w-[200px] sm:min-w-[180px] w-full sm:w-auto h-12 flex items-center justify-center gap-2 hover:bg-white relative group overflow-hidden"
             >
               <span className="transition-transform duration-300 ease-out group-hover:translate-x-[-3px] group-hover:scale-[1.02]">
                 Төслүүдийг үзэх
@@ -119,7 +118,7 @@ export default function Projects() {
                   "_blank"
                 )
               }
-              className="bg-white/5 backdrop-blur-sm text-gray-400 border border-gray-400/50 rounded-full px-6 py-2 text-lg font-normal transition-all duration-300 min-w-[160px] h-12 flex items-center justify-center gap-2 hover:bg-white/10 hover:text-white hover:border-gray-300 cursor-pointer relative z-50 group hover:[&_svg]:text-white overflow-hidden"
+              className="bg-white/5 backdrop-blur-sm text-gray-400 border border-gray-400/50 rounded-full px-6 py-3 text-base sm:text-lg font-normal transition-all duration-300 min-w-[200px] sm:min-w-[180px] w-full sm:w-auto h-12 flex items-center justify-center gap-2 hover:bg-white/10 hover:text-white hover:border-gray-300 cursor-pointer relative group hover:[&_svg]:text-white overflow-hidden"
             >
               <span className="transition-transform duration-300 ease-out group-hover:translate-x-[-3px] group-hover:scale-[1.02]">
                 <ShinyText
@@ -134,13 +133,11 @@ export default function Projects() {
           </div>
         </section>
         {/* Card right side */}
-        <section className="w-1/2 flex items-center justify-center">
-          <div className="w-full max-w-[600px] h-[600px] max-h-[80vh] aspect-square relative">
+        <section className="w-full lg:w-1/2 flex items-center justify-center">
+          <div className="w-full max-w-[22rem] sm:max-w-[26rem] md:max-w-[30rem] lg:max-w-[34rem] aspect-square relative mx-auto">
             <CardSwap
-              fadeOutColor="#ffffff"
-              ariaLabel="Technology partners"
               logos={logos}
-              speed={10}
+              speed={14}
               cardDistance={60}
               verticalDistance={70}
               delay={8000}
@@ -151,7 +148,7 @@ export default function Projects() {
                 <Image
                   src={images.Sunrise}
                   alt="Sunrise Mongolia"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                   fill
                   sizes="(max-width: 768px) 100vw, 600px"
                 />
@@ -161,17 +158,17 @@ export default function Projects() {
                 <Image
                   src={images.Win}
                   alt="Win Academy"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                   fill
                   sizes="(max-width: 768px) 100vw, 600px"
                 />
               </Card>
-              {/* New Era Platform */}
+              {/* New Era */}
               <Card className="overflow-hidden">
                 <Image
                   src={images.Newera}
-                  alt="New Era Platform"
-                  className="w-full h-full object-cover"
+                  alt="New Era"
+                  className="w-full h-full object-contain"
                   fill
                   sizes="(max-width: 768px) 100vw, 600px"
                 />
@@ -180,7 +177,7 @@ export default function Projects() {
                 <Image
                   src={images.Hanedu}
                   alt="Han-Education"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                   fill
                   sizes="(max-width: 768px) 100vw, 600px"
                 />

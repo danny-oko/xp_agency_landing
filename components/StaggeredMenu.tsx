@@ -405,14 +405,16 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     onMenuClose,
   ]);
 
+  const scopeClass = [
+    "sm-scope",
+    isFixed
+      ? "fixed top-0 left-0 w-screen h-screen overflow-hidden z-50"
+      : "w-full h-full relative z-10",
+    open ? "pointer-events-auto" : "pointer-events-none",
+  ].join(" ");
+
   return (
-    <div
-      className={`sm-scope ${
-        isFixed
-          ? "fixed top-0 left-0 w-screen h-screen overflow-hidden z-50"
-          : "w-full h-full relative z-10"
-      }`}
-    >
+    <div className={scopeClass} data-open={open || undefined}>
       <div
         className={
           (className ? className + " " : "") +

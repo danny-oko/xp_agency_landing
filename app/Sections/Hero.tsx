@@ -6,8 +6,8 @@ import TextType from "@/components/TextType";
 import { ArrowRight, Calendar } from "lucide-react";
 export default function Hero() {
   return (
-    <div className="w-full h-screen bg-black/20 flex flex-col justify-center items-center relative overflow-hidden z-10">
-      <section className="beams w-full h-full absolute z-0 pointer-events-none">
+    <div className="w-full min-h-screen bg-black/20 flex flex-col justify-center items-center relative overflow-hidden px-4 py-20 sm:px-6 lg:px-0">
+      <section className="beams w-full h-full absolute pointer-events-none">
         <Beams
           beamWidth={3}
           beamHeight={30}
@@ -19,29 +19,33 @@ export default function Hero() {
           rotation={30}
         />
       </section>
-      <div className="text-center relative z-20 pointer-events-auto">
+      <div className="text-center relative pointer-events-auto max-w-5xl w-full">
         {/* blue text */}
-        <aside className="flex flex-col items-center justify-center">
+        <aside className="flex flex-col items-center justify-center gap-6">
           <BlurText
             text="Xperience"
             delay={100}
             animateBy="letters"
             direction="top"
-            className="text-8xl mb-8 font-bold relative z-20"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold relative leading-tight"
           />
           <TextType
-            text={[" +5 Happy Customers", "For Your Business Growth"]}
+            text={[
+              " +5 Happy Customers",
+              "Web Development Agency",
+              "For Your Business Growth",
+            ]}
             typingSpeed={75}
             pauseDuration={1500}
             showCursor={true}
             cursorCharacter="|"
-            className="text-2xl mb-8 font-italic text-gray-400 relative z-20"
+            className="text-lg sm:text-xl md:text-2xl font-italic text-gray-400 relative"
           />
         </aside>
-        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex gap-3 justify-center items-center z-[9999] pointer-events-auto">
+        <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center items-center pointer-events-auto relative w-full sm:w-auto">
           <button
             onClick={() => (window.location.href = "/projects")}
-            className="bg-gradient-to-b from-white to-gray-100 text-gray-800 border border-gray-300 rounded-full px-6 py-2 text-lg font-normal shadow-inner transition-all duration-300 min-w-[160px] h-12 flex items-center justify-center gap-2 hover:bg-white cursor-pointer relative z-[9999] group overflow-hidden pointer-events-auto"
+            className="bg-gradient-to-b from-white to-gray-100 text-gray-800 border border-gray-300 rounded-full px-6 py-3 text-base sm:text-lg font-normal shadow-inner transition-all duration-300 min-w-[200px] sm:min-w-[180px] w-[60%] sm:w-auto h-12 flex items-center justify-center gap-2 hover:bg-white cursor-pointer relative group overflow-hidden pointer-events-auto"
           >
             <span className="transition-transform duration-300 ease-out group-hover:translate-x-[-3px] group-hover:scale-[1.02] pointer-events-none">
               Бид юу бүтээдэг вэ?
@@ -55,7 +59,7 @@ export default function Hero() {
                 "_blank"
               )
             }
-            className="bg-white/5 backdrop-blur-sm text-gray-400 border border-gray-400/50 rounded-full px-6 py-2 text-lg font-normal transition-all duration-300 min-w-[160px] h-12 flex items-center justify-center gap-2 hover:bg-white/10 hover:text-white hover:border-gray-300 cursor-pointer relative z-[9999] group hover:[&_svg]:text-white overflow-hidden pointer-events-auto"
+            className="bg-white/5 backdrop-blur-sm text-gray-400 border border-gray-400/50 rounded-full px-6 py-3 text-base sm:text-lg font-normal transition-all duration-300 min-w-[200px] sm:min-w-[180px] w-[60%] sm:w-auto h-12 flex items-center justify-center gap-2 hover:bg-white/10 hover:text-white hover:border-gray-300 cursor-pointer relative group hover:[&_svg]:text-white overflow-hidden pointer-events-auto"
           >
             <span className="transition-transform duration-300 ease-out group-hover:translate-x-[-3px] group-hover:scale-[1.02] pointer-events-none">
               <ShinyText

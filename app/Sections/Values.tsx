@@ -4,9 +4,9 @@ import MagicBento from "@/components/MagicBento";
 
 export default function Values() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black/20">
+    <section className="relative w-full overflow-hidden bg-black/20 px-4 sm:px-6 lg:px-8 py-14 md:py-20 flex flex-col items-center gap-6 md:gap-10">
       {/* Header Section */}
-      <div className="text-center mb-8 md:mb-12 w-full h-16 md:h-20 flex items-center justify-center pt-8 md:pt-12">
+      <div className="text-center w-full min-h-[3.5rem] flex items-center justify-center">
         <CurvedLoop
           marqueeText="We ✦ Are ✦ Passionate ✦ About ✦ Creating ✦ Beautiful ✦ and ✦ Functional ✦ Websites ✦ For Your ✦ Business Growth"
           speed={4}
@@ -18,7 +18,7 @@ export default function Values() {
       </div>
 
       {/* Magic Bento Container */}
-      <div className="w-full max-w-7xl flex-1 flex items-center justify-center px-2 md:px-4 pb-16 md:pb-24">
+      <div className="w-full max-w-6xl flex items-center justify-center px-1 sm:px-4 lg:px-6">
         <MagicBento
           textAutoHide={true}
           enableStars={true}
@@ -28,8 +28,8 @@ export default function Values() {
           enableMagnetism={true}
           clickEffect={true}
           spotlightRadius={400}
-          particleCount={12}
-          glowColor="132, 0, 255"
+          particleCount={64}
+          glowColor="132, 0, 240"
         />
       </div>
     </section>

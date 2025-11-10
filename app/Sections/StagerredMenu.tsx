@@ -22,7 +22,7 @@ const socialItems = [
 
 export default function StaggerredMenu() {
   return (
-    <div className="navbar h-auto fixed top-0 left-0 w-full z-50 pointer-events-none">
+    <div className="navbar h-auto fixed top-0 left-0 w-full pointer-events-none z-20">
       <div className="pointer-events-auto">
         <StaggeredMenu
           position="right"

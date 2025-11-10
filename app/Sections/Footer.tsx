@@ -6,121 +6,123 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-xp-bgSoft text-white relative z-10">
-      <div className="w-4/5 mx-auto px-6 py-12">
+    <footer className="w-full bg-xp-bgSoft text-white relative">
+      <div className="mx-auto w-full max-w-6xl px-6 py-12">
         {/* Top Row */}
-        <div className="flex flex-col md:flex-row items-start justify-between gap-10">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
           {/* Left Section - Logo & Contact */}
-          <div className="flex flex-col md:flex-row items-start md:items-baseline gap-6">
-            <div className="relative h-10 w-28 shrink-0">
-              <Image
-                src={Logo}
-                alt="XP Digital Logo"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-
-            <div className="flex flex-col gap-4">
-              <div className="space-y-1 text-sm text-gray-300">
-                <p>
-                  Tel: <span className="text-white">80296007</span>
-                </p>
-                <p>
-                  Mail:{" "}
-                  <a
-                    href="mailto:xpdigital.dev@gmail.com"
-                    className="hover:underline"
-                  >
-                    xpdigital.dev@gmail.com
-                  </a>
-                </p>
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6">
+              <div className="relative h-10 w-28 shrink-0 flex items-baseline">
+                <div className="relative w-full h-full flex items-start">
+                  <Image
+                    src={Logo}
+                    alt="Xperience Agency Logo"
+                    fill
+                    className="object-contain object-left-bottom"
+                    priority
+                  />
+                </div>
               </div>
 
-              {/* Social Icons */}
-              <div className="flex items-center gap-3 relative z-10">
-                <a
-                  href="https://www.facebook.com/profile.php?id=61578833769304"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 hover:border-white/30 hover:bg-white/5 transition cursor-pointer relative z-10 pointer-events-auto"
-                  aria-label="Facebook"
-                >
-                  <Facebook size={18} />
-                </a>
-                <a
-                  href="https://www.instagram.com/xperience.proydrs/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 hover:border-white/30 hover:bg-white/5 transition cursor-pointer relative z-10 pointer-events-auto"
-                  aria-label="Instagram"
-                >
-                  <Instagram size={18} />
-                </a>
-                <a
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=xpdigital.dev@gmail.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 hover:border-white/30 hover:bg-white/5 transition cursor-pointer relative z-10 pointer-events-auto"
-                  aria-label="Email"
-                >
-                  <Mail size={18} />
-                </a>
+              <div className="flex flex-col gap-4">
+                <div className="space-y-1 text-sm text-gray-300">
+                  <p className="font-medium text-white">Xperience Agency</p>
+                  <p className="mt-1">
+                    Tel: <span className="text-white">80296007</span>
+                  </p>
+                  <p className="mt-1">
+                    Mail:{" "}
+                    <a
+                      href="mailto:dnioko0412@gmail.com."
+                      className="hover:underline"
+                    >
+                      dnioko0412@gmail.com
+                    </a>
+                  </p>
+                </div>
+
+                {/* Social Icons */}
+                <div className="flex items-center gap-3 relative">
+                  <a
+                    href="https://www.facebook.com/profile.php?id=61578833769304"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 hover:border-white/30 hover:bg-white/5 transition cursor-pointer relative pointer-events-auto"
+                    aria-label="Facebook"
+                  >
+                    <Facebook size={18} />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/xperience.proydrs/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 hover:border-white/30 hover:bg-white/5 transition cursor-pointer relative pointer-events-auto"
+                    aria-label="Instagram"
+                  >
+                    <Instagram size={18} />
+                  </a>
+                  <a
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=xpdigital.dev@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 hover:border-white/30 hover:bg-white/5 transition cursor-pointer relative pointer-events-auto"
+                    aria-label="Email"
+                  >
+                    <Mail size={18} />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Middle Section - Navigation (Vertical) */}
-          <nav className="w-full md:w-auto">
-            <div className="flex flex-col gap-3 text-sm md:text-base">
-              <Link
-                href="/"
-                className="text-gray-300 hover:text-white transition"
-              >
-                Home
-              </Link>
-              <Link
-                href="/about"
-                className="text-gray-300 hover:text-white transition"
-              >
-                About
-              </Link>
-              <Link
-                href="/projects"
-                className="text-gray-300 hover:text-white transition"
-              >
-                Projects
-              </Link>
-              <Link
-                href="/team"
-                className="text-gray-300 hover:text-white transition"
-              >
-                Our Team
-              </Link>
+          <nav className="flex flex-col text-sm md:text-base">
+            <span className="text-xs uppercase tracking-[0.2em] text-gray-500">
+              Navigation
+            </span>
+            <div className="mt-4 flex flex-col gap-3">
+              {[
+                { href: "/", label: "Home" },
+                { href: "/about", label: "About" },
+                { href: "/projects", label: "Projects" },
+                { href: "/team", label: "Our Team" },
+              ].map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="text-gray-300 hover:text-white transition"
+                >
+                  {label}
+                </Link>
+              ))}
             </div>
           </nav>
 
           {/* Right Section - Address (Left Aligned) */}
-          <div className="text-sm text-gray-300 text-start self-start">
-            <p className="font-medium text-white">Xperience Agency</p>
-            <p className="mt-1">Ulaanbaatar, Mongolia</p>
-            <p className="mt-1">Building better web experiences.</p>
+          <div className="flex flex-col text-sm text-gray-300 text-start">
+            <span className="text-xs uppercase tracking-[0.2em] text-gray-500">
+              Location
+            </span>
+            <div className="mt-4 space-y-2">
+              <p className="font-medium text-white">Ulaanbaatar, Mongolia</p>
+              <p>Building better web experiences.</p>
+            </div>
           </div>
         </div>
 
         {/* Bottom Row */}
-        <div className="mt-10 border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-12 border-t border-white/10 pt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-gray-400">
             © 2025 Xperience Agency. All rights reserved.
           </p>
 
-          <div className="flex items-center gap-3 relative z-10">
+          <div className="flex items-center gap-4 relative">
             <a
               href="https://www.facebook.com/profile.php?id=61578833769304"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition cursor-pointer relative z-10 pointer-events-auto"
+              className="text-gray-400 hover:text-white transition cursor-pointer relative pointer-events-auto"
               aria-label="Facebook"
             >
               <Facebook size={18} />
@@ -129,7 +131,7 @@ export default function Footer() {
               href="https://www.instagram.com/xperience.proydrs/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition cursor-pointer relative z-10 pointer-events-auto"
+              className="text-gray-400 hover:text-white transition cursor-pointer relative pointer-events-auto"
               aria-label="Instagram"
             >
               <Instagram size={18} />
@@ -138,7 +140,7 @@ export default function Footer() {
               href="https://mail.google.com/mail/?view=cm&fs=1&to=xpdigital.dev@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition cursor-pointer relative z-10 pointer-events-auto"
+              className="text-gray-400 hover:text-white transition cursor-pointer relative pointer-events-auto"
               aria-label="Email"
             >
               <Mail size={18} />
