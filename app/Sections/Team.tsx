@@ -163,7 +163,7 @@ const TEAM_MEMBERS: TeamMember[] = [
 
 export default function Team() {
   return (
-    <div className="w-full min-h-screen rounded-8xl bg-transparent flex flex-col items-center px-6 sm:px-8 lg:px-12 py-12 md:py-16 gap-10 md:gap-14">
+    <div id="team" className="w-full min-h-screen rounded-8xl bg-transparent flex flex-col items-center px-6 sm:px-8 lg:px-12 py-12 md:py-16 gap-10 md:gap-14">
       <div className="headline w-full flex flex-col items-center justify-center text-center">
         <SplitText
           text="Xperience -ийн ард хэн байгаа вэ?"

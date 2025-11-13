@@ -4,7 +4,7 @@ import BlurText from "@/components/BlurText";
 import ShinyText from "@/components/ShinyText";
 import TextType from "@/components/TextType";
 import { ArrowRight, Calendar } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { scrollToSection } from "@/lib/scroll-utils";
 
 // Lazy load Beams (Three.js) - browser only
 const Beams = dynamic(() => import("@/components/Beams"), {
@@ -13,10 +13,8 @@ const Beams = dynamic(() => import("@/components/Beams"), {
 });
 
 export default function Hero() {
-  const router = useRouter();
-  
   return (
-    <div className="w-full min-h-screen bg-black/20 flex flex-col justify-center items-center relative overflow-hidden px-4 py-20 sm:px-6 lg:px-0">
+    <div id="hero" className="w-full min-h-screen bg-black/20 flex flex-col justify-center items-center relative overflow-hidden px-4 pb-0 pt-20 sm:px-6 lg:px-0">
       <section className="beams w-full h-full absolute pointer-events-none">
         <Beams
           beamWidth={3}
@@ -54,7 +52,7 @@ export default function Hero() {
         </aside>
         <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center items-center pointer-events-auto relative w-full sm:w-auto">
           <button
-            onClick={() => router.push("/projects")}
+            onClick={() => scrollToSection("projects")}
             className="bg-gradient-to-b from-white to-gray-100 text-gray-800 border border-gray-300 rounded-full px-6 py-3 text-base sm:text-lg font-normal shadow-inner transition-all duration-300 min-w-[200px] sm:min-w-[180px] w-[60%] sm:w-auto h-12 flex items-center justify-center gap-2 hover:bg-white cursor-pointer relative group overflow-hidden pointer-events-auto"
           >
             <span className="transition-transform duration-300 ease-out group-hover:translate-x-[-3px] group-hover:scale-[1.02] pointer-events-none">

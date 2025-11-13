@@ -2,10 +2,10 @@
 import StaggeredMenu from "@/components/StaggeredMenu";
 
 const menuItems = [
-  { label: "Home", ariaLabel: "Go to home page", link: "/" },
-  { label: "About", ariaLabel: "Learn about us", link: "/about" },
-  { label: "Services", ariaLabel: "View our services", link: "/services" },
-  { label: "Contact", ariaLabel: "Get in touch", link: "/contact" },
+  { label: "Home", ariaLabel: "Go to home page", link: "#hero" },
+  { label: "About", ariaLabel: "Learn about us", link: "#team" },
+  { label: "Services", ariaLabel: "View our services", link: "#services" },
+  { label: "Contact", ariaLabel: "Get in touch", link: "#contact" },
 ];
 
 const socialItems = [

@@ -32,44 +32,25 @@ const images = {
     "https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324019/Screenshot_2025-11-05_at_14.26.47_gjtbhr.png",
 };
 const logos = [
-  // {
-  //     node: (
-  //         // <img
-  //         //     src="https://scontent.fuln4-2.fna.fbcdn.net/v/t39.30808-6/336449135_541573588108369_4625709498080177844_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=5GgQR4Ih3SEQ7kNvwG27BCb&_nc_oc=AdmSGKFpGgLoPbiBfcmQpuGNsMrRauA-JJ3OpIt94-2y383gvNRvqsIMs_G6lNUu41s&_nc_zt=23&_nc_ht=scontent.fuln4-2.fna&_nc_gid=3aGivjU4BdR9C0vAR-peaA&oh=00_Aff4uuUbFSWpvBdcoEr9jA7HUZx13JDM2ldQAN9dPww9qg&oe=68E93B4F"
-  //         //     alt="Amjilt"
-  //         //     className="w-14 h-14 object-contain"
-  //         // />
-  //     ),
-  //     // href: ""
-  // },
   {
-    node: (
-      <img
-        src="https://winacademy.mn/images/win_logo_deault_red_bg.jpg"
-        alt="Win Academy"
-        className="rounded-full w-14 h-14 object-cover"
-      />
-    ),
+    src: "https://winacademy.mn/images/win_logo_deault_red_bg.jpg",
+    alt: "Win Academy",
+    width: 56,
+    height: 56,
     href: "https://winacademy.mn",
   },
   {
-    node: (
-      <img
-        src="https://www.haneducation.mn/image-removebg-preview.png"
-        alt="Han Education"
-        className="rounded-full w-16 h-16 object-cover"
-      />
-    ),
+    src: "https://www.haneducation.mn/image-removebg-preview.png",
+    alt: "Han Education",
+    width: 64,
+    height: 64,
     href: "https://haneducation.mn",
   },
   {
-    node: (
-      <img
-        src="https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324411/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector_wdprsk.jpg"
-        alt="Sunrise Mongolia"
-        className="rounded-full w-16 h-16 object-cover"
-      />
-    ),
+    src: "https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324411/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector_wdprsk.jpg",
+    alt: "Sunrise Mongolia",
+    width: 64,
+    height: 64,
     href: "https://sunrisemongolia.com",
   },
 ];
@@ -78,7 +59,7 @@ export default function Projects() {
   const router = useRouter();
   
   return (
-    <div className="w-full bg-black/20 bg-xp-bgSoft rounded-8xl px-4 sm:px-6 lg:px-10 py-12 md:py-16 mt-8">
+    <div id="projects" className="w-full bg-black/20 bg-xp-bgSoft rounded-8xl px-4 sm:px-6 lg:px-10 py-12 md:py-16 mt-8">
       <div className="sections-container w-full flex flex-col lg:flex-row items-center justify-between gap-12 overflow-hidden">
         {/* Text left side */}
         <section className="text-white w-full lg:w-1/2 flex flex-col justify-center px-2 sm:px-4">

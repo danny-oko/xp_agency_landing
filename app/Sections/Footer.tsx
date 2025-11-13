@@ -1,11 +1,36 @@
+"use client";
 import Logo from "@/public/Dark.png";
 import { Facebook, Instagram, Mail } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
+import { scrollToSection } from "@/lib/scroll-utils";
 
 export default function Footer() {
+  const router = useRouter();
+  const pathname = usePathname();
+  
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // If it's an external link or email, let it work normally
+    if (href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:")) {
+      return;
+    }
+
+    e.preventDefault();
+    const isHomePage = pathname === "/";
+    const sectionId = href.substring(1); // Remove the #
+
+    // If not on home page, navigate to home with hash
+    if (!isHomePage) {
+      router.push(`/#${sectionId}`);
+      return;
+    }
+
+    // On home page, scroll to section
+    scrollToSection(sectionId);
+  };
+
   return (
-    <footer className="w-full bg-xp-bgSoft text-white relative">
+    <footer id="contact" className="w-full bg-xp-bgSoft text-white relative">
       <div className="mx-auto w-full max-w-6xl px-6 py-12">
         {/* Top Row */}
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
@@ -82,18 +107,19 @@ export default function Footer() {
             </span>
             <div className="mt-4 flex flex-col gap-3">
               {[
-                { href: "/", label: "Home" },
-                { href: "/about", label: "About" },
-                { href: "/projects", label: "Projects" },
-                { href: "/team", label: "Our Team" },
+                { href: "#hero", label: "Home" },
+                { href: "#team", label: "About" },
+                { href: "#projects", label: "Projects" },
+                { href: "#team", label: "Our Team" },
               ].map(({ href, label }) => (
-                <Link
+                <a
                   key={href}
                   href={href}
-                  className="text-gray-300 hover:text-white transition"
+                  onClick={(e) => handleNavClick(e, href)}
+                  className="text-gray-300 hover:text-white transition cursor-pointer"
                 >
                   {label}
-                </Link>
+                </a>
               ))}
             </div>
           </nav>

@@ -14,9 +14,9 @@ const MagicBento = dynamic(() => import("@/components/MagicBento"), {
 
 export default function Values() {
   return (
-    <section className="relative w-full overflow-hidden bg-black/20 px-4 sm:px-6 lg:px-8 py-14 md:py-20 flex flex-col items-center gap-6 md:gap-10">
+    <section id="services" className="relative w-full overflow-hidden bg-black/20 px-4 sm:px-6 lg:px-8 pt-0 pb-14 md:pb-20 flex flex-col items-center gap-3 md:gap-4">
       {/* Header Section */}
-      <div className="text-center w-full min-h-[3.5rem] flex items-center justify-center">
+      <div className="text-center w-full min-h-[3.5rem] flex items-center justify-center mb-1 md:mb-2">
         <CurvedLoop
           marqueeText="We ✦ Are ✦ Passionate ✦ About ✦ Creating ✦ Beautiful ✦ and ✦ Functional ✦ Websites ✦ For Your ✦ Business Growth"
           speed={4}

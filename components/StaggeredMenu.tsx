@@ -2,6 +2,8 @@
 import { gsap } from "gsap";
 import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useRouter, usePathname } from "next/navigation";
+import { scrollToSection } from "@/lib/scroll-utils";
 
 export interface StaggeredMenuItem {
   label: string;
@@ -49,6 +51,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   onMenuOpen,
   onMenuClose,
 }: StaggeredMenuProps) => {
+  const router = useRouter();
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const openRef = useRef(false);
 
@@ -535,23 +539,67 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
               data-numbering={displayItemNumbering || undefined}
             >
               {items && items.length ? (
-                items.map((it, idx) => (
-                  <li
-                    className="sm-panel-itemWrap relative overflow-hidden leading-none"
-                    key={it.label + idx}
-                  >
-                    <a
-                      className="sm-panel-item relative text-black font-semibold text-[4rem] cursor-pointer leading-none tracking-[-2px] uppercase transition-[background,color] duration-150 ease-linear inline-block no-underline pr-[1.4em]"
-                      href={it.link}
-                      aria-label={it.ariaLabel}
-                      data-index={idx + 1}
+                items.map((it, idx) => {
+                  const handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+                    e.preventDefault();
+                    
+                    // If it's an external link or email, let it work normally
+                    if (it.link.startsWith("http") || it.link.startsWith("mailto:") || it.link.startsWith("tel:")) {
+                      window.open(it.link, "_blank");
+                      return;
+                    }
+
+                    // Check if we're on the home page
+                    const isHomePage = pathname === "/";
+
+                    // Extract section ID from link (handle both #hero and /hero formats)
+                    let sectionId = it.link;
+                    if (sectionId.startsWith("#")) {
+                      sectionId = sectionId.substring(1);
+                    } else if (sectionId.startsWith("/")) {
+                      sectionId = sectionId.substring(1);
+                    }
+
+                    // If not on home page, navigate to home with hash
+                    if (!isHomePage) {
+                      // Close menu before navigating for better UX
+                      if (open) {
+                        setOpen(false);
+                        onMenuClose?.();
+                      }
+                      // Navigate to home page with hash (Next.js App Router supports hash in URL)
+                      router.push(`/#${sectionId}`);
+                      return;
+                    }
+
+                    // On home page, scroll to section
+                    scrollToSection(sectionId);
+                    // Close menu after scroll
+                    if (open) {
+                      setOpen(false);
+                      onMenuClose?.();
+                    }
+                  };
+
+                  return (
+                    <li
+                      className="sm-panel-itemWrap relative overflow-hidden leading-none"
+                      key={it.label + idx}
                     >
-                      <span className="sm-panel-itemLabel inline-block [transform-origin:50%_100%] will-change-transform">
-                        {it.label}
-                      </span>
-                    </a>
-                  </li>
-                ))
+                      <a
+                        className="sm-panel-item relative text-black font-semibold text-[4rem] cursor-pointer leading-none tracking-[-2px] uppercase transition-[background,color] duration-150 ease-linear inline-block no-underline pr-[1.4em]"
+                        href={it.link}
+                        onClick={handleItemClick}
+                        aria-label={it.ariaLabel}
+                        data-index={idx + 1}
+                      >
+                        <span className="sm-panel-itemLabel inline-block [transform-origin:50%_100%] will-change-transform">
+                          {it.label}
+                        </span>
+                      </a>
+                    </li>
+                  );
+                })
               ) : (
                 <li
                   className="sm-panel-itemWrap relative overflow-hidden leading-none"
