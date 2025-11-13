@@ -1,7 +1,9 @@
 "use client";
+import React from "react";
 import DotGrid from "@/components/DotGrid";
 import SplitText from "@/components/SplitText";
 import { Facebook, Github, Globe, Instagram } from "lucide-react";
+import Image from "next/image";
 
 type TeamMember = {
   name: string;
@@ -23,6 +25,95 @@ function normalizeUrl(url?: string) {
   if (trimmed.startsWith("#")) return trimmed;
   return `https://${trimmed}`;
 }
+
+// Memoized team member card component
+const TeamMemberCard = React.memo<{ member: TeamMember }>(({ member }) => (
+  <div className="relative h-64 md:h-72 w-full rounded-3xl overflow-hidden border border-white/10 bg-white/5 shadow-[0_-8px_24px_-10px_rgba(255,255,255,0.20),0_16px_32px_-12px_rgba(0,0,0,0.45)] hover:shadow-[0_-10px_28px_-12px_rgba(255,255,255,0.45),0_24px_40px_-12px_rgba(0,0,0,0.6)] transition-shadow">
+    <DotGrid
+      className="opacity-40 pointer-events-none"
+      dotSize={8}
+      gap={18}
+      baseColor="#ffffff20"
+      activeColor="#ffffff"
+      proximity={120}
+      shockRadius={220}
+      shockStrength={6}
+      resistance={1000}
+      returnDuration={1.2}
+    />
+    <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/40 to-transparent" />
+    <div className="absolute bottom-4 left-4 right-4 flex flex-col gap-2">
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
+          {member.avatar && (
+            <Image
+              src={member.avatar}
+              alt={`${member.name} avatar`}
+              width={40}
+              height={40}
+              className="h-10 w-10 rounded-full border border-white/20 object-cover"
+            />
+          )}
+          <div className="flex flex-col gap-1">
+            <p className="text-xs uppercase tracking-wide text-white/70">
+              {member.title}
+            </p>
+            <h3 className="text-lg font-semibold">{member.name}</h3>
+          </div>
+        </div>
+        {member.links && (
+          <div className="flex items-center gap-2">
+            {member.links.facebook && (
+              <a
+                href={normalizeUrl(member.links.facebook)}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="inline-flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+              >
+                <Facebook className="size-4" />
+              </a>
+            )}
+            {member.links.instagram && (
+              <a
+                href={normalizeUrl(member.links.instagram)}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="inline-flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+              >
+                <Instagram className="size-4" />
+              </a>
+            )}
+            {member.links.github && (
+              <a
+                href={normalizeUrl(member.links.github)}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="inline-flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+              >
+                <Github className="size-4" />
+              </a>
+            )}
+            {member.links.portfolio && (
+              <a
+                href={normalizeUrl(member.links.portfolio)}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Website"
+                className="inline-flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+              >
+                <Globe className="size-4" />
+              </a>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+));
+TeamMemberCard.displayName = 'TeamMemberCard';
 
 const TEAM_MEMBERS: TeamMember[] = [
   {
@@ -92,91 +183,7 @@ export default function Team() {
       <section className="w-full relative flex flex-col items-center">
         <div className="grid w-full max-w-6xl grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {TEAM_MEMBERS.map((member) => (
-            <div
-              key={member.name}
-              className="relative h-64 md:h-72 w-full rounded-3xl overflow-hidden border border-white/10 bg-white/5 shadow-[0_-8px_24px_-10px_rgba(255,255,255,0.20),0_16px_32px_-12px_rgba(0,0,0,0.45)] hover:shadow-[0_-10px_28px_-12px_rgba(255,255,255,0.45),0_24px_40px_-12px_rgba(0,0,0,0.6)] transition-shadow"
-            >
-              <DotGrid
-                className="opacity-40 pointer-events-none"
-                dotSize={8}
-                gap={18}
-                baseColor="#ffffff20"
-                activeColor="#ffffff"
-                proximity={120}
-                shockRadius={220}
-                shockStrength={6}
-                resistance={1000}
-                returnDuration={1.2}
-              />
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/40 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 flex flex-col gap-2">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    {member.avatar && (
-                      <img
-                        src={member.avatar}
-                        alt={`${member.name} avatar`}
-                        className="h-10 w-10 rounded-full border border-white/20 object-cover"
-                      />
-                    )}
-                    <div className="flex flex-col gap-1">
-                      <p className="text-xs uppercase tracking-wide text-white/70">
-                        {member.title}
-                      </p>
-                      <h3 className="text-lg font-semibold">{member.name}</h3>
-                    </div>
-                  </div>
-                  {member.links && (
-                    <div className="flex items-center gap-2">
-                      {member.links.facebook && (
-                        <a
-                          href={normalizeUrl(member.links.facebook)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="Facebook"
-                          className="inline-flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
-                        >
-                          <Facebook className="size-4" />
-                        </a>
-                      )}
-                      {member.links.instagram && (
-                        <a
-                          href={normalizeUrl(member.links.instagram)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="Instagram"
-                          className="inline-flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
-                        >
-                          <Instagram className="size-4" />
-                        </a>
-                      )}
-                      {member.links.github && (
-                        <a
-                          href={normalizeUrl(member.links.github)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="GitHub"
-                          className="inline-flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
-                        >
-                          <Github className="size-4" />
-                        </a>
-                      )}
-                      {member.links.portfolio && (
-                        <a
-                          href={normalizeUrl(member.links.portfolio)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="Website"
-                          className="inline-flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
-                        >
-                          <Globe className="size-4" />
-                        </a>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
+            <TeamMemberCard key={member.name} member={member} />
           ))}
         </div>
       </section>

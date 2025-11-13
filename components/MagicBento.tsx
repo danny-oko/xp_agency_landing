@@ -220,18 +220,12 @@ const ParticleCard: React.FC<{
 
   useEffect(() => {
     if (disableAnimations || !cardRef.current) {
-      console.log("ParticleCard useEffect skipped:", {
-        disableAnimations,
-        hasRef: !!cardRef.current,
-      });
       return;
     }
 
-    console.log("ParticleCard useEffect running - attaching event handlers");
     const element = cardRef.current;
 
     const handleMouseEnter = () => {
-      console.log("Mouse enter - starting effects");
       isHoveredRef.current = true;
       animateParticles();
 
@@ -582,19 +576,6 @@ const MagicBento: React.FC<BentoProps> = ({
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations;
 
-  // Debug logging
-  console.log("MagicBento props:", {
-    enableStars,
-    enableSpotlight,
-    enableBorderGlow,
-    disableAnimations,
-    enableTilt,
-    enableMagnetism,
-    clickEffect,
-    isMobile,
-    shouldDisableAnimations,
-  });
-
   return (
     <>
       <style>
@@ -766,7 +747,6 @@ const MagicBento: React.FC<BentoProps> = ({
             } as React.CSSProperties;
 
             if (enableStars) {
-              console.log("Using ParticleCard for card:", index);
               return (
                 <ParticleCard
                   key={index}

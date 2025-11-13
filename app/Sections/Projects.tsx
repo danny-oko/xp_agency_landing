@@ -1,14 +1,25 @@
 "use client";
+import dynamic from "next/dynamic";
 import BlurText from "@/components/BlurText";
-import CardSwap, { Card } from "@/components/CardSwap";
 import LogoLoop from "@/components/LogoLoop";
 import ShinyText from "@/components/ShinyText";
 import SplitText from "@/components/SplitText";
 import { ArrowRight, Calendar } from "lucide-react";
-// import Hanedu from "@/public/projects/han.png";
-// import Newera from "@/public/projects/newera.png";
-// import Win from "@/public/projects/win.png";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
+
+// Lazy load CardSwap (heavy GSAP animations)
+// Card is a simple component, so we import it directly
+import { Card } from "@/components/CardSwap";
+
+const CardSwap = dynamic(() => import("@/components/CardSwap"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full max-w-[34rem] aspect-square flex items-center justify-center">
+      <div className="text-gray-400">Loading...</div>
+    </div>
+  ),
+});
 
 // Image sources - using Cloudinary URL for Sunrise, local imports for others
 const images = {
@@ -62,7 +73,10 @@ const logos = [
     href: "https://sunrisemongolia.com",
   },
 ];
+
 export default function Projects() {
+  const router = useRouter();
+  
   return (
     <div className="w-full bg-black/20 bg-xp-bgSoft rounded-8xl px-4 sm:px-6 lg:px-10 py-12 md:py-16 mt-8">
       <div className="sections-container w-full flex flex-col lg:flex-row items-center justify-between gap-12 overflow-hidden">
@@ -103,7 +117,7 @@ export default function Projects() {
           {/* Buttons below logo loop */}
           <div className="flex flex-col sm:flex-row gap-3 mt-6 w-full items-start sm:items-center justify-start">
             <button
-              onClick={() => (window.location.href = "/projects")}
+              onClick={() => router.push("/projects")}
               className="bg-gradient-to-b from-white to-gray-100 text-gray-800 border border-gray-300 rounded-full px-6 py-3 text-base sm:text-lg font-normal cursor-pointer shadow-inner transition-all duration-300 min-w-[200px] sm:min-w-[180px] w-full sm:w-auto h-12 flex items-center justify-center gap-2 hover:bg-white relative group overflow-hidden"
             >
               <span className="transition-transform duration-300 ease-out group-hover:translate-x-[-3px] group-hover:scale-[1.02]">
@@ -136,8 +150,6 @@ export default function Projects() {
         <section className="w-full lg:w-1/2 flex items-center justify-center">
           <div className="w-full max-w-[22rem] sm:max-w-[26rem] md:max-w-[30rem] lg:max-w-[34rem] aspect-square relative mx-auto">
             <CardSwap
-              logos={logos}
-              speed={14}
               cardDistance={60}
               verticalDistance={70}
               delay={8000}

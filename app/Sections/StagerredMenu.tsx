@@ -38,8 +38,8 @@ export default function StaggerredMenu() {
           leftLogoUrl="/Dark.png"
           accentColor="#ff6b6b"
           isFixed={true}
-          onMenuOpen={() => console.log("Menu opened")}
-          onMenuClose={() => console.log("Menu closed")}
+          onMenuOpen={() => {}}
+          onMenuClose={() => {}}
           className="relative"
         />
       </div>

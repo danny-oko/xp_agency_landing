@@ -1,4 +1,3 @@
-"use client";
 import Logo from "@/public/Dark.png";
 import { Facebook, Instagram, Mail } from "lucide-react";
 import Image from "next/image";

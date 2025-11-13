@@ -1,6 +1,16 @@
 "use client";
+import dynamic from "next/dynamic";
 import CurvedLoop from "@/components/CurvedLoop";
-import MagicBento from "@/components/MagicBento";
+
+// Lazy load MagicBento (heavy GSAP animations)
+const MagicBento = dynamic(() => import("@/components/MagicBento"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full max-w-6xl h-[600px] flex items-center justify-center">
+      <div className="text-gray-400">Loading...</div>
+    </div>
+  ),
+});
 
 export default function Values() {
   return (

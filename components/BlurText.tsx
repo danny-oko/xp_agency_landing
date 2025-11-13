@@ -1,5 +1,5 @@
 import { motion, Transition, Easing } from 'motion/react';
-import { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 
 type BlurTextProps = {
   text?: string;
@@ -120,4 +120,4 @@ const BlurText: React.FC<BlurTextProps> = ({
   );
 };
 
-export default BlurText;
+export default React.memo(BlurText);

@@ -204,4 +204,4 @@ const SplitText: React.FC<SplitTextProps> = ({
   return renderTag();
 };
 
-export default SplitText;
+export default React.memo(SplitText);
