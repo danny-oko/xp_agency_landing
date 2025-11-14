@@ -14,7 +14,7 @@ const Beams = dynamic(() => import("@/components/Beams"), {
 
 export default function Hero() {
   return (
-    <div id="hero" className="w-full min-h-screen bg-black/20 flex flex-col justify-center items-center relative overflow-hidden px-4 pb-0 pt-20 sm:px-6 lg:px-0">
+    <div id="hero" className="w-full h-[86vh] bg-black/20 flex flex-col justify-center items-center relative overflow-hidden px-4 pb-0 sm:px-6 lg:px-0">
       <section className="beams w-full h-full absolute pointer-events-none">
         <Beams
           beamWidth={3}

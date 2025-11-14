@@ -1,14 +1,14 @@
-"use client"
-import React, { useEffect } from 'react'
-import dynamic from 'next/dynamic'
-import Hero from './Sections/Hero'
-import StaggeredMenu from './Sections/StagerredMenu'
-import Values from './Sections/Values'
-import Projects from './Sections/Projects'
-import { scrollToSection } from '@/lib/scroll-utils'
+"use client";
+import { scrollToSection } from "@/lib/scroll-utils";
+import dynamic from "next/dynamic";
+import { useEffect } from "react";
+import Bento from "./Sections/Bento";
+import Hero from "./Sections/Hero";
+import Projects from "./Sections/Projects";
+import StaggeredMenu from "./Sections/StagerredMenu";
 
 // Lazy load below-the-fold sections
-const Team = dynamic(() => import('./Sections/Team'), {
+const Team = dynamic(() => import("./Sections/Team"), {
   ssr: true,
   loading: () => (
     <div className="w-full min-h-screen flex items-center justify-center">
@@ -17,7 +17,7 @@ const Team = dynamic(() => import('./Sections/Team'), {
   ),
 });
 
-const Footer = dynamic(() => import('./Sections/Footer'), {
+const Footer = dynamic(() => import("./Sections/Footer"), {
   ssr: true,
   loading: () => (
     <div className="w-full py-12 flex items-center justify-center">
@@ -35,7 +35,7 @@ export default function Home() {
         const sectionId = hash.substring(1); // Remove the #
         let retryCount = 0;
         const maxRetries = 20; // Maximum 1 second of retries (20 * 50ms)
-        
+
         // Wait for the element to exist before scrolling
         const scrollToElement = () => {
           const element = document.getElementById(sectionId);
@@ -47,7 +47,7 @@ export default function Home() {
             setTimeout(scrollToElement, 50);
           }
         };
-        
+
         // Start scrolling after a brief delay to allow page to render
         const timer = setTimeout(scrollToElement, 100);
         return () => clearTimeout(timer);
@@ -57,12 +57,14 @@ export default function Home() {
 
   return (
     <>
-      <StaggeredMenu />
-      <Hero />
-      <Values />
-      <Projects />
-      <Team />
-      <Footer /> 
+      <div className="h-screen snap-y snap-mandatory scroll-smooth overscroll-y-contain touch-pan-y overflow-y-scroll">
+        <StaggeredMenu />
+        <Hero />
+        <Bento />
+        <Projects />
+        <Team />
+        <Footer />
+      </div>
     </>
-  )
+  );
 }

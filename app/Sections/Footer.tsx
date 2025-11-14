@@ -131,7 +131,7 @@ export default function Footer() {
             </span>
             <div className="mt-4 space-y-2">
               <p className="font-medium text-white">Ulaanbaatar, Mongolia</p>
-              <p>Building better web experiences.</p>
+              <p>Building better web Xperiences.</p>
             </div>
           </div>
         </div>

@@ -22,6 +22,7 @@ export interface BentoProps {
   glowColor?: string;
   clickEffect?: boolean;
   enableMagnetism?: boolean;
+  className?: string;
 }
 
 const DEFAULT_PARTICLE_COUNT = 12;
@@ -32,39 +33,41 @@ const MOBILE_BREAKPOINT = 768;
 const cardData: BentoCardProps[] = [
   {
     color: "#060010",
-    title: "Analytics",
-    description: "Track user behavior",
-    label: "Insights",
+    title: "Чанартай гүйцэтгэл",
+    description: "Пиксель бүрт анхаарал шингэнэ.",
+    label: "Quality",
   },
   {
     color: "#060010",
-    title: "Dashboard",
-    description: "Centralized data view",
-    label: "Overview",
+    title: "Найрсаг харилцаа",
+    description: "Бүх зүйл дээр ил тод, ойлгомжтой.",
+    label: "Collaboration",
   },
   {
     color: "#060010",
-    title: "Collaboration",
-    description: "Work together seamlessly",
-    label: "Teamwork",
+    title: "Maintenance & Optimization",
+    description:
+      "Бид төслөө зүгээр л хаячихгүй. Шинэчлэлт, сайржуулалтууд хийгдэх боломжтой.",
+    label: "After-Launch Care",
   },
   {
     color: "#060010",
-    title: "Automation",
-    description: "Streamline workflows",
-    label: "Efficiency",
+    title: "Admin Dashboard / CMS",
+    description:
+      "Бизнесийн дата, контент, хэрэглэгчдийн мэдээлэл —all in one. Сайтаа өөрөө удирдах боломж.",
+    label: "Operational Efficiency",
   },
   {
     color: "#060010",
-    title: "Integration",
-    description: "Connect favorite tools",
-    label: "Connectivity",
+    title: "UI/UX Design",
+    description: "Ашиглахад хялбар хэрэглэгчийн туршлага.",
+    label: "Experience",
   },
   {
     color: "#060010",
-    title: "Security",
-    description: "Enterprise-grade protection",
-    label: "Protection",
+    title: "Speed & Optimization",
+    description: "Хурдан, тогтвортой, ажиллуулахад анхаарна.",
+    label: "Performance",
   },
 ];
 
@@ -535,7 +538,7 @@ const BentoCardGrid: React.FC<{
   gridRef?: React.RefObject<HTMLDivElement>;
 }> = ({ children, gridRef }) => (
   <div
-    className="bento-section grid gap-1 md:gap-2 p-2 md:p-3 max-w-[80rem] select-none relative"
+    className="bento-section grid gap-2 sm:gap-3 lg:gap-5 p-2 sm:p-4 select-none relative w-full max-w-[80rem] mx-auto"
     style={{ fontSize: "clamp(1rem, 0.9rem + 0.5vw, 1.5rem)" }}
     ref={gridRef}
   >
@@ -571,13 +574,14 @@ const MagicBento: React.FC<BentoProps> = ({
   glowColor = DEFAULT_GLOW_COLOR,
   clickEffect = true,
   enableMagnetism = true,
+  className = "",
 }) => {
   const gridRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations;
 
   return (
-    <>
+    <div className={className}>
       <style>
         {`
           .bento-section {
@@ -595,24 +599,22 @@ const MagicBento: React.FC<BentoProps> = ({
           }
           
           .card-responsive {
-            grid-template-columns: 1fr;
-            width: 90%;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            width: 100%;
             margin: 0 auto;
             padding: 0.5rem;
           }
           
-          @media (min-width: 640px) {
+          @media (min-width: 1024px) {
             .card-responsive {
-              grid-template-columns: repeat(2, 1fr);
-              width: 100%;
-              padding: 0.5rem 1rem;
+              grid-template-columns: repeat(3, minmax(0, 1fr));
+              max-width: 100%;
             }
           }
           
-          @media (min-width: 1024px) {
+          @media (min-width: 1280px) {
             .card-responsive {
-              grid-template-columns: repeat(3, 1fr);
-              max-width: 100%;
+              grid-template-columns: repeat(4, minmax(0, 1fr));
             }
             
             .card-responsive .card:nth-child(3) {
@@ -623,17 +625,6 @@ const MagicBento: React.FC<BentoProps> = ({
             .card-responsive .card:nth-child(4) {
               grid-column: 1 / span 2;
               grid-row: 2 / span 2;
-            }
-            
-            .card-responsive .card:nth-child(6) {
-              grid-column: 3;
-              grid-row: 3;
-            }
-          }
-          
-          @media (min-width: 1280px) {
-            .card-responsive {
-              grid-template-columns: repeat(4, 1fr);
             }
             
             .card-responsive .card:nth-child(6) {
@@ -921,7 +912,7 @@ const MagicBento: React.FC<BentoProps> = ({
           })}
         </div>
       </BentoCardGrid>
-    </>
+    </div>
   );
 };
 
