@@ -22,31 +22,37 @@ interface ProjectCardProps {
 
 // Animation configuration constants
 const ANIMATION_CONFIG = {
-  // Duration in seconds
-  otherCardsFadeDuration: 0.7,
-  headerFadeDuration: 0.6,
-  borderRadiusDuration: 0.7,
-  scaleDuration: 1.0,
-  contentFadeDuration: 0.5,
+  // Duration in seconds - optimized for smooth, premium feel
+  otherCardsFadeDuration: 0.5,
+  headerFadeDuration: 0.4,
+  borderRadiusDuration: 0.6,
+  scaleDuration: 0.8,
+  contentFadeDuration: 0.4,
+  backgroundDimDuration: 0.5,
   
-  // Timing (position in timeline)
-  fixedPositionTiming: 0.2,
-  borderRadiusTiming: 0.15,
-  scaleTiming: 0.3,
-  contentFadeTiming: 0.4,
+  // Timing (position in timeline) - staggered for natural flow
+  fixedPositionTiming: 0.1,
+  borderRadiusTiming: 0.1,
+  scaleTiming: 0.2,
+  contentFadeTiming: 0.25,
+  backgroundDimTiming: 0,
   
-  // Effects
-  otherCardsBlur: 25,
-  headerBlur: 10,
-  otherCardsScale: 0.85,
-  contentOpacity: 0.6,
-  contentTranslateY: 20,
-  headerTranslateY: -30,
-  scaleMultiplier: 1.15,
+  // Effects - enhanced for full-page expansion feel
+  otherCardsBlur: 20,
+  headerBlur: 8,
+  otherCardsScale: 0.9,
+  contentOpacity: 0.5,
+  contentTranslateY: 15,
+  headerTranslateY: -20,
+  backgroundDimOpacity: 0.95, // Dark background to emphasize card
+  
+  // Viewport fill - ensure card truly fills screen
+  viewportPadding: 0, // No padding, full viewport
+  viewportScaleMultiplier: 1.05, // Slightly larger than viewport for edge-to-edge feel
   
   // Mobile optimizations
-  mobileBlur: 15,
-  mobileScaleMultiplier: 1.1,
+  mobileBlur: 12,
+  mobileViewportScaleMultiplier: 1.02,
   
   // Z-index
   zIndex: 9999,
@@ -99,6 +105,18 @@ export default function ProjectCard({
       containerOverflowRef.current = null;
     }
     
+    // Clean up any overlay that might exist
+    const overlay = document.querySelector('[data-card-overlay]');
+    if (overlay && overlay.parentNode) {
+      overlay.parentNode.removeChild(overlay);
+    }
+    
+    // Restore body scroll
+    const body = document.body;
+    const html = document.documentElement;
+    if (body.style.overflow) body.style.overflow = '';
+    if (html.style.overflow) html.style.overflow = '';
+    
     setIsAnimating(false);
   }, [containerRef]);
 
@@ -136,15 +154,17 @@ export default function ProjectCard({
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
 
-    // Calculate scale to fill screen
-    const scaleX = viewportWidth / rect.width;
-    const scaleY = viewportHeight / rect.height;
+    // Calculate scale to truly fill viewport (edge-to-edge)
+    // Use the larger scale to ensure full coverage
+    const scaleX = (viewportWidth - ANIMATION_CONFIG.viewportPadding * 2) / rect.width;
+    const scaleY = (viewportHeight - ANIMATION_CONFIG.viewportPadding * 2) / rect.height;
     const scaleMultiplier = mobile 
-      ? ANIMATION_CONFIG.mobileScaleMultiplier 
-      : ANIMATION_CONFIG.scaleMultiplier;
+      ? ANIMATION_CONFIG.mobileViewportScaleMultiplier 
+      : ANIMATION_CONFIG.viewportScaleMultiplier;
+    // Use max to ensure full coverage, then add multiplier for edge-to-edge feel
     const scale = Math.max(scaleX, scaleY) * scaleMultiplier;
 
-    // Calculate center position
+    // Calculate center position - precise centering
     const centerX = viewportWidth / 2;
     const centerY = viewportHeight / 2;
     const cardCenterX = rect.left + rect.width / 2;
@@ -164,6 +184,8 @@ export default function ProjectCard({
 
     const header = headerRef?.current || document.querySelector('[data-projects-header]') as HTMLElement;
     const container = containerRef?.current || card.closest('[data-projects-container]') as HTMLElement;
+    const body = document.body;
+    const html = document.documentElement;
 
     // Store original container overflow and set to hidden
     if (container) {
@@ -172,11 +194,33 @@ export default function ProjectCard({
       gsap.set(container, { overflow: "hidden" });
     }
 
+    // Create background dim overlay for premium feel
+    const overlay = document.createElement('div');
+    overlay.setAttribute('data-card-overlay', 'true');
+    overlay.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0);
+      z-index: ${ANIMATION_CONFIG.zIndex - 1};
+      pointer-events: none;
+    `;
+    document.body.appendChild(overlay);
+
     // Set initial transform origin and z-index
     gsap.set(card, {
       transformOrigin: "center center",
       zIndex: ANIMATION_CONFIG.zIndex,
+      // Ensure smooth transforms
+      willChange: "transform, border-radius",
     });
+
+    // Prevent body scroll during animation
+    const originalBodyOverflow = body.style.overflow;
+    const originalHtmlOverflow = html.style.overflow;
+    gsap.set([body, html], { overflow: "hidden" });
 
     // Get blur amount based on device
     const blurAmount = mobile ? ANIMATION_CONFIG.mobileBlur : ANIMATION_CONFIG.otherCardsBlur;
@@ -184,6 +228,15 @@ export default function ProjectCard({
     // Create timeline with cleanup on complete
     const tl = gsap.timeline({
       onComplete: () => {
+        // Clean up overlay
+        if (overlay.parentNode) {
+          overlay.parentNode.removeChild(overlay);
+        }
+        
+        // Restore body scroll
+        body.style.overflow = originalBodyOverflow;
+        html.style.overflow = originalHtmlOverflow;
+        
         // Navigate after animation
         if (slug) {
           router.push(slug);
@@ -193,10 +246,29 @@ export default function ProjectCard({
         // Note: cleanup will be called on unmount, but we can reset state here
         setIsAnimating(false);
       },
-      onInterrupt: cleanup,
+      onInterrupt: () => {
+        // Clean up on interrupt
+        if (overlay.parentNode) {
+          overlay.parentNode.removeChild(overlay);
+        }
+        body.style.overflow = originalBodyOverflow;
+        html.style.overflow = originalHtmlOverflow;
+        cleanup();
+      },
     });
     
     timelineRef.current = tl;
+
+    // Animate background dim overlay - start immediately
+    tl.to(
+      overlay,
+      {
+        background: `rgba(0, 0, 0, ${ANIMATION_CONFIG.backgroundDimOpacity})`,
+        duration: ANIMATION_CONFIG.backgroundDimDuration,
+        ease: "sine.inOut", // Smooth, consistent speed
+      },
+      ANIMATION_CONFIG.backgroundDimTiming
+    );
 
     // Animate other cards (fade and blur) - start immediately
     if (otherCards.length > 0) {
@@ -207,7 +279,7 @@ export default function ProjectCard({
           filter: `blur(${blurAmount}px)`,
           scale: ANIMATION_CONFIG.otherCardsScale,
           duration: ANIMATION_CONFIG.otherCardsFadeDuration,
-          ease: "power3.in",
+          ease: "sine.inOut", // Smooth, consistent speed
         },
         0
       );
@@ -222,13 +294,13 @@ export default function ProjectCard({
           y: ANIMATION_CONFIG.headerTranslateY,
           filter: `blur(${ANIMATION_CONFIG.headerBlur}px)`,
           duration: ANIMATION_CONFIG.headerFadeDuration,
-          ease: "power3.in",
+          ease: "sine.inOut", // Smooth, consistent speed
         },
         0
       );
     }
 
-    // Convert to fixed positioning mid-animation for smoother transition
+    // Convert to fixed positioning early for smoother transition
     tl.call(() => {
       gsap.set(card, {
         position: "fixed",
@@ -239,21 +311,23 @@ export default function ProjectCard({
         margin: 0,
       });
       // Reset transform to maintain visual position
-      gsap.set(card, { x: 0, y: 0 });
+      gsap.set(card, { x: 0, y: 0, scale: 1 });
     }, undefined, ANIMATION_CONFIG.fixedPositionTiming);
 
-    // Animate clicked card - border radius first
+    // Animate clicked card - border radius and scale/translate together for cohesive expansion
+    // Border radius animates slightly before scale starts for natural feel
     tl.to(
       card,
       {
         borderRadius: 0,
         duration: ANIMATION_CONFIG.borderRadiusDuration,
-        ease: "power2.inOut",
+        ease: "sine.in", // Gradually accelerates - matches main expansion feel
       },
       ANIMATION_CONFIG.borderRadiusTiming
     );
 
-    // Then scale and translate to center
+    // Scale and translate to center - this is the main expansion animation
+    // Gradually accelerates from slow to fast for smooth, natural feel
     tl.to(
       card,
       {
@@ -261,12 +335,13 @@ export default function ProjectCard({
         y: translateY,
         scale: scale,
         duration: ANIMATION_CONFIG.scaleDuration,
-        ease: "power3.inOut",
+        ease: "sine.in", // Starts slow, gradually speeds up - smooth acceleration
       },
       ANIMATION_CONFIG.scaleTiming
     );
 
     // Fade out content during animation for cleaner transition
+    // Content fades as card expands to feel intentional
     if (content) {
       tl.to(
         content,
@@ -274,7 +349,7 @@ export default function ProjectCard({
           opacity: ANIMATION_CONFIG.contentOpacity,
           y: ANIMATION_CONFIG.contentTranslateY,
           duration: ANIMATION_CONFIG.contentFadeDuration,
-          ease: "power2.in",
+          ease: "sine.inOut", // Smooth, consistent speed
         },
         ANIMATION_CONFIG.contentFadeTiming
       );
