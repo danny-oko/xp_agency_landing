@@ -57,14 +57,12 @@ export default function Home() {
 
   return (
     <>
-      <div className="h-screen snap-y snap-mandatory scroll-smooth overscroll-y-contain touch-pan-y overflow-y-scroll">
         <StaggeredMenu />
         <Hero />
         <Bento />
         <Projects />
         <Team />
         <Footer />
-      </div>
     </>
   );
 }
