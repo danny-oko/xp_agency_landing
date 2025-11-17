@@ -1,10 +1,10 @@
 "use client";
-import dynamic from "next/dynamic";
 import BlurText from "@/components/BlurText";
 import ShinyText from "@/components/ShinyText";
 import TextType from "@/components/TextType";
-import { ArrowRight, Calendar } from "lucide-react";
 import { scrollToSection } from "@/lib/scroll-utils";
+import { ArrowRight, Calendar } from "lucide-react";
+import dynamic from "next/dynamic";
 
 // Lazy load Beams (Three.js) - browser only
 const Beams = dynamic(() => import("@/components/Beams"), {
@@ -14,7 +14,10 @@ const Beams = dynamic(() => import("@/components/Beams"), {
 
 export default function Hero() {
   return (
-    <div id="hero" className="w-full h-[86vh] bg-black/20 flex flex-col justify-center items-center relative overflow-hidden px-4 pb-0 sm:px-6 lg:px-0">
+    <div
+      id="hero"
+      className="w-full h-[86vh] bg-black/20 flex flex-col justify-center items-center relative overflow-hidden px-4 pb-0 sm:px-6 lg:px-0"
+    >
       <section className="beams w-full h-full absolute pointer-events-none">
         <Beams
           beamWidth={3}
@@ -63,7 +66,7 @@ export default function Hero() {
           <button
             onClick={() =>
               window.open(
-                "https://calendly.com/saranochir-s/30min?hide_gdpr_banner=1&month=2025-10",
+                "https://calendly.com/danny-otgontsetseg/15min",
                 "_blank"
               )
             }

@@ -1,12 +1,12 @@
 "use client";
-import dynamic from "next/dynamic";
 import BlurText from "@/components/BlurText";
 import LogoLoop from "@/components/LogoLoop";
 import ShinyText from "@/components/ShinyText";
 import SplitText from "@/components/SplitText";
 import { ArrowRight, Calendar } from "lucide-react";
-import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 // Lazy load CardSwap (heavy GSAP animations)
 // Card is a simple component, so we import it directly
@@ -57,9 +57,12 @@ const logos = [
 
 export default function Projects() {
   const router = useRouter();
-  
+
   return (
-    <div id="projects" className="w-full bg-black/20 bg-xp-bgSoft rounded-8xl px-4 sm:px-6 lg:px-10 py-12 md:py-16 mt-8">
+    <div
+      id="projects"
+      className="w-full bg-black/20 bg-xp-bgSoft rounded-8xl px-4 sm:px-6 lg:px-10 py-12 md:py-16 mt-8"
+    >
       <div className="sections-container w-full flex flex-col lg:flex-row items-center justify-between gap-12 overflow-hidden">
         {/* Text left side */}
         <section className="text-white w-full lg:w-1/2 flex flex-col justify-center px-2 sm:px-4">
@@ -109,7 +112,7 @@ export default function Projects() {
             <button
               onClick={() =>
                 window.open(
-                  "https://calendly.com/saranochir-s/30min?hide_gdpr_banner=1&month=2025-10",
+                  "https://calendly.com/danny-otgontsetseg/15min",
                   "_blank"
                 )
               }

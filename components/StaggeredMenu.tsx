@@ -31,6 +31,7 @@ export interface StaggeredMenuProps {
   changeMenuColorOnOpen?: boolean;
   onMenuOpen?: () => void;
   onMenuClose?: () => void;
+  hideLogoOnMobile?: boolean;
 }
 
 export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
@@ -50,6 +51,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   isFixed = false,
   onMenuOpen,
   onMenuClose,
+  hideLogoOnMobile = false,
 }: StaggeredMenuProps) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -463,7 +465,9 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
           aria-label="Main navigation header"
         >
           <div
-            className="sm-logo flex items-center select-none pointer-events-auto"
+            className={`sm-logo items-center select-none pointer-events-auto ${
+              hideLogoOnMobile ? "!hidden lg:!flex" : "flex"
+            }`}
             aria-label="Logo"
           >
             <Image

@@ -1,17 +1,24 @@
 "use client";
-import Logo from "@/public/Dark.png";
-import { Facebook, Instagram, Mail } from "lucide-react";
-import Image from "next/image";
-import { useRouter, usePathname } from "next/navigation";
 import { scrollToSection } from "@/lib/scroll-utils";
+import Logo from "@/public/Dark.png";
+import { Calendar, Facebook, Instagram, Mail } from "lucide-react";
+import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Footer() {
   const router = useRouter();
   const pathname = usePathname();
-  
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
     // If it's an external link or email, let it work normally
-    if (href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:")) {
+    if (
+      href.startsWith("http") ||
+      href.startsWith("mailto:") ||
+      href.startsWith("tel:")
+    ) {
       return;
     }
 
@@ -53,15 +60,16 @@ export default function Footer() {
                 <div className="space-y-1 text-sm text-gray-300">
                   <p className="font-medium text-white">Xperience Agency</p>
                   <p className="mt-1">
-                    Tel: <span className="text-white">80296007</span>
+                    Tel: <span className="text-white">+976-80296007</span>
                   </p>
                   <p className="mt-1">
                     Mail:{" "}
                     <a
-                      href="mailto:dnioko0412@gmail.com."
+                      href="mailto:danny.otgontsetseg@gmail.com"
                       className="hover:underline"
                     >
-                      dnioko0412@gmail.com
+                      danny.otgontsetseg@gmail.com
+                      {/* <Mail size={18} /> */}
                     </a>
                   </p>
                 </div>
@@ -87,7 +95,7 @@ export default function Footer() {
                     <Instagram size={18} />
                   </a>
                   <a
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=xpdigital.dev@gmail.com"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to="
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 hover:border-white/30 hover:bg-white/5 transition cursor-pointer relative pointer-events-auto"
@@ -133,6 +141,18 @@ export default function Footer() {
               <p className="font-medium text-white">Ulaanbaatar, Mongolia</p>
               <p>Building better web Xperiences.</p>
             </div>
+            {/* Book Call Button */}
+            <a
+              href="https://calendly.com/danny-otgontsetseg/15min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-medium text-white transition-all duration-200 hover:scale-102 active:scale-95 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/15 hover:border-white/30 shadow-lg shadow-black/20 relative overflow-hidden group"
+              aria-label="Book a call"
+            >
+              <Calendar size={18} className="shrink-0" />
+              <span>Book Call</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+            </a>
           </div>
         </div>
 
@@ -162,7 +182,7 @@ export default function Footer() {
               <Instagram size={18} />
             </a>
             <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=xpdigital.dev@gmail.com"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=danny.otgontsetseg@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition cursor-pointer relative pointer-events-auto"
