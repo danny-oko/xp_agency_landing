@@ -108,7 +108,7 @@ export default function Footer() {
             <div className="mt-4 flex flex-col gap-3">
               {[
                 { href: "#hero", label: "Home" },
-                { href: "#team", label: "About" },
+                { href: "#values", label: "About" },
                 { href: "#projects", label: "Projects" },
                 { href: "#team", label: "Our Team" },
               ].map(({ href, label }) => (
