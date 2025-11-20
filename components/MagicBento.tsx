@@ -582,7 +582,7 @@ const MagicBento: React.FC<BentoProps> = ({
 
   return (
     <div className={className}>
-      <style>
+      <style suppressHydrationWarning>
         {`
           .bento-section {
             --glow-x: 50%;
