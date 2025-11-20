@@ -549,6 +549,16 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                     
                     // If it's an external link or email, let it work normally
                     if (it.link.startsWith("http") || it.link.startsWith("mailto:") || it.link.startsWith("tel:")) {
+                      // Close menu if open
+                      if (openRef.current) {
+                        openRef.current = false;
+                        setOpen(false);
+                        playClose();
+                        animateIcon(false);
+                        animateColor(false);
+                        animateText(false);
+                        onMenuClose?.();
+                      }
                       window.open(it.link, "_blank");
                       return;
                     }
@@ -564,13 +574,19 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                       sectionId = sectionId.substring(1);
                     }
 
+                    // Close menu immediately when clicking navigation item
+                    if (openRef.current) {
+                      openRef.current = false;
+                      setOpen(false);
+                      playClose();
+                      animateIcon(false);
+                      animateColor(false);
+                      animateText(false);
+                      onMenuClose?.();
+                    }
+
                     // If not on home page, navigate to home with hash
                     if (!isHomePage) {
-                      // Close menu before navigating for better UX
-                      if (open) {
-                        setOpen(false);
-                        onMenuClose?.();
-                      }
                       // Navigate to home page with hash (Next.js App Router supports hash in URL)
                       router.push(`/#${sectionId}`);
                       return;
@@ -578,11 +594,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
                     // On home page, scroll to section
                     scrollToSection(sectionId);
-                    // Close menu after scroll
-                    if (open) {
-                      setOpen(false);
-                      onMenuClose?.();
-                    }
                   };
 
                   return (
