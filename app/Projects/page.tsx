@@ -33,7 +33,7 @@ const projects = [
   },
   {
     id: "han-education",
-    slug: "/Projects/haneducation",
+    slug: "/Projects/aneducation",
     title: "Han Education",
     shortTitleMn: "Han Education гадаадад сурцгаая",
     taglineMn: "Гадаадын их сургуулийн зөвлөх үйлчилгээний платформ.",
@@ -45,7 +45,7 @@ const projects = [
   },
   {
     id: "new-era",
-    slug: "/Projects/newera",
+    slug: "/Projects/ewera",
     title: "New Era",
     shortTitleMn: "New Era сургалтын экосистем",
     taglineMn: "K–12 болон нэмэлт сургалтын нэгдсэн систем.",
