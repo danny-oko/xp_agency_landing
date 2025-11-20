@@ -155,7 +155,7 @@ export default function Team() {
   return (
     <div
       id="team"
-      className="w-full min-h-screen rounded-8xl bg-transparent flex flex-col justify-center items-center px-6 sm:px-8 lg:px-12 py-12 md:py-16 gap-10 md:gap-14"
+      className="w-full h-[82vh] rounded-8xl bg-transparent flex flex-col justify-center items-center px-6 sm:px-8 lg:px-12 py-12 md:py-16 gap-10 md:gap-14"
     >
       <div className="headline w-full flex flex-col items-center justify-center text-center">
         <SplitText

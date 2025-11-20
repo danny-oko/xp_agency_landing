@@ -61,7 +61,7 @@ export default function Projects() {
   return (
     <div
       id="projects"
-      className="w-full bg-black/20 bg-xp-bgSoft rounded-8xl px-4 sm:px-6 lg:px-10 py-12 md:py-16 mt-8"
+      className="w-full bg-black/20 bg-xp-bgSoft rounded-8xl px-4 sm:px-6 lg:px-10 py-12 md:py-16 mt-8 h-[80vh] flex flex-col items-center justify-center"
     >
       <div className="sections-container w-full flex flex-col lg:flex-row items-center justify-between gap-12 overflow-hidden">
         {/* Text left side */}
@@ -131,8 +131,8 @@ export default function Projects() {
           </div>
         </section>
         {/* Card right side */}
-        <section className="w-full lg:w-1/2 flex items-center justify-center">
-          <div className="w-full max-w-[22rem] sm:max-w-[26rem] md:max-w-[30rem] lg:max-w-[34rem] aspect-square relative mx-auto">
+        <section className="w-full lg:w-1/2 flex h-full items-center justify-center">
+          <div className="w-full max-w-[22rem] sm:max-w-[26rem] md:max-w-[30rem] lg:max-w-[34rem] aspect-square relative mx-auto h-full">
             <CardSwap
               cardDistance={60}
               verticalDistance={70}

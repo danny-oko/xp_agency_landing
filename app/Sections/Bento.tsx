@@ -6,7 +6,7 @@ export default function Bento() {
   return (
     <section
       id="about"
-      className="w-full max-w-screen-xl mx-auto flex min-h-screen flex-col items-center justify-center gap-10 overflow-hidden px-4 sm:px-6 lg:px-8 py-12"
+      className="w-full max-w-screen-xl mx-auto flex h-[124vh] flex-col items-center justify-center gap-10 overflow-hidden px-4 sm:px-6 lg:px-8 py-12"
     >
       <div className="flex w-full max-w-5xl flex-none items-center justify-center h-[18vh]">
         <CurvedLoop
