@@ -2,7 +2,6 @@
 import React, { useRef } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import dynamic from "next/dynamic";
 import StaggeredMenu from "../Sections/StagerredMenu";
 import ProjectCard from "@/components/ProjectCard";
 
