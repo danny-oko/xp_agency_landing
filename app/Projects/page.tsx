@@ -9,7 +9,7 @@ import ProjectCard from "@/components/ProjectCard";
 const projects = [
   {
     id: "sunrise-mongolia",
-    slug: "/Projects/sunrise",
+    slug: "/Projects/Sunrise",
     title: "Sunrise Mongolia",
     shortTitleMn: "Sunrise Mongolia аялал",
     taglineMn: "Аялал жуулчлалын туршлагыг дараагийн шатанд гаргасан платформ.",
