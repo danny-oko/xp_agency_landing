@@ -101,7 +101,7 @@ export default function Projects() {
           {/* Buttons below logo loop */}
           <div className="flex flex-col sm:flex-row gap-3 mt-6 w-full items-start sm:items-center justify-start">
             <button
-              onClick={() => router.push("/projects")}
+              onClick={() => router.push("/Projects")}
               className="bg-gradient-to-b from-white to-gray-100 text-gray-800 border border-gray-300 rounded-full px-6 py-3 text-base sm:text-lg font-normal cursor-pointer shadow-inner transition-all duration-300 min-w-[200px] sm:min-w-[180px] w-full sm:w-auto h-12 flex items-center justify-center gap-2 hover:bg-white relative group overflow-hidden"
             >
               <span className="transition-transform duration-300 ease-out group-hover:translate-x-[-3px] group-hover:scale-[1.02]">

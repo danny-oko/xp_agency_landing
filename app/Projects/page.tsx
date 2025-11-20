@@ -9,7 +9,7 @@ import ProjectCard from "@/components/ProjectCard";
 const projects = [
   {
     id: "sunrise-mongolia",
-    slug: "/projects/sunrise",
+    slug: "/Projects/sunrise",
     title: "Sunrise Mongolia",
     shortTitleMn: "Sunrise Mongolia аялал",
     taglineMn: "Аялал жуулчлалын туршлагыг дараагийн шатанд гаргасан платформ.",
@@ -21,7 +21,7 @@ const projects = [
   },
   {
     id: "win-academy",
-    slug: "/projects/winacademy",
+    slug: "/Projects/winacademy",
     title: "Win Academy",
     shortTitleMn: "Win Academy санхүүгийн боловсрол",
     taglineMn: "Трейдинг, санхүүгийн боловсролыг цахимаар хүргэдэг академийн систем.",
@@ -33,7 +33,7 @@ const projects = [
   },
   {
     id: "han-education",
-    slug: "/projects/haneducation",
+    slug: "/Projects/haneducation",
     title: "Han Education",
     shortTitleMn: "Han Education гадаадад сурцгаая",
     taglineMn: "Гадаадын их сургуулийн зөвлөх үйлчилгээний платформ.",
@@ -45,7 +45,7 @@ const projects = [
   },
   {
     id: "new-era",
-    slug: "/projects/newera",
+    slug: "/Projects/newera",
     title: "New Era",
     shortTitleMn: "New Era сургалтын экосистем",
     taglineMn: "K–12 болон нэмэлт сургалтын нэгдсэн систем.",
