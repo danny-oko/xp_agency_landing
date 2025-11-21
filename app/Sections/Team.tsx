@@ -159,7 +159,7 @@ export default function Team() {
     >
       <div className="headline w-full flex flex-col items-center justify-center text-center">
         <SplitText
-          text="Xperience - ийн ард хэн байгаа вэ?"
+          text="XP - ийн ард хэн байгаа вэ?"
           className="text-2xl sm:text-3xl md:text-4xl font-semibold"
           delay={100}
           duration={1.6}
