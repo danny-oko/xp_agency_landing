@@ -538,7 +538,7 @@ const BentoCardGrid: React.FC<{
   gridRef?: React.RefObject<HTMLDivElement>;
 }> = ({ children, gridRef }) => (
   <div
-    className="bento-section grid gap-2 sm:gap-3 lg:gap-5 p-2 sm:p-4 select-none relative w-full max-w-[80rem] mx-auto"
+    className="bento-section grid gap-2 sm:gap-3 lg:gap-5 p-2 sm:p-4 select-none relative w-full mx-auto"
     style={{ fontSize: "clamp(1rem, 0.9rem + 0.5vw, 1.5rem)" }}
     ref={gridRef}
   >

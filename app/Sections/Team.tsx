@@ -28,7 +28,7 @@ function normalizeUrl(url?: string) {
 
 // Memoized team member card component
 const TeamMemberCard = React.memo<{ member: TeamMember }>(({ member }) => (
-  <div className="group relative h-80 md:h-96 w-full rounded-3xl overflow-hidden border border-white/10 bg-white/5 shadow-[0_-8px_24px_-10px_rgba(255,255,255,0.20),0_16px_32px_-12px_rgba(0,0,0,0.45)] hover:shadow-[0_-10px_28px_-12px_rgba(255,255,255,0.45),0_24px_40px_-12px_rgba(0,0,0,0.6)] hover:border-white/20 transition-all duration-300">
+  <div className="group relative h-80 md:h-96 w-full rounded-3xl overflow-hidden border border-white/10 bg-white/5 shadow-[0_-8px_24px_-10px_rgba(255,255,255,0.20),0_16px_32px_-12px_rgba(0,0,0,0.45)] hover:shadow-[0_-10px_28px_-12px_rgba(255,255,255,0.45),0_24px_40px_-12px_rgba(0,0,0,0.6)] hover:border-white/20 transition-all duration-300 ">
     <DotGrid
       className="opacity-40 pointer-events-none group-hover:opacity-60 transition-opacity duration-300"
       dotSize={8}
@@ -41,8 +41,8 @@ const TeamMemberCard = React.memo<{ member: TeamMember }>(({ member }) => (
       resistance={1000}
       returnDuration={1.2}
     />
-    <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-    <div className="absolute inset-0 flex flex-col items-center justify-end pb-6 px-6">
+    <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/60 via-black/20 to-transparent " />
+    <div className="absolute inset-0 flex flex-col items-center justify-end pb-6 px-6 ">
       <div className="w-full flex flex-col items-center gap-4">
         {member.avatar && (
           <div className="relative">
@@ -155,7 +155,7 @@ export default function Team() {
   return (
     <div
       id="team"
-      className="w-full h-[82vh] rounded-8xl bg-transparent flex flex-col justify-center items-center px-6 sm:px-8 lg:px-12 py-12 md:py-16 gap-10 md:gap-14"
+      className="w-[80%] mx-auto h-[80vh] rounded-8xl bg-transparent flex flex-col justify-center items-center px-6 sm:px-8 lg:px-12 py-12 md:py-16 gap-10 md:gap-14"
     >
       <div className="headline w-full flex flex-col items-center justify-center text-center">
         <SplitText
@@ -174,7 +174,7 @@ export default function Team() {
       </div>
 
       <section className="w-full relative flex flex-col items-center">
-        <div className="grid w-full max-w-7xl grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
+        <div className="grid w-full grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
           {TEAM_MEMBERS.map((member) => (
             <TeamMemberCard key={member.name} member={member} />
           ))}

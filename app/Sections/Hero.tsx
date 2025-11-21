@@ -30,7 +30,7 @@ export default function Hero() {
           rotation={30}
         />
       </section>
-      <div className="text-center relative pointer-events-auto max-w-5xl w-full">
+      <div className="text-center relative pointer-events-auto w-[80%] mx-auto">
         {/* blue text */}
         <aside className="flex flex-col items-center justify-center gap-6">
           <BlurText

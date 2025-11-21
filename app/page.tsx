@@ -3,6 +3,7 @@ import { scrollToSection } from "@/lib/scroll-utils";
 import dynamic from "next/dynamic";
 import { useEffect } from "react";
 import Bento from "./Sections/Bento";
+import Call from "./Sections/Call";
 import Hero from "./Sections/Hero";
 import Projects from "./Sections/Projects";
 import StaggeredMenu from "./Sections/StagerredMenu";
@@ -57,12 +58,13 @@ export default function Home() {
 
   return (
     <>
-        <StaggeredMenu />
-        <Hero />
-        <Bento />
-        <Projects />
-        <Team />
-        <Footer />
+      <StaggeredMenu />
+      <Hero />
+      <Bento />
+      <Projects />
+      <Team />
+      <Call />
+      <Footer />
     </>
   );
 }

@@ -61,9 +61,9 @@ export default function Projects() {
   return (
     <div
       id="projects"
-      className="w-full bg-black/20 bg-xp-bgSoft rounded-8xl px-4 sm:px-6 lg:px-10 py-12 md:py-16 mt-8 h-[80vh] flex flex-col items-center justify-center"
+      className="w-[80%] mx-auto bg-black/20` bg-xp-bgSoft rounded-8xl px-4 sm:px-6 lg:px-10 py-12 md:py-16 mt-8 h-[80vh] flex flex-col items-center justify-center"
     >
-      <div className="sections-container w-full flex flex-col lg:flex-row items-center justify-between gap-12 overflow-hidden">
+      <div className="sections-container w-[100%] flex flex-col lg:flex-row items-center justify-between gap-12 overflow-hidden">
         {/* Text left side */}
         <section className="text-white w-full lg:w-1/2 flex flex-col justify-center px-2 sm:px-4">
           <div className="text-left mb-8 w-full">
@@ -88,7 +88,7 @@ export default function Projects() {
               className="text-md text-gray-300 leading-relaxed text-left text-lg"
             />
           </div>
-          <LogoLoop
+          {/* <LogoLoop
             logos={logos}
             speed={120}
             direction="left"
@@ -96,10 +96,10 @@ export default function Projects() {
             logoHeight={48}
             gap={48}
             className="brightness-50 contrast-150 grayscale hover:brightness-75 transition-all duration-300 mb-4"
-          />
+          /> */}
 
           {/* Buttons below logo loop */}
-          <div className="flex flex-col sm:flex-row gap-3 mt-6 w-full items-start sm:items-center justify-start">
+          <div className="flex flex-col sm:flex-row gap-3 w-full items-start sm:items-center justify-start">
             <button
               onClick={() => router.push("/Projects")}
               className="bg-gradient-to-b from-white to-gray-100 text-gray-800 border border-gray-300 rounded-full px-6 py-3 text-base sm:text-lg font-normal cursor-pointer shadow-inner transition-all duration-300 min-w-[200px] sm:min-w-[180px] w-full sm:w-auto h-12 flex items-center justify-center gap-2 hover:bg-white relative group overflow-hidden"

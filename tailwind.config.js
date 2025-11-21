@@ -52,6 +52,16 @@ module.exports = {
         '15xl': '7.5rem',
         '16xl': '8rem',
       },
+      keyframes: {
+        gradient: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+      },
+      animation: {
+        gradient: 'gradient 8s linear infinite',
+      },
     },
   },
   plugins: [],
