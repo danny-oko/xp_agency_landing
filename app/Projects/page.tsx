@@ -1,9 +1,9 @@
 "use client";
-import React, { useRef } from "react";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
-import StaggeredMenu from "../Sections/StagerredMenu";
 import ProjectCard from "@/components/ProjectCard";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
+import { useRef } from "react";
+import StaggeredMenu from "../Sections/StagerredMenu";
 
 // Projects data - centralized and easy to maintain
 const projects = [
@@ -11,49 +11,65 @@ const projects = [
     id: "sunrise-mongolia",
     slug: "/Projects/Sunrise",
     title: "Sunrise Mongolia",
-    shortTitleMn: "Sunrise Mongolia аялал",
-    taglineMn: "Аялал жуулчлалын туршлагыг дараагийн шатанд гаргасан платформ.",
+    shortTitleMn: "Sunrise Mongolia",
+    taglineMn:
+      "Аялал жуулчлалын жижигхэн мэт боловч төвөгтэй зүйлсийг шийдэж өгсөнөөрөө онцлог.",
     shortDescriptionMn:
-      "Аяллын багц, аяллын маршрут, төлбөрийн урсгалыг нэг дор төвлөрүүлсэн аялал жуулчлалын вэб платформ.",
+      "Аяллын багц, маршрут, төлбөрийн мэдээлэл, мэдээллүүдээ удирдах боломжтой админ самбар болон бүтээгдэхүүн үйлчилгээгээ танилцуулах хялбар шийдэл",
     image:
       "https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324102/Screenshot_2025-11-05_at_14.28.08_ndckm8.png",
     url: "https://sunrisemongolia.com",
   },
   {
     id: "win-academy",
-    slug: "/Projects/winacademy",
+    slug: "/Projects/Winacademy",
     title: "Win Academy",
-    shortTitleMn: "Win Academy санхүүгийн боловсрол",
-    taglineMn: "Трейдинг, санхүүгийн боловсролыг цахимаар хүргэдэг академийн систем.",
+    shortTitleMn: "Win Academy",
+    taglineMn:
+      "Орчин үед чухал болсон онлайн борлуулалтын мэдлэг, менежментийн талаарх мэдлэг олгох платформ.",
     shortDescriptionMn:
-      "Онлайн сургалт, хичээлийн сан, төлбөрийн интеграц, хэрэглэгчийн самбар бүхий боловсролын платформ.",
+      "Онлайн сургалт,админ самбар, хичээлийн сан, төлбөрийн шийдэл, хэрэглэгчийн самбар бүхий онлайн сургалтын платформ.",
     image:
       "https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324123/Screenshot_2025-11-05_at_14.28.37_voovcg.png",
     url: "https://winacademy.mn",
   },
   {
     id: "han-education",
-    slug: "/Projects/aneducation",
+    slug: "/Projects/Haneducation",
     title: "Han Education",
-    shortTitleMn: "Han Education гадаадад сурцгаая",
-    taglineMn: "Гадаадын их сургуулийн зөвлөх үйлчилгээний платформ.",
+    shortTitleMn: "Han Education",
+    taglineMn: "Гадаадын их сургуулийн зөвлөх үйлчилгээгээ танилцуулга сайт.",
     shortDescriptionMn:
-      "Оюутанд зориулсан хөтөлбөрийн мэдээлэл, зөвлөгөө авах урсгал, холбогдох форм бүхий боловсролын сайт.",
+      "Оюутан залууст зориулсан хөтөлбөрийн мэдээлэл, зөвлөгөө авах урсгал, холбогдох форм бүхий боловсролын сайт.",
     image:
       "https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324019/Screenshot_2025-11-05_at_14.26.47_gjtbhr.png",
     url: "https://haneducation.mn",
   },
   {
+    id: "sengee",
+    slug: "/Projects/Sengee",
+    title: "Sengee.mn",
+    shortTitleMn: "Sengee.mn",
+    taglineMn:
+      "Форексийг анхан шатнаас суриа зөв тавин амжилттай арилжаачин болох хүртэл бэлдэх онлайн сургалтын платформ.",
+    shortDescriptionMn:
+      "Админ самбар, хичээлийн сан, төлбөрийн шийдэл, хэрэглэгчийн самбар бүхий онлайн сургалтын платформ.",
+    image:
+      "https://res.cloudinary.com/dkfnybqnx/image/upload/v1763727110/Screenshot_2025-11-21_at_20.11.43_fzcjyy.png",
+    url: "https://sengee.mn",
+  },
+  {
     id: "new-era",
-    slug: "/Projects/ewera",
+    slug: "/Projects/Newera",
     title: "New Era",
     shortTitleMn: "New Era сургалтын экосистем",
-    taglineMn: "K–12 болон нэмэлт сургалтын нэгдсэн систем.",
+    taglineMn:
+      "Орчин үед чухал болсон хиймэл оюун ухааныг хэрхэн өөртөө ашигтайгаар хэрэглэх талаар сургалын платформ.",
     shortDescriptionMn:
-      "Сурагч, эцэг эх, багш нарт зориулсан хөтөлбөр, хичээл, мэдэгдэл, цахим сургалтын платформ.",
+      "Админ самбар, хичээлийн сан, төлбөрийн шийдэл, хэрэглэгчийн самбар бүхий онлайн сургалтын платформ.",
     image:
       "https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324000/Screenshot_2025-11-05_at_14.26.22_xwakmu.png",
-    url: "#",
+    url: "https://newera.mn",
   },
 ];
 
@@ -62,12 +78,12 @@ export default function ProjectsPage() {
   const headerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <>
+    <div id="projectsPage">
       <StaggeredMenu />
       <div className="min-h-screen bg-black text-white pt-20 pb-16 relative overflow-hidden">
-        <div 
+        <div
           ref={containerRef}
-          data-projects-container 
+          data-projects-container
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         >
           {/* Header */}
@@ -88,7 +104,7 @@ export default function ProjectsPage() {
           </div>
 
           {/* Projects Grid */}
-          <div 
+          <div
             className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12"
             role="list"
             aria-label="Төслүүдийн жагсаалт"
@@ -105,6 +121,6 @@ export default function ProjectsPage() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const menuItems = [
   { label: "Home", ariaLabel: "Go to home page", link: "#hero" },
   { label: "About", ariaLabel: "Learn about us", link: "#about" },
-  { label: "Projects", ariaLabel: "View our services", link: "#projects" },
+  { label: "Projects", ariaLabel: "View our projects", link: "/Projects" },
   { label: "Team", ariaLabel: "The team behind Xperience", link: "#team" },
   { label: "Contact", ariaLabel: "Get in touch", link: "#contact" },
 ];
@@ -46,7 +46,7 @@ export default function StaggerredMenu() {
       const scrollPosition = window.scrollY + windowHeight;
       const documentHeight = document.documentElement.scrollHeight;
       const isNearBottom = scrollPosition >= documentHeight - 100; // Within 100px of bottom
-      
+
       return isVisible || isNearBottom;
     };
 
@@ -91,7 +91,7 @@ export default function StaggerredMenu() {
     // Continuous check for footer element (handles dynamic loading)
     const startChecking = () => {
       if (isSetup) return;
-      
+
       checkInterval = setInterval(() => {
         const footerElement = document.getElementById("contact");
         if (footerElement && !isSetup) {

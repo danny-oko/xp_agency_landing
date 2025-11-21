@@ -563,6 +563,25 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                       return;
                     }
 
+                    // Check if it's a route path (starts with / and is not a hash link)
+                    const isRoutePath = it.link.startsWith("/") && !it.link.startsWith("/#");
+                    
+                    // If it's a route path, navigate directly
+                    if (isRoutePath) {
+                      // Close menu if open
+                      if (openRef.current) {
+                        openRef.current = false;
+                        setOpen(false);
+                        playClose();
+                        animateIcon(false);
+                        animateColor(false);
+                        animateText(false);
+                        onMenuClose?.();
+                      }
+                      router.push(it.link);
+                      return;
+                    }
+
                     // Check if we're on the home page
                     const isHomePage = pathname === "/";
 
