@@ -9,8 +9,13 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: "Your Agency",
+  title: "Xp Agency",
   description: "A freelance agency website",
+  icons: {
+    icon: "/Dark.png",
+    shortcut: "/Dark.png",
+    apple: "/Dark.png",
+  },
 }
 
 export default function RootLayout({

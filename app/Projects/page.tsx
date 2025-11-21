@@ -2,7 +2,6 @@
 import React, { useRef } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import dynamic from "next/dynamic";
 import StaggeredMenu from "../Sections/StagerredMenu";
 import ProjectCard from "@/components/ProjectCard";
 
@@ -10,7 +9,7 @@ import ProjectCard from "@/components/ProjectCard";
 const projects = [
   {
     id: "sunrise-mongolia",
-    slug: "/projects/Sunrise",
+    slug: "/Projects/Sunrise",
     title: "Sunrise Mongolia",
     shortTitleMn: "Sunrise Mongolia аялал",
     taglineMn: "Аялал жуулчлалын туршлагыг дараагийн шатанд гаргасан платформ.",
@@ -22,7 +21,7 @@ const projects = [
   },
   {
     id: "win-academy",
-    slug: "/projects/Winacademy",
+    slug: "/Projects/winacademy",
     title: "Win Academy",
     shortTitleMn: "Win Academy санхүүгийн боловсрол",
     taglineMn: "Трейдинг, санхүүгийн боловсролыг цахимаар хүргэдэг академийн систем.",
@@ -34,7 +33,7 @@ const projects = [
   },
   {
     id: "han-education",
-    slug: "/projects/Haneducation",
+    slug: "/Projects/aneducation",
     title: "Han Education",
     shortTitleMn: "Han Education гадаадад сурцгаая",
     taglineMn: "Гадаадын их сургуулийн зөвлөх үйлчилгээний платформ.",
@@ -46,7 +45,7 @@ const projects = [
   },
   {
     id: "new-era",
-    slug: "/projects/Newera",
+    slug: "/Projects/ewera",
     title: "New Era",
     shortTitleMn: "New Era сургалтын экосистем",
     taglineMn: "K–12 болон нэмэлт сургалтын нэгдсэн систем.",
