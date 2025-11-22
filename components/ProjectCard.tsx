@@ -1,8 +1,8 @@
 "use client";
-import React, { useRef, useState, useEffect, useCallback } from "react";
-import Image from "next/image";
 import { gsap } from "gsap";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 interface ProjectCardProps {
   id: string;
@@ -23,37 +23,37 @@ interface ProjectCardProps {
 // Animation configuration constants
 const ANIMATION_CONFIG = {
   // Duration in seconds - optimized for smooth, premium feel
-  otherCardsFadeDuration: 0.5,
-  headerFadeDuration: 0.4,
-  borderRadiusDuration: 0.6,
-  scaleDuration: 0.8,
-  contentFadeDuration: 0.4,
-  backgroundDimDuration: 0.5,
-  
+  otherCardsFadeDuration: 0.4,
+  headerFadeDuration: 0.35,
+  borderRadiusDuration: 0.5,
+  scaleDuration: 0.6,
+  contentFadeDuration: 0.35,
+  backgroundDimDuration: 0.4,
+
   // Timing (position in timeline) - staggered for natural flow
-  fixedPositionTiming: 0.1,
-  borderRadiusTiming: 0.1,
-  scaleTiming: 0.2,
-  contentFadeTiming: 0.25,
+  fixedPositionTiming: 0.05,
+  borderRadiusTiming: 0.05,
+  scaleTiming: 0.1,
+  contentFadeTiming: 0.15,
   backgroundDimTiming: 0,
-  
+
   // Effects - enhanced for full-page expansion feel
-  otherCardsBlur: 20,
-  headerBlur: 8,
-  otherCardsScale: 0.9,
-  contentOpacity: 0.5,
-  contentTranslateY: 15,
-  headerTranslateY: -20,
-  backgroundDimOpacity: 0.95, // Dark background to emphasize card
-  
+  otherCardsBlur: 15,
+  headerBlur: 6,
+  otherCardsScale: 0.92,
+  contentOpacity: 0.3,
+  contentTranslateY: 10,
+  headerTranslateY: -15,
+  backgroundDimOpacity: 0.9, // Dark background to emphasize card
+
   // Viewport fill - ensure card truly fills screen
   viewportPadding: 0, // No padding, full viewport
-  viewportScaleMultiplier: 1.05, // Slightly larger than viewport for edge-to-edge feel
-  
+  viewportScaleMultiplier: 1.02, // Slightly larger than viewport for edge-to-edge feel
+
   // Mobile optimizations
-  mobileBlur: 12,
-  mobileViewportScaleMultiplier: 1.02,
-  
+  mobileBlur: 10,
+  mobileViewportScaleMultiplier: 1.01,
+
   // Z-index
   zIndex: 9999,
 } as const;
@@ -98,25 +98,27 @@ export default function ProjectCard({
       timelineRef.current.kill();
       timelineRef.current = null;
     }
-    
+
     // Reset container overflow
     if (containerRef?.current && containerOverflowRef.current !== null) {
-      gsap.set(containerRef.current, { overflow: containerOverflowRef.current });
+      gsap.set(containerRef.current, {
+        overflow: containerOverflowRef.current,
+      });
       containerOverflowRef.current = null;
     }
-    
+
     // Clean up any overlay that might exist
-    const overlay = document.querySelector('[data-card-overlay]');
+    const overlay = document.querySelector("[data-card-overlay]");
     if (overlay && overlay.parentNode) {
       overlay.parentNode.removeChild(overlay);
     }
-    
+
     // Restore body scroll
     const body = document.body;
     const html = document.documentElement;
-    if (body.style.overflow) body.style.overflow = '';
-    if (html.style.overflow) html.style.overflow = '';
-    
+    if (body.style.overflow) body.style.overflow = "";
+    if (html.style.overflow) html.style.overflow = "";
+
     setIsAnimating(false);
   }, [containerRef]);
 
@@ -129,14 +131,14 @@ export default function ProjectCard({
 
   const handleClick = useCallback(() => {
     if (isAnimating) return;
-    
+
     const card = cardRef.current;
     const content = contentRef.current;
     if (!card) return;
 
     const reducedMotion = prefersReducedMotion();
     const mobile = isMobile();
-    
+
     // If reduced motion, skip animation and navigate immediately
     if (reducedMotion) {
       if (slug) {
@@ -156,10 +158,12 @@ export default function ProjectCard({
 
     // Calculate scale to truly fill viewport (edge-to-edge)
     // Use the larger scale to ensure full coverage
-    const scaleX = (viewportWidth - ANIMATION_CONFIG.viewportPadding * 2) / rect.width;
-    const scaleY = (viewportHeight - ANIMATION_CONFIG.viewportPadding * 2) / rect.height;
-    const scaleMultiplier = mobile 
-      ? ANIMATION_CONFIG.mobileViewportScaleMultiplier 
+    const scaleX =
+      (viewportWidth - ANIMATION_CONFIG.viewportPadding * 2) / rect.width;
+    const scaleY =
+      (viewportHeight - ANIMATION_CONFIG.viewportPadding * 2) / rect.height;
+    const scaleMultiplier = mobile
+      ? ANIMATION_CONFIG.mobileViewportScaleMultiplier
       : ANIMATION_CONFIG.viewportScaleMultiplier;
     // Use max to ensure full coverage, then add multiplier for edge-to-edge feel
     const scale = Math.max(scaleX, scaleY) * scaleMultiplier;
@@ -175,15 +179,21 @@ export default function ProjectCard({
     // Get other cards and header
     const otherCards: HTMLElement[] = [];
     if (otherCardsRef?.current) {
-      otherCards.push(...otherCardsRef.current.filter(el => el !== card));
+      otherCards.push(...otherCardsRef.current.filter((el) => el !== card));
     } else {
       // Fallback to querySelector if refs not provided
-      const allCards = document.querySelectorAll('[data-project-card]');
-      otherCards.push(...Array.from(allCards).filter((el) => el !== card) as HTMLElement[]);
+      const allCards = document.querySelectorAll("[data-project-card]");
+      otherCards.push(
+        ...(Array.from(allCards).filter((el) => el !== card) as HTMLElement[])
+      );
     }
 
-    const header = headerRef?.current || document.querySelector('[data-projects-header]') as HTMLElement;
-    const container = containerRef?.current || card.closest('[data-projects-container]') as HTMLElement;
+    const header =
+      headerRef?.current ||
+      (document.querySelector("[data-projects-header]") as HTMLElement);
+    const container =
+      containerRef?.current ||
+      (card.closest("[data-projects-container]") as HTMLElement);
     const body = document.body;
     const html = document.documentElement;
 
@@ -195,8 +205,8 @@ export default function ProjectCard({
     }
 
     // Create background dim overlay for premium feel
-    const overlay = document.createElement('div');
-    overlay.setAttribute('data-card-overlay', 'true');
+    const overlay = document.createElement("div");
+    overlay.setAttribute("data-card-overlay", "true");
     overlay.style.cssText = `
       position: fixed;
       top: 0;
@@ -223,7 +233,9 @@ export default function ProjectCard({
     gsap.set([body, html], { overflow: "hidden" });
 
     // Get blur amount based on device
-    const blurAmount = mobile ? ANIMATION_CONFIG.mobileBlur : ANIMATION_CONFIG.otherCardsBlur;
+    const blurAmount = mobile
+      ? ANIMATION_CONFIG.mobileBlur
+      : ANIMATION_CONFIG.otherCardsBlur;
 
     // Create timeline with cleanup on complete
     const tl = gsap.timeline({
@@ -232,11 +244,11 @@ export default function ProjectCard({
         if (overlay.parentNode) {
           overlay.parentNode.removeChild(overlay);
         }
-        
+
         // Restore body scroll
         body.style.overflow = originalBodyOverflow;
         html.style.overflow = originalHtmlOverflow;
-        
+
         // Navigate after animation
         if (slug) {
           router.push(slug);
@@ -256,7 +268,7 @@ export default function ProjectCard({
         cleanup();
       },
     });
-    
+
     timelineRef.current = tl;
 
     // Animate background dim overlay - start immediately
@@ -265,7 +277,7 @@ export default function ProjectCard({
       {
         background: `rgba(0, 0, 0, ${ANIMATION_CONFIG.backgroundDimOpacity})`,
         duration: ANIMATION_CONFIG.backgroundDimDuration,
-        ease: "sine.inOut", // Smooth, consistent speed
+        ease: "power2.out", // Smooth deceleration
       },
       ANIMATION_CONFIG.backgroundDimTiming
     );
@@ -279,7 +291,7 @@ export default function ProjectCard({
           filter: `blur(${blurAmount}px)`,
           scale: ANIMATION_CONFIG.otherCardsScale,
           duration: ANIMATION_CONFIG.otherCardsFadeDuration,
-          ease: "sine.inOut", // Smooth, consistent speed
+          ease: "power2.out", // Smooth deceleration
         },
         0
       );
@@ -294,25 +306,29 @@ export default function ProjectCard({
           y: ANIMATION_CONFIG.headerTranslateY,
           filter: `blur(${ANIMATION_CONFIG.headerBlur}px)`,
           duration: ANIMATION_CONFIG.headerFadeDuration,
-          ease: "sine.inOut", // Smooth, consistent speed
+          ease: "power2.out", // Smooth deceleration
         },
         0
       );
     }
 
     // Convert to fixed positioning early for smoother transition
-    tl.call(() => {
-      gsap.set(card, {
-        position: "fixed",
-        top: rect.top,
-        left: rect.left,
-        width: rect.width,
-        height: rect.height,
-        margin: 0,
-      });
-      // Reset transform to maintain visual position
-      gsap.set(card, { x: 0, y: 0, scale: 1 });
-    }, undefined, ANIMATION_CONFIG.fixedPositionTiming);
+    tl.call(
+      () => {
+        gsap.set(card, {
+          position: "fixed",
+          top: rect.top,
+          left: rect.left,
+          width: rect.width,
+          height: rect.height,
+          margin: 0,
+        });
+        // Reset transform to maintain visual position
+        gsap.set(card, { x: 0, y: 0, scale: 1 });
+      },
+      undefined,
+      ANIMATION_CONFIG.fixedPositionTiming
+    );
 
     // Animate clicked card - border radius and scale/translate together for cohesive expansion
     // Border radius animates slightly before scale starts for natural feel
@@ -321,13 +337,13 @@ export default function ProjectCard({
       {
         borderRadius: 0,
         duration: ANIMATION_CONFIG.borderRadiusDuration,
-        ease: "sine.in", // Gradually accelerates - matches main expansion feel
+        ease: "power2.out", // Smooth deceleration
       },
       ANIMATION_CONFIG.borderRadiusTiming
     );
 
     // Scale and translate to center - this is the main expansion animation
-    // Gradually accelerates from slow to fast for smooth, natural feel
+    // Use smooth easing for natural feel
     tl.to(
       card,
       {
@@ -335,7 +351,7 @@ export default function ProjectCard({
         y: translateY,
         scale: scale,
         duration: ANIMATION_CONFIG.scaleDuration,
-        ease: "sine.in", // Starts slow, gradually speeds up - smooth acceleration
+        ease: "power2.out", // Smooth deceleration - feels more natural
       },
       ANIMATION_CONFIG.scaleTiming
     );
@@ -349,7 +365,7 @@ export default function ProjectCard({
           opacity: ANIMATION_CONFIG.contentOpacity,
           y: ANIMATION_CONFIG.contentTranslateY,
           duration: ANIMATION_CONFIG.contentFadeDuration,
-          ease: "sine.inOut", // Smooth, consistent speed
+          ease: "power2.out", // Smooth deceleration
         },
         ANIMATION_CONFIG.contentFadeTiming
       );
@@ -357,15 +373,29 @@ export default function ProjectCard({
 
     // Call onCardClick callback if provided
     onCardClick?.(id);
-  }, [isAnimating, slug, url, router, onCardClick, id, containerRef, headerRef, otherCardsRef, cleanup]);
+  }, [
+    isAnimating,
+    slug,
+    url,
+    router,
+    onCardClick,
+    id,
+    containerRef,
+    headerRef,
+    otherCardsRef,
+    cleanup,
+  ]);
 
   // Handle keyboard navigation
-  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      handleClick();
-    }
-  }, [handleClick]);
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        handleClick();
+      }
+    },
+    [handleClick]
+  );
 
   return (
     <article
@@ -394,7 +424,7 @@ export default function ProjectCard({
       <div ref={contentRef} className="p-6">
         <h3 className="text-2xl font-semibold mb-2">{shortTitleMn}</h3>
         <p className="text-gray-400 mb-2 text-sm font-medium">{taglineMn}</p>
-        <p 
+        <p
           id={`project-${id}-description`}
           className="text-gray-500 mb-4 text-sm leading-relaxed"
         >
@@ -423,4 +453,3 @@ export default function ProjectCard({
     </article>
   );
 }
-

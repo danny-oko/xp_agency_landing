@@ -40,7 +40,7 @@ export default function Hero() {
         {/* blue text */}
         <aside className="flex flex-col items-center justify-center gap-6">
           <BlurText
-            text="Xperience"
+            text="Xp agency"
             delay={100}
             animateBy="letters"
             direction="top"
@@ -52,8 +52,8 @@ export default function Hero() {
               "Web Development Agency",
               "For Your Business Growth",
             ]}
-            typingSpeed={75}
-            pauseDuration={1500}
+            typingSpeed={80}
+            pauseDuration={2500}
             showCursor={true}
             cursorCharacter="|"
             className="text-lg sm:text-xl md:text-2xl font-italic text-gray-400 relative"
