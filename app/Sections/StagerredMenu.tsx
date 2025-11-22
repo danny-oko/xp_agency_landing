@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const menuItems = [
   { label: "Home", ariaLabel: "Go to home page", link: "#hero" },
   { label: "About", ariaLabel: "Learn about us", link: "#about" },
-  { label: "Projects", ariaLabel: "View our projects", link: "/Projects" },
+  { label: "Projects", ariaLabel: "View our projects", link: "/projects" },
   { label: "Team", ariaLabel: "The team behind Xperience", link: "#team" },
   { label: "Contact", ariaLabel: "Get in touch", link: "#contact" },
 ];
