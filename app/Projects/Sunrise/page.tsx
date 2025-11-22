@@ -1,10 +1,27 @@
 "use client";
+import ProjectSkeleton from "@/components/ProjectSkeleton";
 import { ArrowLeft, Calendar, ExternalLink, Globe } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import StaggeredMenu from "../../Sections/StagerredMenu";
 
 export default function SunrisePage() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <ProjectSkeleton />;
+  }
+
   return (
     <>
       <StaggeredMenu />

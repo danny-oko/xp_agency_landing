@@ -2,7 +2,6 @@
 import ProjectCard from "@/components/ProjectCard";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { useRef } from "react";
 import StaggeredMenu from "../Sections/StagerredMenu";
 
 // Projects data - centralized and easy to maintain
@@ -75,20 +74,13 @@ const projects = [
 ];
 
 export default function ProjectsPage() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-
   return (
     <div id="projectsPage">
       <StaggeredMenu />
       <div className="min-h-screen bg-black text-white pt-20 pb-16 relative overflow-hidden">
-        <div
-          ref={containerRef}
-          data-projects-container
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div ref={headerRef} data-projects-header className="mb-12">
+          <div className="mb-12">
             <Link
               href="/"
               className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-6 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black rounded"
@@ -115,8 +107,6 @@ export default function ProjectsPage() {
                 key={project.id}
                 {...project}
                 index={index}
-                containerRef={containerRef}
-                headerRef={headerRef}
               />
             ))}
           </div>
