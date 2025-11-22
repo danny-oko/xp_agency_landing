@@ -605,6 +605,19 @@ const MagicBento: React.FC<BentoProps> = ({
             padding: 0.5rem;
           }
           
+          @media (min-width: 768px) and (max-width: 1023px) {
+            .card-responsive {
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              max-width: 90%;
+              gap: 1rem;
+            }
+            
+            .card-responsive .card {
+              min-height: 280px !important;
+              padding: 1rem !important;
+            }
+          }
+          
           @media (min-width: 1024px) {
             .card-responsive {
               grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -721,9 +734,9 @@ const MagicBento: React.FC<BentoProps> = ({
       )}
 
       <BentoCardGrid gridRef={gridRef}>
-        <div className="card-responsive grid gap-2.5 sm:gap-3.5 lg:gap-5">
+        <div className="card-responsive grid gap-2.5 sm:gap-2.5 md:gap-3 lg:gap-5">
           {cardData.map((card, index) => {
-            const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[320px] sm:min-h-[360px] w-full max-w-full p-5 sm:p-6 rounded-[24px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
+            const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[320px] sm:min-h-[280px] md:min-h-[280px] lg:min-h-[360px] w-full max-w-full p-4 sm:p-4 md:p-4 lg:p-6 rounded-[24px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
               enableBorderGlow ? "card--border-glow" : ""
             }`;
 

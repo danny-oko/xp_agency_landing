@@ -1,0 +1,17 @@
+--- a/app/globals.css
++++ b/app/globals.css
+@@ -2,6 +2,13 @@
+ @tailwind components;
+ @tailwind utilities;
+ 
++/* Prevent horizontal scroll on all breakpoints */
++html,
++body {
++  overflow-x: hidden;
++  max-width: 100vw;
++}
++
+ .learn-more-btn {
+   background: linear-gradient base;
+   color: #AAAAAA;
+

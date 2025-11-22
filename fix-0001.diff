@@ -1,0 +1,12 @@
+--- a/components/TextCursor.tsx
++++ b/components/TextCursor.tsx
+@@ -1,5 +1,7 @@
+ import React, { useState, useEffect, useRef } from 'react';
+-import { motion, AnimatePresence } from 'motion/react';
++// Replace invalid import with framer-motion (preserves API used in code)
++// framer-motion has identical API to motion/react for motion and AnimatePresence
++import { motion, AnimatePresence } from 'framer-motion';
+ 
+ interface TextCursorProps {
+   text: string;
+

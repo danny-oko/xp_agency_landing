@@ -1,0 +1,18 @@
+--- a/app/layout.tsx
++++ b/app/layout.tsx
+@@ -11,6 +11,11 @@ const montserrat = Montserrat({
+ export const metadata: Metadata = {
+   title: "Xp Agency",
+   description: "A freelance agency website",
++  viewport: {
++    width: 'device-width',
++    initialScale: 1,
++    maximumScale: 5,
++  },
+   icons: {
+     icon: "/Dark.png",
+     shortcut: "/Dark.png",
+     apple: "/Dark.png",
+   },
+ }
+

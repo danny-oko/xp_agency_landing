@@ -1,0 +1,20 @@
+--- a/app/layout.tsx
++++ b/app/layout.tsx
+@@ -2,10 +2,14 @@
+ import "./globals.css"
+ import { Montserrat } from 'next/font/google'
+ 
++// Reduce font weights to only used ones, keep CSS var and display strategy
++// Keeping 400, 500, 600, 700 as these are most commonly used (normal, medium, semibold, bold)
++// Removed 300, 800, 900 to reduce bundle size (~200KB savings)
+ const montserrat = Montserrat({
+   subsets: ['latin'],
+-  weight: ['300', '400', '500', '600', '700', '800', '900'],
++  weight: ['400', '500', '600', '700'],
+   variable: '--font-montserrat',
++  display: 'swap', // Prevents FOIT (Flash of Invisible Text)
++  preload: true, // Preloads critical font
+ })
+ 
+ export const metadata: Metadata = {
+

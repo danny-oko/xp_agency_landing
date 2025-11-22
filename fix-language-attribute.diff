@@ -1,0 +1,12 @@
+--- a/app/layout.tsx
++++ b/app/layout.tsx
+@@ -24,7 +24,7 @@
+   children: React.ReactNode
+ }) {
+   return (
+-    <html lang="en">
++    <html lang="mn">
+       <body className={`${montserrat.variable} font-montserrat bg-black text-white`}>
+         {children}
+       </body>
+

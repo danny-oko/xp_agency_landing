@@ -1,0 +1,48 @@
+--- a/package.json
++++ b/package.json
+@@ -5,7 +5,8 @@
+     "build": "next build",
+     "dev": "next dev",
+     "lint": "next lint",
+-    "start": "next start"
++    "start": "next start",
++    "analyze": "ANALYZE=true npm run build"
+   },
+   "dependencies": {
+     "@gsap/react": "^2.1.2",
+@@ -51,7 +52,6 @@
+     "gsap": "^3.13.0",
+     "input-otp": "1.4.1",
+     "lucide-react": "^0.454.0",
+-    "motion": "^12.23.24",
+     "next": "^14.2.33",
+     "react": "^18.3.1",
+     "react-day-picker": "9.8.0",
+@@ -68,6 +68,7 @@
+     "zod": "3.25.67"
+   },
+   "devDependencies": {
++    "@next/bundle-analyzer": "^14.2.33",
+     "@types/node": "^22",
+     "@types/react": "^18",
+     "@types/react-dom": "^18",
+--- a/next.config.mjs
++++ b/next.config.mjs
+@@ -1,4 +1,10 @@
+ /** @type {import('next').NextConfig} */
++import bundleAnalyzer from '@next/bundle-analyzer'
++
++const withBundleAnalyzer = bundleAnalyzer({
++  enabled: process.env.ANALYZE === 'true',
++})
++
+ const nextConfig = {
+   // Build checks enabled for better code quality
+   eslint: {
+@@ -101,4 +107,4 @@ const nextConfig = {
+   },
+ }
+ 
+-export default nextConfig
++export default withBundleAnalyzer(nextConfig)
+

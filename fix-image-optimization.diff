@@ -1,0 +1,13 @@
+--- a/components/LogoLoop.tsx
++++ b/components/LogoLoop.tsx
+@@ -293,7 +293,7 @@
+             height={(item as any).height ?? 56}
+             alt={(item as any).alt ?? (item as any).title ?? 'Logo'} // Provide meaningful fallback
+             title={(item as any).title}
+             loading="lazy"
+-            unoptimized
++            sizes="(max-width: 768px) 56px, 64px" // Add responsive sizes
+           />
+         );
+ 
+

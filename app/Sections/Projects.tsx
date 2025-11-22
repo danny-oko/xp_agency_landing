@@ -61,12 +61,12 @@ export default function Projects() {
   return (
     <div
       id="projects"
-      className="w-[80%] mx-auto bg-black/20` bg-xp-bgSoft rounded-8xl px-4 sm:px-6 lg:px-10 py-12 md:py-16 mt-8 h-[80vh] flex flex-col items-center justify-center"
+      className="w-full sm:w-[90%] md:w-[80%] mx-auto bg-black/20` bg-xp-bgSoft rounded-8xl px-4 sm:px-6 lg:px-10 py-8 md:py-10 mt-12 sm:mt-8 min-h-[40vh] md:min-h-[50vh] h-auto flex flex-col items-center justify-center"
     >
-      <div className="sections-container w-[100%] flex flex-col lg:flex-row items-center justify-between gap-12 overflow-hidden">
+      <div className="sections-container w-[100%] flex flex-col lg:flex-row items-center justify-between gap-8 overflow-hidden">
         {/* Text left side */}
         <section className="text-white w-full lg:w-1/2 flex flex-col justify-center px-2 sm:px-4">
-          <div className="text-left mb-8 w-full">
+          <div className="text-left mb-6 w-full">
             <SplitText
               text="Төслүүд"
               className="text-4xl sm:text-5xl font-bold text-left mb-4"
@@ -101,7 +101,7 @@ export default function Projects() {
           {/* Buttons below logo loop */}
           <div className="flex flex-col sm:flex-row gap-3 w-full items-start sm:items-center justify-start">
             <button
-              onClick={() => router.push("/Projects")}
+              onClick={() => router.push("/projects")}
               className="bg-gradient-to-b from-white to-gray-100 text-gray-800 border border-gray-300 rounded-full px-6 py-3 text-base sm:text-lg font-normal cursor-pointer shadow-inner transition-all duration-300 min-w-[200px] sm:min-w-[180px] w-full sm:w-auto h-12 flex items-center justify-center gap-2 hover:bg-white relative group overflow-hidden"
             >
               <span className="transition-transform duration-300 ease-out group-hover:translate-x-[-3px] group-hover:scale-[1.02]">
@@ -130,8 +130,8 @@ export default function Projects() {
             </button>
           </div>
         </section>
-        {/* Card right side */}
-        <section className="w-full lg:w-1/2 flex h-full items-center justify-center">
+        {/* Card right side - hidden on mobile and tablet, shown on desktop only */}
+        <section className="hidden lg:flex w-full lg:w-1/2 h-full items-center justify-center">
           <div className="w-full max-w-[22rem] sm:max-w-[26rem] md:max-w-[30rem] lg:max-w-[34rem] aspect-square relative mx-auto h-full">
             <CardSwap
               cardDistance={60}

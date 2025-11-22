@@ -9,7 +9,7 @@ export default function Call() {
   return (
     <div
       id="call"
-      className="w-[80%] mx-auto min-h-[85vh] flex flex-col justify-center items-center bg-xp-bgSoft rounded-8xl p-8 sm:p-12 md:p-16 py-12 sm:py-16 md:py-20"
+      className="w-[80%] mx-auto min-h-[85vh] flex flex-col justify-center items-center bg-xp-bgSoft rounded-8xl p-8 sm:p-12 md:p-16 py-12 sm:py-16 md:py-20 mt-12 sm:mt-8"
     >
       <ClickSpark
         sparkColor="#fff"

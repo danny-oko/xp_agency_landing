@@ -8,7 +8,7 @@ import StaggeredMenu from "../Sections/StagerredMenu";
 const projects = [
   {
     id: "sunrise-mongolia",
-    slug: "/Projects/Sunrise",
+    slug: "/projects/sunrise",
     title: "Sunrise Mongolia",
     shortTitleMn: "Sunrise Mongolia",
     taglineMn:
@@ -21,7 +21,7 @@ const projects = [
   },
   {
     id: "win-academy",
-    slug: "/Projects/Winacademy",
+    slug: "/projects/winacademy",
     title: "Win Academy",
     shortTitleMn: "Win Academy",
     taglineMn:
@@ -34,7 +34,7 @@ const projects = [
   },
   {
     id: "sengee",
-    slug: "/Projects/Sengee",
+    slug: "/projects/sengee",
     title: "Sengee.mn",
     shortTitleMn: "Sengee.mn",
     taglineMn:
@@ -47,7 +47,7 @@ const projects = [
   },
   {
     id: "han-education",
-    slug: "/Projects/Haneducation",
+    slug: "/projects/haneducation",
     title: "Han Education",
     shortTitleMn: "Han Education",
     taglineMn: "Гадаадын их сургуулийн зөвлөх үйлчилгээгээ танилцуулга сайт.",
@@ -60,7 +60,7 @@ const projects = [
 
   {
     id: "new-era",
-    slug: "/Projects/Newera",
+    slug: "/projects/newera",
     title: "New Era",
     shortTitleMn: "New Era сургалтын экосистем",
     taglineMn:

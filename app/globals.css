@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prevent horizontal scroll on all breakpoints */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 .learn-more-btn {
   background: linear-gradient(to bottom, #3C3C3C, #282828);
   color: #AAAAAA;
