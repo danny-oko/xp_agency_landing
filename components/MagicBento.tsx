@@ -10,7 +10,7 @@ export interface BentoCardProps {
   disableAnimations?: boolean;
 }
 
-export interface BentoProps {
+export interface BentoProps { 
   textAutoHide?: boolean;
   enableStars?: boolean;
   enableSpotlight?: boolean;

@@ -1,8 +1,7 @@
 "use client";
-import React from "react";
+import { ArrowLeft, Calendar, ExternalLink, Globe } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, Globe, Calendar } from "lucide-react";
 import StaggeredMenu from "../../Sections/StagerredMenu";
 
 export default function SunrisePage() {
@@ -16,7 +15,7 @@ export default function SunrisePage() {
             src="https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324102/Screenshot_2025-11-05_at_14.28.08_ndckm8.png"
             alt="Sunrise Mongolia"
             fill
-            className="object-cover"
+            className="object-cover blur-sm opacity-60"
             priority
             sizes="100vw"
           />
@@ -34,7 +33,8 @@ export default function SunrisePage() {
                 Sunrise Mongolia
               </h1>
               <p className="text-xl text-gray-300 max-w-2xl">
-                Аялал жуулчлалын туршлагыг дараагийн шатанд гаргасан платформ
+                Монгол орны шилдэг аялалуудыг танилцуулахын сацуу, өөрсдийн
+                үйлчилгээгээ танилцуулах вебсайт.
               </p>
             </div>
           </div>
@@ -67,7 +67,7 @@ export default function SunrisePage() {
               </div>
               <div>
                 <h3 className="text-sm text-gray-400 mb-1">Төрөл</h3>
-                <p className="text-white">Аялал жуулчлалын платформ</p>
+                <p className="text-white">Аялал жуулчлал</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -98,14 +98,13 @@ export default function SunrisePage() {
             <h2 className="text-3xl font-bold mb-6">Төслийн тухай</h2>
             <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
               <p>
-                Sunrise Mongolia нь Монголын аялал жуулчлалын салбарыг дижитал
-                шинэчлэлээр хөгжүүлэх зорилготой бүтээгдсэн цогц вэб платформ юм.
+                Sunrise Mongolia нь Монгол орны хамгийн сайхан аялал, адал
+                явдлуудыг танилцуулах зорилготой аялал жуулчлалын платформ юм.
               </p>
               <p>
-                Энэхүү платформ нь аяллын багц, аяллын маршрут, төлбөрийн урсгалыг
-                нэг дор төвлөрүүлсэн бөгөөд жуулчдад Монголын үзэсгэлэнт байгаль,
-                соёлын баялаг, түүхэн дурсгалт газруудыг аялахад хялбар, найдвартай
-                шийдэл санал болгодог.
+                Энэхүү платформ нь аялагчдад аялалын хөтөлбөрийн талаархи
+                дэлгэрэнгүй мэдээлэл, нэмэлт мэдээлэл зэрэг найдвартай
+                хэрэглэгчийн туршлагыг бүрдүүлж өгсөн.
               </p>
             </div>
           </div>
@@ -115,12 +114,12 @@ export default function SunrisePage() {
             <h2 className="text-3xl font-bold mb-8">Онцлог функцүүд</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                "Аяллын багц захиалга",
-                "Интерактив маршрут зураглал",
-                "Төлбөрийн системийн интеграц",
-                "Хэрэглэгчийн самбар",
-                "Аяллын үлдэгдэл хэсэг",
+                "Админ самбар ( Шинэ мэдээлэл, үйлчилгээгээ танилцуулах )",
+                "Аяллын багцуудан талаарх тодорхой бас цэгтэй мэдээллүүд",
+                "FAQ ( Аялалын талаарх загварласан асуулт хариулт )",
                 "Мэдээлэл, зөвлөгөөний блог",
+                // "Хэрэглэгчийн самбар",
+                // "Аяллын үлдэгдэл хэсэг",
               ].map((feature, index) => (
                 <div
                   key={index}
@@ -132,6 +131,51 @@ export default function SunrisePage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Technologies */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">Ашигласан технологиуд</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {[
+                "Next.js",
+                "TypeScript",
+                "Tailwind",
+                "MongoDB",
+                "Cloudinary",
+                "ReCAPTCHA",
+              ].map((tech, index) => (
+                <div
+                  key={index}
+                  className="p-4 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-colors text-center flex items-center justify-center"
+                >
+                  <p className="text-gray-300 text-sm font-medium">{tech}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Project Details */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">Төслийн дэлгэрэнгүй</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                <h3 className="text-sm text-gray-400 mb-2">Хугацаа</h3>
+                <p className="text-white text-lg font-semibold">
+                  2 долоо хоног
+                </p>
+              </div>
+              <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                <h3 className="text-sm text-gray-400 mb-2">Баг</h3>
+                <p className="text-white text-lg font-semibold">2 хөгжүүлэгч</p>
+              </div>
+              <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                <h3 className="text-sm text-gray-400 mb-2">Ангилал</h3>
+                <p className="text-white text-lg font-semibold">
+                  Веб хөгжүүлэлт
+                </p>
+              </div>
             </div>
           </div>
 
@@ -151,7 +195,7 @@ export default function SunrisePage() {
               </div>
               <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10">
                 <Image
-                  src="https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324102/Screenshot_2025-11-05_at_14.28.08_ndckm8.png"
+                  src="https://res.cloudinary.com/doxmbmqjm/image/upload/v1763775843/Screenshot_2025-11-22_at_09.43.45_rqqffs.png"
                   alt="Sunrise Mongolia Screenshot 2"
                   fill
                   className="object-cover"
@@ -164,17 +208,22 @@ export default function SunrisePage() {
 
           {/* CTA */}
           <div className="text-center py-12 border-t border-white/10">
-            <h3 className="text-2xl font-bold mb-4">Төсөл сонирхож байна уу?</h3>
+            <h3 className="text-2xl font-bold mb-4">
+              Таны бизнесд Вэбсайт хэрэгтэй байгаа юм биш биз?
+            </h3>
             <p className="text-gray-400 mb-8">
-              Бидэнтэй холбогдож, өөрийн төслийн талаар ярилцъя
+              Вебсайт бол зүгээр нэг мөнгө үрсэн хэрэг биш харин хөрөнгө
+              оруулалт юм.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/#contact"
+              <a
+                href="https://calendly.com/danny-otgontsetseg/15min"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-8 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-colors"
               >
                 Холбогдох
-              </Link>
+              </a>
               <a
                 href="https://sunrisemongolia.com"
                 target="_blank"
@@ -191,4 +240,3 @@ export default function SunrisePage() {
     </>
   );
 }
-

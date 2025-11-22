@@ -2,9 +2,9 @@
 import BlurText from "@/components/BlurText";
 import ShinyText from "@/components/ShinyText";
 import TextType from "@/components/TextType";
-import { scrollToSection } from "@/lib/scroll-utils";
 import { ArrowRight, Calendar } from "lucide-react";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 
 // Lazy load Beams (Three.js) - browser only
 const Beams = dynamic(() => import("@/components/Beams"), {
@@ -13,6 +13,12 @@ const Beams = dynamic(() => import("@/components/Beams"), {
 });
 
 export default function Hero() {
+  const router = useRouter();
+
+  const handleProjectsClick = () => {
+    router.push("/Projects");
+  };
+
   return (
     <div
       id="hero"
@@ -55,7 +61,7 @@ export default function Hero() {
         </aside>
         <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center items-center pointer-events-auto relative w-full sm:w-auto">
           <button
-            onClick={() => scrollToSection("projects")}
+            onClick={handleProjectsClick}
             className="bg-gradient-to-b from-white to-gray-100 text-gray-800 border border-gray-300 rounded-full px-6 py-3 text-base sm:text-lg font-normal shadow-inner transition-all duration-300 min-w-[200px] sm:min-w-[180px] w-[60%] sm:w-auto h-12 flex items-center justify-center gap-2 hover:bg-white cursor-pointer relative group overflow-hidden pointer-events-auto"
           >
             <span className="transition-transform duration-300 ease-out group-hover:translate-x-[-3px] group-hover:scale-[1.02] pointer-events-none">
@@ -86,15 +92,15 @@ export default function Hero() {
       </div>
 
       {/* <GradualBlur
-                target="parent"
-                position="bottom"
-                height="8rem"
-                strength={3}
-                divCount={5}
-                curve="bezier"
-                exponential={true}
-                opacity={1}
-            /> */}
+        target="parent"
+        position="bottom"
+        height="8rem"
+        strength={3}
+        divCount={5}
+        curve="bezier"
+        exponential={true}
+        opacity={1}
+      /> */}
     </div>
   );
 }

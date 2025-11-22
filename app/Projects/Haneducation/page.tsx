@@ -1,8 +1,7 @@
 "use client";
-import React from "react";
+import { ArrowLeft, Calendar, ExternalLink, Globe } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, Globe, Calendar } from "lucide-react";
 import StaggeredMenu from "../../Sections/StagerredMenu";
 
 export default function HaneducationPage() {
@@ -16,7 +15,7 @@ export default function HaneducationPage() {
             src="https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324019/Screenshot_2025-11-05_at_14.26.47_gjtbhr.png"
             alt="Han Education"
             fill
-            className="object-cover"
+            className="object-cover blur-[2px]"
             priority
             sizes="100vw"
           />
@@ -67,7 +66,7 @@ export default function HaneducationPage() {
               </div>
               <div>
                 <h3 className="text-sm text-gray-400 mb-1">Төрөл</h3>
-                <p className="text-white">Боловсролын зөвлөх үйлчилгээ</p>
+                <p className="text-white">Боловсрол</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -99,28 +98,28 @@ export default function HaneducationPage() {
             <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
               <p>
                 Han Education нь Монголын оюутнуудад гадаадын их сургуулиудад
-                элсэхэд зөвлөгөө, мэдээлэл өгдөг цогц платформ юм.
+                элсэхэд зориулсан зөвлөгөө өгөх агентлагийн танилцуулга бүхий
+                сайт юм.
               </p>
               <p>
                 Энэхүү сайт нь оюутанд зориулсан хөтөлбөрийн мэдээлэл, зөвлөгөө
-                авах урсгал, холбогдох форм бүхий боловсролын сайт бөгөөд оюутнуудад
-                гадаадын их сургуулиудад элсэхэд шаардлагатай бүх мэдээлэл, зөвлөгөөг
-                нэг дор олж авах боломжийг олгодог.
+                авах урсгал бүхий формийг шийдэж өгсөнөөр агентлаг болон
+                оюутнуудыг холбох илүү хурдан шийдлийг бүрдүүлж өгсөн юм.
               </p>
             </div>
           </div>
 
           {/* Features */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Онцлог функцүүд</h2>
+            <h2 className="text-3xl font-bold mb-8">Сайтын онцлогууд</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                "Хөтөлбөрийн мэдээллийн сан",
-                "Зөвлөгөө авах систем",
-                "Холбогдох форм",
+                // "Хөтөлбөрийн мэдээллийн сан",
+                // "Зөвлөгөө авах систем",
+                "Админ самбар (Оюутнуудтай холбогдох болон мэдээлэл удирдах)",
                 "Их сургуулийн мэдээлэл",
-                "Элсэлтийн процесс",
-                "Тусламж, дэмжлэг",
+                "Холбогдох форм",
+                "Холбогох мэдээллүүд",
               ].map((feature, index) => (
                 <div
                   key={index}
@@ -132,6 +131,50 @@ export default function HaneducationPage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Technologies */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">Ашигласан технологиуд</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              {[
+                "Next.js",
+                "TypeScript",
+                "Tailwind",
+                "MongoDB",
+                "Cloudinary",
+              ].map((tech, index) => (
+                <div
+                  key={index}
+                  className="p-4 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-colors text-center flex items-center justify-center"
+                >
+                  <p className="text-gray-300 text-sm font-medium">{tech}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Project Details */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">Төслийн дэлгэрэнгүй</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                <h3 className="text-sm text-gray-400 mb-2">Хугацаа</h3>
+                <p className="text-white text-lg font-semibold">
+                  2 долоо хоног
+                </p>
+              </div>
+              <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                <h3 className="text-sm text-gray-400 mb-2">Баг</h3>
+                <p className="text-white text-lg font-semibold">2 хөгжүүлэгч</p>
+              </div>
+              <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                <h3 className="text-sm text-gray-400 mb-2">Ангилал</h3>
+                <p className="text-white text-lg font-semibold">
+                  Веб хөгжүүлэлт
+                </p>
+              </div>
             </div>
           </div>
 
@@ -151,7 +194,7 @@ export default function HaneducationPage() {
               </div>
               <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10">
                 <Image
-                  src="https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324019/Screenshot_2025-11-05_at_14.26.47_gjtbhr.png"
+                  src="https://res.cloudinary.com/doxmbmqjm/image/upload/v1763777846/Screenshot_2025-11-22_at_10.17.19_jar8bg.png"
                   alt="Han Education Screenshot 2"
                   fill
                   className="object-cover"
@@ -164,17 +207,22 @@ export default function HaneducationPage() {
 
           {/* CTA */}
           <div className="text-center py-12 border-t border-white/10">
-            <h3 className="text-2xl font-bold mb-4">Төсөл сонирхож байна уу?</h3>
+            <h3 className="text-2xl font-bold mb-4">
+              Таны бизнесд Вэбсайт хэрэгтэй байгаа юм биш биз?
+            </h3>
             <p className="text-gray-400 mb-8">
-              Бидэнтэй холбогдож, өөрийн төслийн талаар ярилцъя
+              Вебсайт бол зүгээр нэг мөнгө үрсэн хэрэг биш харин хөрөнгө
+              оруулалт юм.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/#contact"
+              <a
+                href="https://calendly.com/danny-otgontsetseg/15min"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-8 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-colors"
               >
                 Холбогдох
-              </Link>
+              </a>
               <a
                 href="https://haneducation.mn"
                 target="_blank"
@@ -191,4 +239,3 @@ export default function HaneducationPage() {
     </>
   );
 }
-

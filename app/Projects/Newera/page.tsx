@@ -1,8 +1,7 @@
 "use client";
-import React from "react";
+import { ArrowLeft, Calendar, ExternalLink, Globe } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, Globe, Calendar } from "lucide-react";
 import StaggeredMenu from "../../Sections/StagerredMenu";
 
 export default function NeweraPage() {
@@ -16,7 +15,7 @@ export default function NeweraPage() {
             src="https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324000/Screenshot_2025-11-05_at_14.26.22_xwakmu.png"
             alt="New Era"
             fill
-            className="object-cover"
+            className="object-cover blur-[2px]"
             priority
             sizes="100vw"
           />
@@ -34,7 +33,7 @@ export default function NeweraPage() {
                 New Era
               </h1>
               <p className="text-xl text-gray-300 max-w-2xl">
-                K–12 болон нэмэлт сургалтын нэгдсэн систем
+                Хиймэл оюун ухаан (AI)-ийн онлайн сургалтын платформ
               </p>
             </div>
           </div>
@@ -50,7 +49,15 @@ export default function NeweraPage() {
               </div>
               <div>
                 <h3 className="text-sm text-gray-400 mb-1">Вэбсайт</h3>
-                <p className="text-white text-sm">Төсөл хөгжүүлэлт</p>
+                <a
+                  href="https://edunewera.mn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-gray-300 transition-colors flex items-center gap-2"
+                >
+                  edunewera.mn
+                  <ExternalLink className="w-4 h-4" />
+                </a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -59,7 +66,7 @@ export default function NeweraPage() {
               </div>
               <div>
                 <h3 className="text-sm text-gray-400 mb-1">Төрөл</h3>
-                <p className="text-white">Боловсролын экосистем</p>
+                <p className="text-white">Боловсрол</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -90,14 +97,15 @@ export default function NeweraPage() {
             <h2 className="text-3xl font-bold mb-6">Төслийн тухай</h2>
             <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
               <p>
-                New Era нь K–12 болон нэмэлт сургалтын нэгдсэн систем бөгөөд
-                боловсролын салбарыг дижитал шинэчлэлээр хөгжүүлэх зорилготой
-                бүтээгдсэн цогц платформ юм.
+                New Era нь хиймэл оюун ухаан (AI)-ийн онлайн сургалтын платформ
+                бөгөөд орчин үеийн AI технологийн мэдлэг, ур чадварыг хөгжүүлэх
+                зорилготой бүтээгдсэн цогц боловсролын платформ юм.
               </p>
               <p>
-                Энэхүү систем нь сурагч, эцэг эх, багш нарт зориулсан хөтөлбөр,
-                хичээл, мэдэгдэл, цахим сургалтын платформ бөгөөд боловсролын
-                процессуудыг илүү үр дүнтэй, хялбар болгох зорилготой.
+                Энэхүү систем нь онлайн сургалт, хичээлийн сан, төлбөрийн
+                шийдэл, хэрэглэгчийн самбар зэрэг олон функцтэй бөгөөд
+                суралцагчдад AI-ийн үндэс, практик хэрэглээ, мэргэжлийн ур
+                чадварыг хөгжүүлэхэд тусладаг.
               </p>
             </div>
           </div>
@@ -107,12 +115,12 @@ export default function NeweraPage() {
             <h2 className="text-3xl font-bold mb-8">Онцлог функцүүд</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                "Хөтөлбөрийн удирдлага",
-                "Цахим сургалтын систем",
-                "Хичээлийн сан",
-                "Мэдэгдэл, мэдээллийн систем",
-                "Эцэг эхийн самбар",
-                "Сурагчийн ахиц дэвшлийн хяналт",
+                "Админ самбар (Хичээлийн сан, төлбөрийн мэдээлэл удирдах)",
+                "Төлбөрийн шийдэл",
+                "Хэрэглэгчийн хэсэг",
+                "Хэрэглэгчийн бүртгэл",
+                // "Онлайн сургалтын систем",
+                // "Ахиц дэвшлийн хяналт",
               ].map((feature, index) => (
                 <div
                   key={index}
@@ -124,6 +132,51 @@ export default function NeweraPage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Technologies */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">Ашигласан технологиуд</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {[
+                "Next.js",
+                "TypeScript",
+                "Tailwind",
+                "MongoDB",
+                "Cloudinary",
+                "ReCAPTCHA",
+              ].map((tech, index) => (
+                <div
+                  key={index}
+                  className="p-4 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-colors text-center flex items-center justify-center"
+                >
+                  <p className="text-gray-300 text-sm font-medium">{tech}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Project Details */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">Төслийн дэлгэрэнгүй</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                <h3 className="text-sm text-gray-400 mb-2">Хугацаа</h3>
+                <p className="text-white text-lg font-semibold">
+                  2 долоо хоног
+                </p>
+              </div>
+              <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                <h3 className="text-sm text-gray-400 mb-2">Баг</h3>
+                <p className="text-white text-lg font-semibold">2 хөгжүүлэгч</p>
+              </div>
+              <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                <h3 className="text-sm text-gray-400 mb-2">Ангилал</h3>
+                <p className="text-white text-lg font-semibold">
+                  Веб хөгжүүлэлт
+                </p>
+              </div>
             </div>
           </div>
 
@@ -143,7 +196,7 @@ export default function NeweraPage() {
               </div>
               <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10">
                 <Image
-                  src="https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324000/Screenshot_2025-11-05_at_14.26.22_xwakmu.png"
+                  src="https://res.cloudinary.com/doxmbmqjm/image/upload/v1763778459/Screenshot_2025-11-22_at_10.27.32_jdxjr2.png"
                   alt="New Era Screenshot 2"
                   fill
                   className="object-cover"
@@ -156,17 +209,31 @@ export default function NeweraPage() {
 
           {/* CTA */}
           <div className="text-center py-12 border-t border-white/10">
-            <h3 className="text-2xl font-bold mb-4">Төсөл сонирхож байна уу?</h3>
+            <h3 className="text-2xl font-bold mb-4">
+              Таны бизнесд Вэбсайт хэрэгтэй байгаа юм биш биз?
+            </h3>
             <p className="text-gray-400 mb-8">
-              Бидэнтэй холбогдож, өөрийн төслийн талаар ярилцъя
+              Вебсайт бол зүгээр нэг мөнгө үрсэн хэрэг биш харин хөрөнгө
+              оруулалт юм.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/#contact"
+              <a
+                href="https://calendly.com/danny-otgontsetseg/15min"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-8 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-colors"
               >
                 Холбогдох
-              </Link>
+              </a>
+              <a
+                href="https://edunewera.mn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-3 border border-white/20 rounded-full font-semibold hover:bg-white/10 transition-colors flex items-center justify-center gap-2"
+              >
+                Вэбсайт үзэх
+                <ExternalLink className="w-4 h-4" />
+              </a>
             </div>
           </div>
         </div>
@@ -174,4 +241,3 @@ export default function NeweraPage() {
     </>
   );
 }
-

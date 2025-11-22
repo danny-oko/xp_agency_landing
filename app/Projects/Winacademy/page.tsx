@@ -1,8 +1,7 @@
 "use client";
-import React from "react";
+import { ArrowLeft, Calendar, ExternalLink, Globe } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, Globe, Calendar } from "lucide-react";
 import StaggeredMenu from "../../Sections/StagerredMenu";
 
 export default function WinacademyPage() {
@@ -16,7 +15,7 @@ export default function WinacademyPage() {
             src="https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324123/Screenshot_2025-11-05_at_14.28.37_voovcg.png"
             alt="Win Academy"
             fill
-            className="object-cover"
+            className="object-cover blur-[2px]"
             priority
             sizes="100vw"
           />
@@ -34,7 +33,8 @@ export default function WinacademyPage() {
                 Win Academy
               </h1>
               <p className="text-xl text-gray-300 max-w-2xl">
-                Трейдинг, санхүүгийн боловсролыг цахимаар хүргэдэг академийн систем
+                Маркетинг, дизайн, хиймэл оюун (AI)-ийн практик ур чадварыг
+                хөгжүүлэх онлайн сургалтын платформ.
               </p>
             </div>
           </div>
@@ -67,7 +67,7 @@ export default function WinacademyPage() {
               </div>
               <div>
                 <h3 className="text-sm text-gray-400 mb-1">Төрөл</h3>
-                <p className="text-white">Боловсролын платформ</p>
+                <p className="text-white">Боловсрол</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -98,15 +98,16 @@ export default function WinacademyPage() {
             <h2 className="text-3xl font-bold mb-6">Төслийн тухай</h2>
             <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
               <p>
-                Win Academy нь трейдинг болон санхүүгийн боловсролыг цахимаар
-                хүргэдэг цогц боловсролын платформ юм. Энэхүү систем нь оюутнуудад
-                практик мэдлэг, туршлага олгох зорилготой бүтээгдсэн.
+                Win Academy нь маркетинг, дизайн, хиймэл оюун ухаан (AI)-ийн
+                практик ур чадварыг хөгжүүлэх зорилготой онлайн сургалтын
+                платформ юм. Энэхүү систем нь орчин үеийн дижитал ур чадвар,
+                практик мэдлэг олгох зорилготой бүтээгдсэн.
               </p>
               <p>
-                Платформ нь онлайн сургалт, хичээлийн сан, төлбөрийн интеграц,
-                хэрэглэгчийн самбар зэрэг олон функцтэй бөгөөд оюутнуудад
-                санхүүгийн зах зээлийн талаарх мэдлэг, ур чадварыг хөгжүүлэхэд
-                тусладаг.
+                Платформ нь онлайн сургалт, хичээлийн сан, төлбөрийн шийдэл,
+                хэрэглэгчийн самбар зэрэг олон функцтэй бөгөөд суралцагчиддаа
+                маркетинг стратеги, дизайн ур чадвар, AI практик хэрэглээний
+                талаарх мэдлэг, ур чадварыг хөгжүүлэхэд тусладаг.
               </p>
             </div>
           </div>
@@ -116,12 +117,11 @@ export default function WinacademyPage() {
             <h2 className="text-3xl font-bold mb-8">Онцлог функцүүд</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                "Онлайн сургалтын систем",
-                "Хичээлийн сан, материал",
-                "Төлбөрийн системийн интеграц",
-                "Хэрэглэгчийн самбар",
-                "Ахиц дэвшлийн хяналт",
-                "Интерактив дасгал, тест",
+                "Админ сөмбар (Хичээлийн сан, төлбөрийн мэдээлэл удирдах)",
+                "Төлбөрийн шийдэл",
+                "Хэрэглэгчийн хэсэг",
+                "Хэрэглэгчийн бүртгэл",
+                // "Интерактив дасгал, тест",
               ].map((feature, index) => (
                 <div
                   key={index}
@@ -133,6 +133,50 @@ export default function WinacademyPage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Technologies */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">Ашигласан технологиуд</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4">
+              {[
+                "Next.js",
+                "TypeScript",
+                "Tailwind",
+                "MongoDB",
+                "Cloudinary",
+                "NextAuth",
+                "QPay",
+              ].map((tech, index) => (
+                <div
+                  key={index}
+                  className="p-4 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-colors text-center flex items-center justify-center"
+                >
+                  <p className="text-gray-300 text-sm font-medium">{tech}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Project Details */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">Төслийн дэлгэрэнгүй</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                <h3 className="text-sm text-gray-400 mb-2">Хугацаа</h3>
+                <p className="text-white text-lg font-semibold">1 сар</p>
+              </div>
+              <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                <h3 className="text-sm text-gray-400 mb-2">Баг</h3>
+                <p className="text-white text-lg font-semibold">2 хөгжүүлэгч</p>
+              </div>
+              <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                <h3 className="text-sm text-gray-400 mb-2">Ангилал</h3>
+                <p className="text-white text-lg font-semibold">
+                  Веб хөгжүүлэлт
+                </p>
+              </div>
             </div>
           </div>
 
@@ -152,7 +196,7 @@ export default function WinacademyPage() {
               </div>
               <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10">
                 <Image
-                  src="https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324123/Screenshot_2025-11-05_at_14.28.37_voovcg.png"
+                  src="https://res.cloudinary.com/doxmbmqjm/image/upload/v1763776946/Screenshot_2025-11-22_at_10.02.19_cmepx9.png"
                   alt="Win Academy Screenshot 2"
                   fill
                   className="object-cover"
@@ -165,17 +209,22 @@ export default function WinacademyPage() {
 
           {/* CTA */}
           <div className="text-center py-12 border-t border-white/10">
-            <h3 className="text-2xl font-bold mb-4">Төсөл сонирхож байна уу?</h3>
+            <h3 className="text-2xl font-bold mb-4">
+              Таны бизнесд Вэбсайт хэрэгтэй байгаа юм биш биз?
+            </h3>
             <p className="text-gray-400 mb-8">
-              Бидэнтэй холбогдож, өөрийн төслийн талаар ярилцъя
+              Вебсайт бол зүгээр нэг мөнгө үрсэн хэрэг биш харин хөрөнгө
+              оруулалт юм.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/#contact"
+              <a
+                href="https://calendly.com/danny-otgontsetseg/15min"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-8 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition-colors"
               >
                 Холбогдох
-              </Link>
+              </a>
               <a
                 href="https://winacademy.mn"
                 target="_blank"
@@ -192,4 +241,3 @@ export default function WinacademyPage() {
     </>
   );
 }
-

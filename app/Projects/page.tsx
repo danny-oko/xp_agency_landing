@@ -34,18 +34,6 @@ const projects = [
     url: "https://winacademy.mn",
   },
   {
-    id: "han-education",
-    slug: "/Projects/Haneducation",
-    title: "Han Education",
-    shortTitleMn: "Han Education",
-    taglineMn: "Гадаадын их сургуулийн зөвлөх үйлчилгээгээ танилцуулга сайт.",
-    shortDescriptionMn:
-      "Оюутан залууст зориулсан хөтөлбөрийн мэдээлэл, зөвлөгөө авах урсгал, холбогдох форм бүхий боловсролын сайт.",
-    image:
-      "https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324019/Screenshot_2025-11-05_at_14.26.47_gjtbhr.png",
-    url: "https://haneducation.mn",
-  },
-  {
     id: "sengee",
     slug: "/Projects/Sengee",
     title: "Sengee.mn",
@@ -58,6 +46,19 @@ const projects = [
       "https://res.cloudinary.com/dkfnybqnx/image/upload/v1763727110/Screenshot_2025-11-21_at_20.11.43_fzcjyy.png",
     url: "https://sengee.mn",
   },
+  {
+    id: "han-education",
+    slug: "/Projects/Haneducation",
+    title: "Han Education",
+    shortTitleMn: "Han Education",
+    taglineMn: "Гадаадын их сургуулийн зөвлөх үйлчилгээгээ танилцуулга сайт.",
+    shortDescriptionMn:
+      "Монголын оюутнуудад гадаадын их сургуулиудад элсэхэд зөвлөгөө, мэдээлэл өгдөг цогц платформ. Оюутанд зориулсан хөтөлбөрийн мэдээлэл, зөвлөгөө авах урсгал, холбогдох форм бүхий боловсролын сайт бөгөөд гадаадын их сургуулиудад элсэхэд шаардлагатай бүх мэдээлэл, зөвлөгөөг нэг дор олж авах боломжийг олгодог.",
+    image:
+      "https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324019/Screenshot_2025-11-05_at_14.26.47_gjtbhr.png",
+    url: "https://haneducation.mn",
+  },
+
   {
     id: "new-era",
     slug: "/Projects/Newera",
