@@ -1,6 +1,4 @@
 "use client";
-import BlurText from "@/components/BlurText";
-import LogoLoop from "@/components/LogoLoop";
 import ShinyText from "@/components/ShinyText";
 import SplitText from "@/components/SplitText";
 import { ArrowRight, Calendar } from "lucide-react";
@@ -68,7 +66,7 @@ export default function Projects() {
         <section className="text-white w-full lg:w-1/2 flex flex-col justify-center px-2 sm:px-4">
           <div className="text-left mb-8 w-full">
             <SplitText
-              text="Төслүүд"
+              text="Төслсүүд"
               className="text-4xl sm:text-5xl font-bold text-left mb-4"
               delay={100}
               duration={0.2}
@@ -80,13 +78,13 @@ export default function Projects() {
               rootMargin="-100px"
               textAlign="left"
             />
-            <BlurText
+            {/* <BlurText
               text="Хамтран ажилласан байгууллагууд:"
               delay={60}
               animateBy="words"
               direction="bottom"
               className="text-md text-gray-300 leading-relaxed text-left text-lg"
-            />
+            /> */}
           </div>
           {/* <LogoLoop
             logos={logos}
@@ -104,7 +102,7 @@ export default function Projects() {
               onClick={() => router.push("/Projects")}
               className="bg-gradient-to-b from-white to-gray-100 text-gray-800 border border-gray-300 rounded-full px-6 py-3 text-base sm:text-lg font-normal cursor-pointer shadow-inner transition-all duration-300 min-w-[200px] sm:min-w-[180px] w-full sm:w-auto h-12 flex items-center justify-center gap-2 hover:bg-white relative group overflow-hidden"
             >
-              <span className="transition-transform duration-300 ease-out group-hover:translate-x-[-3px] group-hover:scale-[1.02]">
+              <span className="transition-transform duration-300 ease-out group-hover:translate-x-[-3px] group-hover:scale-[1.02] whitespace-nowrap">
                 Төслүүдийг үзэх
               </span>
               <ArrowRight className="w-4 h-4 transition-all duration-300 group-hover:translate-x-2 group-hover:scale-110" />
@@ -118,7 +116,7 @@ export default function Projects() {
               }
               className="bg-white/5 backdrop-blur-sm text-gray-400 border border-gray-400/50 rounded-full px-6 py-3 text-base sm:text-lg font-normal transition-all duration-300 min-w-[200px] sm:min-w-[180px] w-full sm:w-auto h-12 flex items-center justify-center gap-2 hover:bg-white/10 hover:text-white hover:border-gray-300 cursor-pointer relative group hover:[&_svg]:text-white overflow-hidden"
             >
-              <span className="transition-transform duration-300 ease-out group-hover:translate-x-[-3px] group-hover:scale-[1.02]">
+              <span className="transition-transform duration-300 ease-out group-hover:translate-x-[-3px] group-hover:scale-[1.02] whitespace-nowrap">
                 <ShinyText
                   text="Онлайн уулзат"
                   disabled={false}

@@ -64,7 +64,7 @@ export default function Hero() {
             onClick={handleProjectsClick}
             className="bg-gradient-to-b from-white to-gray-100 text-gray-800 border border-gray-300 rounded-full px-6 py-3 text-base sm:text-lg font-normal shadow-inner transition-all duration-300 min-w-[200px] sm:min-w-[180px] w-[60%] sm:w-auto h-12 flex items-center justify-center gap-2 hover:bg-white cursor-pointer relative group overflow-hidden pointer-events-auto"
           >
-            <span className="transition-transform duration-300 ease-out group-hover:translate-x-[-3px] group-hover:scale-[1.02] pointer-events-none">
+            <span className="transition-transform duration-300 ease-out group-hover:translate-x-[-3px] group-hover:scale-[1.02] pointer-events-none whitespace-nowrap">
               Бид юу бүтээдэг вэ?
             </span>
             <ArrowRight className="w-4 h-4 transition-all duration-300 group-hover:translate-x-2 group-hover:scale-110 pointer-events-none" />
