@@ -5,6 +5,7 @@ import { ArrowRight, Calendar } from "lucide-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 // Lazy load CardSwap (heavy GSAP animations)
 // Card is a simple component, so we import it directly
@@ -55,19 +56,40 @@ const logos = [
 
 export default function Projects() {
   const router = useRouter();
+  const [cardDistance, setCardDistance] = useState(40);
+  const [verticalDistance, setVerticalDistance] = useState(50);
+
+  useEffect(() => {
+    const updateDistances = () => {
+      if (window.innerWidth >= 1024) {
+        setCardDistance(60);
+        setVerticalDistance(70);
+      } else if (window.innerWidth >= 768) {
+        setCardDistance(50);
+        setVerticalDistance(60);
+      } else {
+        setCardDistance(40);
+        setVerticalDistance(50);
+      }
+    };
+
+    updateDistances();
+    window.addEventListener("resize", updateDistances);
+    return () => window.removeEventListener("resize", updateDistances);
+  }, []);
 
   return (
     <div
       id="projects"
-      className="w-[80%] mx-auto bg-black/20` bg-xp-bgSoft rounded-8xl px-4 sm:px-6 lg:px-10 py-12 md:py-16 mt-8 h-[80vh] flex flex-col items-center justify-center"
+      className="w-full sm:w-[90%] md:w-[80%] mx-auto bg-black/20 bg-xp-bgSoft rounded-8xl px-4 sm:px-6 lg:px-10 py-8 md:py-12 lg:py-16 mt-12 sm:mt-8 min-h-[80vh] sm:min-h-[85vh] md:min-h-[90vh] lg:min-h-[70vh] h-auto flex flex-col items-center justify-center overflow-hidden"
     >
-      <div className="sections-container w-[100%] flex flex-col lg:flex-row items-center justify-between gap-12 overflow-hidden">
-        {/* Text left side */}
-        <section className="text-white w-full lg:w-1/2 flex flex-col justify-center px-2 sm:px-4">
-          <div className="text-left mb-8 w-full">
+      <div className="sections-container w-[100%] flex flex-col items-center gap-8 lg:gap-12 overflow-hidden">
+        {/* Text and Buttons Section */}
+        <section className="text-white w-full flex flex-col justify-center items-center px-2 sm:px-4">
+          <div className="text-center mb-6 w-full">
             <SplitText
               text="Төслсүүд"
-              className="text-4xl sm:text-5xl font-bold text-left mb-4"
+              className="text-4xl sm:text-5xl font-bold text-center mb-4"
               delay={100}
               duration={0.2}
               ease="power3.out"
@@ -76,7 +98,7 @@ export default function Projects() {
               to={{ opacity: 1, y: 0 }}
               threshold={0.1}
               rootMargin="-100px"
-              textAlign="left"
+              textAlign="center"
             />
             {/* <BlurText
               text="Хамтран ажилласан байгууллагууд:"
@@ -96,8 +118,8 @@ export default function Projects() {
             className="brightness-50 contrast-150 grayscale hover:brightness-75 transition-all duration-300 mb-4"
           /> */}
 
-          {/* Buttons below logo loop */}
-          <div className="flex flex-col sm:flex-row gap-3 w-full items-start sm:items-center justify-start">
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 w-full items-center justify-center">
             <button
               onClick={() => router.push("/Projects")}
               className="bg-gradient-to-b from-white to-gray-100 text-gray-800 border border-gray-300 rounded-full px-6 py-3 text-base sm:text-lg font-normal cursor-pointer shadow-inner transition-all duration-300 min-w-[200px] sm:min-w-[180px] w-full sm:w-auto h-12 flex items-center justify-center gap-2 hover:bg-white relative group overflow-hidden"
@@ -128,55 +150,108 @@ export default function Projects() {
             </button>
           </div>
         </section>
-        {/* Card right side */}
-        <section className="w-full lg:w-1/2 flex h-full items-center justify-center">
-          <div className="w-full max-w-[22rem] sm:max-w-[26rem] md:max-w-[30rem] lg:max-w-[34rem] aspect-square relative mx-auto h-full">
-            <CardSwap
-              cardDistance={60}
-              verticalDistance={70}
-              delay={8000}
-              pauseOnHover={false}
-            >
-              {/* Sunrise Mongolia */}
-              <Card className="overflow-hidden">
-                <Image
-                  src={images.Sunrise}
-                  alt="Sunrise Mongolia"
-                  className="w-full h-full object-contain"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 600px"
-                />
-              </Card>
-              {/* Win Academy */}
-              <Card className="overflow-hidden">
-                <Image
-                  src={images.Win}
-                  alt="Win Academy"
-                  className="w-full h-full object-contain"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 600px"
-                />
-              </Card>
-              {/* New Era */}
-              <Card className="overflow-hidden">
-                <Image
-                  src={images.Newera}
-                  alt="New Era"
-                  className="w-full h-full object-contain"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 600px"
-                />
-              </Card>
-              <Card className="overflow-hidden">
-                <Image
-                  src={images.Hanedu}
-                  alt="Han-Education"
-                  className="w-full h-full object-contain"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 600px"
-                />
-              </Card>
-            </CardSwap>
+
+        {/* CardSwap Section - Below buttons and text, perfectly centered */}
+        <section className="flex w-full items-center justify-center mt-4 sm:mt-6 md:mt-8 overflow-hidden px-2 sm:px-4">
+          <div className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[420px] xl:max-w-[480px] aspect-square relative mx-auto overflow-hidden">
+            <style
+              dangerouslySetInnerHTML={{
+                __html: `
+              #projects .card-swap-center-wrapper {
+                position: relative !important;
+                width: 100% !important;
+                height: 100% !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+              }
+              #projects .card-swap-center-wrapper > * {
+                position: absolute !important;
+                bottom: auto !important;
+                right: auto !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+                transform-origin: center center !important;
+                margin: 0 !important;
+              }
+              #projects .card-swap-center-wrapper > div[class*="absolute"],
+              #projects .card-swap-center-wrapper > div[class*="bottom-0"],
+              #projects .card-swap-center-wrapper > div[class*="right-0"] {
+                bottom: auto !important;
+                right: auto !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+                transform-origin: center center !important;
+              }
+              @media (max-width: 768px) {
+                #projects .card-swap-center-wrapper > *,
+                #projects .card-swap-center-wrapper > div[class*="absolute"],
+                #projects .card-swap-center-wrapper > div[class*="bottom-0"],
+                #projects .card-swap-center-wrapper > div[class*="right-0"] {
+                  transform: translate(-50%, -50%) scale(0.75) !important;
+                }
+              }
+              @media (max-width: 480px) {
+                #projects .card-swap-center-wrapper > *,
+                #projects .card-swap-center-wrapper > div[class*="absolute"],
+                #projects .card-swap-center-wrapper > div[class*="bottom-0"],
+                #projects .card-swap-center-wrapper > div[class*="right-0"] {
+                  transform: translate(-50%, -50%) scale(0.55) !important;
+                }
+              }
+            `,
+              }}
+            />
+            <div className="card-swap-center-wrapper w-full h-full">
+              <CardSwap
+                cardDistance={cardDistance}
+                verticalDistance={verticalDistance}
+                delay={8000}
+                pauseOnHover={false}
+              >
+                {/* Sunrise Mongolia */}
+                <Card className="overflow-hidden">
+                  <Image
+                    src={images.Sunrise}
+                    alt="Sunrise Mongolia"
+                    className="w-full h-full object-contain"
+                    fill
+                    sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 380px, 480px"
+                  />
+                </Card>
+                {/* Win Academy */}
+                <Card className="overflow-hidden">
+                  <Image
+                    src={images.Win}
+                    alt="Win Academy"
+                    className="w-full h-full object-contain"
+                    fill
+                    sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 380px, 480px"
+                  />
+                </Card>
+                {/* New Era */}
+                <Card className="overflow-hidden">
+                  <Image
+                    src={images.Newera}
+                    alt="New Era"
+                    className="w-full h-full object-contain"
+                    fill
+                    sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 380px, 480px"
+                  />
+                </Card>
+                <Card className="overflow-hidden">
+                  <Image
+                    src={images.Hanedu}
+                    alt="Han-Education"
+                    className="w-full h-full object-contain"
+                    fill
+                    sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 380px, 480px"
+                  />
+                </Card>
+              </CardSwap>
+            </div>
           </div>
         </section>
       </div>

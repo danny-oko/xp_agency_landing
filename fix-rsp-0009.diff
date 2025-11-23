@@ -1,0 +1,44 @@
+--- a/app/projects/haneducation/page.tsx
++++ b/app/projects/haneducation/page.tsx
+@@ -13,7 +13,7 @@ export default function HaneducationPage() {
+       <StaggeredMenu />
+       <div className="min-h-screen bg-black text-white">
+         {/* Hero Section */}
+-        <div className="relative w-full h-[60vh] min-h-[500px] overflow-hidden">
++        <div className="relative w-full min-h-[500px] md:min-h-[60vh] h-auto overflow-hidden">
+           <Image
+             src="https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324019/Screenshot_2025-11-05_at_14.26.47_gjtbhr.png"
+             alt="Han Education"
+--- a/app/projects/newera/page.tsx
++++ b/app/projects/newera/page.tsx
+@@ -13,7 +13,7 @@ export default function NeweraPage() {
+       <StaggeredMenu />
+       <div className="min-h-screen bg-black text-white">
+         {/* Hero Section */}
+-        <div className="relative w-full h-[60vh] min-h-[500px] overflow-hidden">
++        <div className="relative w-full min-h-[500px] md:min-h-[60vh] h-auto overflow-hidden">
+           <Image
+             src="https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324000/Screenshot_2025-11-05_at_14.26.22_xwakmu.png"
+             alt="New Era"
+--- a/app/projects/sunrise/page.tsx
++++ b/app/projects/sunrise/page.tsx
+@@ -13,7 +13,7 @@ export default function SunrisePage() {
+       <StaggeredMenu />
+       <div className="min-h-screen bg-black text-white">
+         {/* Hero Section */}
+-        <div className="relative w-full h-[60vh] min-h-[500px] overflow-hidden">
++        <div className="relative w-full min-h-[500px] md:min-h-[60vh] h-auto overflow-hidden">
+           <Image
+             src="https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324102/Screenshot_2025-11-05_at_14.28.08_ndckm8.png"
+             alt="Sunrise Mongolia"
+--- a/app/projects/winacademy/page.tsx
++++ b/app/projects/winacademy/page.tsx
+@@ -13,7 +13,7 @@ export default function WinacademyPage() {
+       <StaggeredMenu />
+       <div className="min-h-screen bg-black text-white">
+         {/* Hero Section */}
+-        <div className="relative w-full h-[60vh] min-h-[500px] overflow-hidden">
++        <div className="relative w-full min-h-[500px] md:min-h-[60vh] h-auto overflow-hidden">
+           <Image
+             src="https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324123/Screenshot_2025-11-05_at_14.28.37_voovcg.png"
+             alt="Win Academy"

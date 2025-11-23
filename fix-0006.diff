@@ -1,0 +1,15 @@
+--- a/components/LogoLoop.tsx
++++ b/components/LogoLoop.tsx
+@@ -293,10 +293,10 @@ export const LogoLoop = React.memo<LogoLoopProps>(
+             src={(item as any).src}
+             width={(item as any).width ?? 56}
+             height={(item as any).height ?? 56}
+-            alt={(item as any).alt ?? ''}
++            alt={(item as any).alt ?? (item as any).title ?? 'Logo'}
+             title={(item as any).title}
++            sizes="(max-width: 768px) 48px, 64px"
+             loading="lazy"
+-            unoptimized
+           />
+         );
+ 

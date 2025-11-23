@@ -9,7 +9,7 @@ export default function Call() {
   return (
     <div
       id="call"
-      className="w-[80%] mx-auto min-h-[85vh] flex flex-col justify-center items-center bg-xp-bgSoft rounded-8xl p-8 sm:p-12 md:p-16 py-12 sm:py-16 md:py-20"
+      className="w-[80%] mx-auto min-h-[85vh] flex flex-col justify-center items-center bg-xp-bgSoft rounded-8xl p-8 sm:p-12 md:p-16 py-12 sm:py-16 md:py-20 mt-12 sm:mt-8"
     >
       <ClickSpark
         sparkColor="#fff"
@@ -111,7 +111,7 @@ export default function Call() {
                 "_blank"
               )
             }
-            className="relative group bg-gradient-to-r from-xp-violet via-xp-cyan to-xp-teal text-white rounded-full px-10 py-5 text-lg font-semibold min-w-[320px] h-16 flex items-center justify-center gap-3 cursor-pointer overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-[0_0_40px_rgba(168,85,247,0.6),0_0_80px_rgba(56,189,248,0.4)] shadow-[0_0_20px_rgba(168,85,247,0.4),0_0_40px_rgba(56,189,248,0.2)]"
+            className="relative group bg-gradient-to-r from-xp-violet via-xp-cyan to-xp-teal text-white rounded-full px-6 py-3 md:px-8 md:py-4 lg:px-10 lg:py-5 text-sm md:text-base lg:text-lg font-semibold w-full max-w-[320px] md:max-w-[360px] lg:max-w-[400px] md:min-w-[320px] lg:min-w-[360px] h-12 md:h-14 lg:h-16 flex items-center justify-center gap-2 md:gap-3 cursor-pointer overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-[0_0_40px_rgba(168,85,247,0.6),0_0_80px_rgba(56,189,248,0.4)] shadow-[0_0_20px_rgba(168,85,247,0.4),0_0_40px_rgba(56,189,248,0.2)]"
           >
             {/* Animated gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-xp-violet via-xp-cyan to-xp-teal opacity-100 group-hover:opacity-90 transition-opacity duration-500"></div>
@@ -123,9 +123,9 @@ export default function Call() {
             <div className="absolute inset-0 rounded-full border-2 border-white/30 group-hover:border-white/60 transition-all duration-500"></div>
 
             {/* Content */}
-            <div className="relative z-10 flex items-center gap-3">
-              <Calendar className="w-6 h-6 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12" />
-              <span className="transition-all duration-300 ease-out group-hover:tracking-wide">
+            <div className="relative z-10 flex items-center gap-2 md:gap-3">
+              <Calendar className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12" />
+              <span className="transition-all duration-300 ease-out group-hover:tracking-wide whitespace-nowrap">
                 Онлайн уулзалт товлох
               </span>
             </div>

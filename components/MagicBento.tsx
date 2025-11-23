@@ -10,7 +10,7 @@ export interface BentoCardProps {
   disableAnimations?: boolean;
 }
 
-export interface BentoProps { 
+export interface BentoProps {
   textAutoHide?: boolean;
   enableStars?: boolean;
   enableSpotlight?: boolean;
@@ -538,7 +538,7 @@ const BentoCardGrid: React.FC<{
   gridRef?: React.RefObject<HTMLDivElement>;
 }> = ({ children, gridRef }) => (
   <div
-    className="bento-section grid gap-2 sm:gap-3 lg:gap-5 p-2 sm:p-4 select-none relative w-full mx-auto"
+    className="bento-section grid gap-2 sm:gap-3 lg:gap-5 p-2 sm:p-4 select-none relative w-full max-w-full mx-auto"
     style={{ fontSize: "clamp(1rem, 0.9rem + 0.5vw, 1.5rem)" }}
     ref={gridRef}
   >
@@ -599,22 +599,81 @@ const MagicBento: React.FC<BentoProps> = ({
           }
           
           .card-responsive {
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: 1fr;
             width: 100%;
+            max-width: 100%;
             margin: 0 auto;
             padding: 0.5rem;
+            box-sizing: border-box;
+          }
+          
+          @media (min-width: 600px) and (max-width: 767px) {
+            .card-responsive {
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              width: 100%;
+              max-width: 100%;
+              gap: 0.75rem;
+              padding: 0.75rem;
+              box-sizing: border-box;
+            }
+            
+            .card-responsive .card {
+              width: 100%;
+              max-width: 100%;
+              min-height: 240px !important;
+              padding: 1rem !important;
+              box-sizing: border-box;
+            }
+          }
+          
+          @media (min-width: 768px) and (max-width: 1023px) {
+            .card-responsive {
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              width: 100%;
+              max-width: 100%;
+              gap: 1rem;
+              padding: 1rem;
+              box-sizing: border-box;
+            }
+            
+            .card-responsive .card {
+              width: 100%;
+              max-width: 100%;
+              min-height: 280px !important;
+              padding: 1rem !important;
+              box-sizing: border-box;
+            }
           }
           
           @media (min-width: 1024px) {
             .card-responsive {
               grid-template-columns: repeat(3, minmax(0, 1fr));
+              width: 100%;
               max-width: 100%;
+              padding: 1rem;
+              box-sizing: border-box;
+            }
+            
+            .card-responsive .card {
+              width: 100%;
+              max-width: 100%;
+              box-sizing: border-box;
             }
           }
           
           @media (min-width: 1280px) {
             .card-responsive {
               grid-template-columns: repeat(4, minmax(0, 1fr));
+              width: 100%;
+              max-width: 100%;
+              padding: 1rem;
+              box-sizing: border-box;
+            }
+            
+            .card-responsive .card {
+              width: 100%;
+              max-width: 100%;
+              box-sizing: border-box;
             }
             
             .card-responsive .card:nth-child(3) {
@@ -697,14 +756,20 @@ const MagicBento: React.FC<BentoProps> = ({
           @media (max-width: 599px) {
             .card-responsive {
               grid-template-columns: 1fr;
-              width: 90%;
+              width: 100%;
+              max-width: 100%;
               margin: 0 auto;
               padding: 0.5rem;
+              gap: 0.75rem;
+              box-sizing: border-box;
             }
             
             .card-responsive .card {
               width: 100%;
-              min-height: 200px;
+              max-width: 100%;
+              min-height: 220px !important;
+              padding: 1rem !important;
+              box-sizing: border-box;
             }
           }
         `}
@@ -721,9 +786,9 @@ const MagicBento: React.FC<BentoProps> = ({
       )}
 
       <BentoCardGrid gridRef={gridRef}>
-        <div className="card-responsive grid gap-2.5 sm:gap-3.5 lg:gap-5">
+        <div className="card-responsive grid gap-2.5 sm:gap-2.5 md:gap-3 lg:gap-5 w-full max-w-full mx-auto">
           {cardData.map((card, index) => {
-            const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[320px] sm:min-h-[360px] w-full max-w-full p-5 sm:p-6 rounded-[24px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
+            const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[220px] sm:min-h-[240px] md:min-h-[280px] lg:min-h-[360px] w-full max-w-full p-4 sm:p-4 md:p-4 lg:p-6 rounded-[24px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
               enableBorderGlow ? "card--border-glow" : ""
             }`;
 

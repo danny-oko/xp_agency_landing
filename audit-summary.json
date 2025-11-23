@@ -1,0 +1,323 @@
+{
+  "metadata": {
+    "site_url": null,
+    "repo_url": "local",
+    "timestamp": "2025-01-27T00:00:00Z",
+    "framework": "Next.js 14.2.33",
+    "typescript_version": "5.x",
+    "lighthouse_scores": {
+      "performance": null,
+      "accessibility": null,
+      "best_practices": null,
+      "seo": null,
+      "pwa": null
+    }
+  },
+  "summary": {
+    "total_issues": 16,
+    "critical_count": 2,
+    "high_count": 5,
+    "medium_count": 7,
+    "low_count": 2,
+    "top_issues": [
+      {
+        "id": "ts-error-motion",
+        "title": "TypeScript Compilation Error - motion/react module not found",
+        "severity": "critical",
+        "est_hours": 1,
+        "confidence": "high"
+      },
+      {
+        "id": "eslint-not-configured",
+        "title": "ESLint Not Configured",
+        "severity": "critical",
+        "est_hours": 2,
+        "confidence": "high"
+      },
+      {
+        "id": "font-weights-excessive",
+        "title": "Excessive Font Weight Loading (7 weights)",
+        "severity": "high",
+        "est_hours": 2,
+        "confidence": "high"
+      },
+      {
+        "id": "security-headers-missing",
+        "title": "Missing Security Headers",
+        "severity": "high",
+        "est_hours": 3,
+        "confidence": "high"
+      },
+      {
+        "id": "seo-metadata-minimal",
+        "title": "Minimal SEO Metadata",
+        "severity": "high",
+        "est_hours": 2,
+        "confidence": "high"
+      }
+    ]
+  },
+  "issues": [
+    {
+      "id": "ts-error-motion",
+      "area": "code_quality",
+      "title": "TypeScript Compilation Error",
+      "description": "Cannot find module 'motion/react' causing TypeScript compilation to fail",
+      "evidence": ["npx tsc --noEmit returns error TS2307"],
+      "files": ["components/TextCursor.tsx:2"],
+      "severity": "critical",
+      "est_hours": 1,
+      "confidence": "high",
+      "suggested_patch": "Change import from 'motion/react' to 'framer-motion'"
+    },
+    {
+      "id": "eslint-not-configured",
+      "area": "code_quality",
+      "title": "ESLint Not Configured",
+      "description": "ESLint configuration is missing, no code quality checks running",
+      "evidence": ["npm run lint prompts for configuration"],
+      "files": [".eslintrc.json (missing)"],
+      "severity": "critical",
+      "est_hours": 2,
+      "confidence": "high",
+      "suggested_patch": "Run npm run lint and choose 'Strict (recommended)' or create .eslintrc.json manually"
+    },
+    {
+      "id": "font-weights-excessive",
+      "area": "performance",
+      "title": "Excessive Font Weight Loading",
+      "description": "Loading all 7 font weights (300-900) when only a few are needed, increasing bundle size by ~200-300KB",
+      "evidence": ["app/layout.tsx loads weights: 300,400,500,600,700,800,900"],
+      "files": ["app/layout.tsx:5-9"],
+      "severity": "high",
+      "est_hours": 2,
+      "confidence": "high",
+      "suggested_patch": "Reduce to only needed weights (e.g., 400, 600, 700) and add display: 'swap'"
+    },
+    {
+      "id": "animation-libraries-heavy",
+      "area": "performance",
+      "title": "Heavy Animation Libraries Impacting Bundle Size",
+      "description": "Multiple large animation libraries (GSAP ~50KB, Three.js ~150KB, Framer Motion ~30KB) significantly impact bundle size",
+      "evidence": ["package.json includes gsap, three, @react-three/fiber, framer-motion, motion"],
+      "files": ["package.json", "components/Beams.tsx", "components/SplitText.tsx", "components/DotGrid.tsx"],
+      "severity": "high",
+      "est_hours": 6,
+      "confidence": "high",
+      "suggested_patch": "Tree-shake GSAP plugins, remove duplicate motion library, lazy load Three.js (already done for Beams)"
+    },
+    {
+      "id": "security-headers-missing",
+      "area": "security",
+      "title": "Missing Security Headers",
+      "description": "No security headers configured (CSP, HSTS, X-Frame-Options, etc.)",
+      "evidence": ["next.config.mjs has no headers() function"],
+      "files": ["next.config.mjs"],
+      "severity": "high",
+      "est_hours": 3,
+      "confidence": "high",
+      "suggested_patch": "Add headers() function to next.config.mjs with security headers"
+    },
+    {
+      "id": "seo-metadata-minimal",
+      "area": "seo",
+      "title": "Minimal SEO Metadata",
+      "description": "Only basic title and description. Missing Open Graph, Twitter Cards, structured data",
+      "evidence": ["app/layout.tsx metadata only has title and description"],
+      "files": ["app/layout.tsx:11-19"],
+      "severity": "high",
+      "est_hours": 2,
+      "confidence": "high",
+      "suggested_patch": "Add comprehensive metadata including openGraph, twitter, robots, keywords"
+    },
+    {
+      "id": "viewport-meta-missing",
+      "area": "accessibility",
+      "title": "Missing Viewport Meta Tag",
+      "description": "Viewport meta tag not explicitly configured, may cause mobile rendering issues",
+      "evidence": ["app/layout.tsx metadata lacks viewport configuration"],
+      "files": ["app/layout.tsx"],
+      "severity": "high",
+      "est_hours": 0.5,
+      "confidence": "high",
+      "suggested_patch": "Add viewport to metadata object"
+    },
+    {
+      "id": "image-optimization-missing",
+      "area": "performance",
+      "title": "Missing Image Optimization",
+      "description": "Some images use unoptimized prop or lack proper sizes attributes",
+      "evidence": ["components/LogoLoop.tsx:299 uses unoptimized prop"],
+      "files": ["components/LogoLoop.tsx"],
+      "severity": "medium",
+      "est_hours": 3,
+      "confidence": "medium",
+      "suggested_patch": "Remove unoptimized prop, add proper sizes attributes"
+    },
+    {
+      "id": "font-preload-missing",
+      "area": "performance",
+      "title": "Missing Font Preloading",
+      "description": "Critical fonts not preloaded, causing FOIT (Flash of Invisible Text)",
+      "evidence": ["app/layout.tsx font config lacks preload and display options"],
+      "files": ["app/layout.tsx:5-9"],
+      "severity": "medium",
+      "est_hours": 0.5,
+      "confidence": "high",
+      "suggested_patch": "Add display: 'swap' and preload: true to font config"
+    },
+    {
+      "id": "duplicate-motion-libraries",
+      "area": "code_quality",
+      "title": "Duplicate Animation Libraries",
+      "description": "Both framer-motion and motion packages installed, serving same purpose",
+      "evidence": ["package.json has both 'framer-motion' and 'motion'"],
+      "files": ["package.json:49, 54"],
+      "severity": "medium",
+      "est_hours": 1,
+      "confidence": "high",
+      "suggested_patch": "Remove one library (recommend keeping framer-motion)"
+    },
+    {
+      "id": "alt-text-missing",
+      "area": "accessibility",
+      "title": "Missing Alt Text for Some Images",
+      "description": "Some images have empty alt text fallback",
+      "evidence": ["components/LogoLoop.tsx:296 uses empty string as fallback"],
+      "files": ["components/LogoLoop.tsx"],
+      "severity": "medium",
+      "est_hours": 1,
+      "confidence": "medium",
+      "suggested_patch": "Provide meaningful alt text fallback"
+    },
+    {
+      "id": "language-attribute",
+      "area": "accessibility",
+      "title": "Language Attribute May Be Incorrect",
+      "description": "HTML lang set to 'en' but content appears to be in Mongolian",
+      "evidence": ["app/layout.tsx:27 has lang='en' but content is Mongolian"],
+      "files": ["app/layout.tsx:27"],
+      "severity": "medium",
+      "est_hours": 0.5,
+      "confidence": "medium",
+      "suggested_patch": "Change lang to 'mn' or 'mn-Cyrl'"
+    },
+    {
+      "id": "structured-data-missing",
+      "area": "seo",
+      "title": "Missing Structured Data",
+      "description": "No JSON-LD structured data for Organization or WebSite schema",
+      "evidence": ["No structured data found in layout"],
+      "files": ["app/layout.tsx"],
+      "severity": "medium",
+      "est_hours": 3,
+      "confidence": "medium",
+      "suggested_patch": "Add JSON-LD script with Organization schema"
+    },
+    {
+      "id": "fixed-height-issues",
+      "area": "responsiveness",
+      "title": "Fixed Height Values May Cause Issues",
+      "description": "Sections use fixed viewport heights that may cause issues on different screen sizes",
+      "evidence": ["app/Sections/Hero.tsx uses h-[86vh], app/Sections/Bento.tsx uses h-[124vh]"],
+      "files": ["app/Sections/Hero.tsx", "app/Sections/Bento.tsx"],
+      "severity": "medium",
+      "est_hours": 2,
+      "confidence": "medium",
+      "suggested_patch": "Use min-height instead of fixed height"
+    },
+    {
+      "id": "focus-management",
+      "area": "accessibility",
+      "title": "Missing Focus Management in Animations",
+      "description": "Complex animations may trap keyboard focus or not properly manage focus during transitions",
+      "evidence": ["components/ProjectCard.tsx animations don't manage focus"],
+      "files": ["components/ProjectCard.tsx"],
+      "severity": "low",
+      "est_hours": 3,
+      "confidence": "medium",
+      "suggested_patch": "Add focus management before/after animations"
+    },
+    {
+      "id": "bundle-analysis-missing",
+      "area": "devops",
+      "title": "Missing Bundle Analysis",
+      "description": "No bundle analysis configured to track bundle size over time",
+      "evidence": ["No @next/bundle-analyzer in package.json"],
+      "files": ["package.json", "next.config.mjs"],
+      "severity": "medium",
+      "est_hours": 1,
+      "confidence": "high",
+      "suggested_patch": "Install and configure @next/bundle-analyzer"
+    }
+  ],
+  "assets": [
+    {
+      "path": "node_modules/gsap",
+      "size_bytes": "~50KB gzipped",
+      "reason": "Animation library"
+    },
+    {
+      "path": "node_modules/three",
+      "size_bytes": "~150KB+ gzipped",
+      "reason": "3D graphics library"
+    },
+    {
+      "path": "node_modules/@react-three/fiber",
+      "size_bytes": "Additional bundle size",
+      "reason": "React renderer for Three.js"
+    },
+    {
+      "path": "node_modules/framer-motion",
+      "size_bytes": "~30KB gzipped",
+      "reason": "Animation library"
+    },
+    {
+      "path": "node_modules/motion",
+      "size_bytes": "~30KB gzipped",
+      "reason": "Duplicate animation library"
+    },
+    {
+      "path": "fonts/Montserrat (all weights)",
+      "size_bytes": "~200-300KB",
+      "reason": "Loading all 7 font weights"
+    }
+  ],
+  "commands": {
+    "reproduce_build": [
+      "cd /Users/bayarbayasgalanulambayar/Documents/xp/xp_agency_landing",
+      "npm install",
+      "npm run build"
+    ],
+    "run_tests": [
+      "npm run lint",
+      "npx tsc --noEmit"
+    ],
+    "lighthouse_command": "npx lighthouse http://localhost:3000 --view",
+    "bundle_analyzer_command": "npm run analyze (after installing @next/bundle-analyzer)"
+  },
+  "screenshots": [],
+  "ci_checks": [
+    {
+      "name": "Lint",
+      "command": "npm run lint",
+      "description": "Run ESLint to check code quality"
+    },
+    {
+      "name": "Type Check",
+      "command": "npx tsc --noEmit",
+      "description": "Check TypeScript types"
+    },
+    {
+      "name": "Build",
+      "command": "npm run build",
+      "description": "Verify production build succeeds"
+    },
+    {
+      "name": "Bundle Size Check",
+      "command": "npm run analyze",
+      "description": "Analyze bundle size (after setup)"
+    }
+  ]
+}
+

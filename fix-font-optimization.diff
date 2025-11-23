@@ -1,0 +1,17 @@
+--- a/app/layout.tsx
++++ b/app/layout.tsx
+@@ -2,8 +2,11 @@
+ import "./globals.css"
+ import { Montserrat } from 'next/font/google'
+ 
+ const montserrat = Montserrat({
+   subsets: ['latin'],
+-  weight: ['300', '400', '500', '600', '700', '800', '900'],
++  weight: ['400', '600', '700'], // Only load weights actually used
+   variable: '--font-montserrat',
++  display: 'swap', // Prevents FOIT (Flash of Invisible Text)
++  preload: true, // Preloads critical font
+ })
+ 
+ export const metadata: Metadata = {
+

@@ -37,7 +37,7 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="w-full bg-xp-bgSoft text-white relative mt-24">
+    <footer id="contact" className="w-full bg-xp-bgSoft text-white relative mt-16 sm:mt-24">
       <div className="w-[80%] mx-auto px-6 py-12 border-radius-xl">
         {/* Top Row */}
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3 w-full">

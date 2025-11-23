@@ -1,0 +1,56 @@
+--- a/app/layout.tsx
++++ b/app/layout.tsx
+@@ -11,8 +11,40 @@ const montserrat = Montserrat({
+ })
+ 
+ export const metadata: Metadata = {
+-  title: "Xp Agency",
+-  description: "A freelance agency website",
++  title: {
++    default: "Xp Agency - Web Development Agency",
++    template: "%s | Xp Agency"
++  },
++  description: "A freelance web development agency specializing in modern, beautiful websites for business growth. We create functional and stunning digital experiences.",
++  keywords: ["web development", "agency", "Mongolia", "freelance"],
++  authors: [{ name: "Xp Agency" }],
++  viewport: {
++    width: 'device-width',
++    initialScale: 1,
++    maximumScale: 5,
++  },
++  openGraph: {
++    type: "website",
++    locale: "mn_MN",
++    url: "https://xpagency.com",
++    siteName: "Xp Agency",
++    title: "Xp Agency - Web Development Agency",
++    description: "Modern web development services",
++    images: [{
++      url: "/Dark.png", // Using existing icon as placeholder - replace with proper OG image
++      width: 1200,
++      height: 630,
++    }],
++  },
++  twitter: {
++    card: "summary_large_image",
++    title: "Xp Agency",
++    description: "Web Development Agency",
++    images: ["/Dark.png"], // Using existing icon as placeholder - replace with proper Twitter image
++  },
++  robots: {
++    index: true,
++    follow: true,
++  },
+   icons: {
+     icon: "/Dark.png",
+     shortcut: "/Dark.png",
+@@ -24,7 +56,7 @@ export default function RootLayout({
+   children: React.ReactNode
+ }) {
+   return (
+-    <html lang="en">
++    <html lang="mn">
+       <body className={`${montserrat.variable} font-montserrat bg-black text-white`}>
+         {children}
+       </body>
+

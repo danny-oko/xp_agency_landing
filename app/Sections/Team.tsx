@@ -60,7 +60,7 @@ const TeamMemberCard = React.memo<{ member: TeamMember }>(({ member }) => (
           <p className="text-xs uppercase tracking-wider text-white/70 font-medium">
             {member.title}
           </p>
-          <h3 className="text-xl font-semibold text-white">{member.name}</h3>
+          <h3 className="text-xl font-semibold text-white whitespace-nowrap">{member.name}</h3>
         </div>
         {member.links && (
           <div className="flex items-center gap-3 mt-2">
@@ -155,7 +155,7 @@ export default function Team() {
   return (
     <div
       id="team"
-      className="w-[80%] mx-auto h-[80vh] rounded-8xl bg-transparent flex flex-col justify-center items-center px-6 sm:px-8 lg:px-12 py-12 md:py-16 gap-10 md:gap-14"
+      className="w-[80%] mx-auto min-h-[80vh] h-auto rounded-8xl bg-transparent flex flex-col justify-center items-center px-6 sm:px-8 lg:px-12 py-12 md:py-16 gap-10 md:gap-14 mt-12 sm:mt-8"
     >
       <div className="headline w-full flex flex-col items-center justify-center text-center">
         <SplitText
