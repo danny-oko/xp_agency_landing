@@ -81,7 +81,7 @@ export default function Projects() {
   return (
     <div
       id="projects"
-      className="w-full sm:w-[90%] md:w-[80%] mx-auto bg-black/20 bg-xp-bgSoft rounded-8xl px-4 sm:px-6 lg:px-10 py-8 md:py-12 lg:py-16 mt-12 sm:mt-8 min-h-[80vh] sm:min-h-[85vh] md:min-h-[90vh] lg:min-h-[70vh] h-auto flex flex-col items-center justify-center overflow-hidden"
+      className="w-full sm:w-[90%] md:w-[80%] mx-auto bg-black/20 bg-xp-bgSoft rounded-8xl px-4 sm:px-6 lg:px-10 py-8 md:py-12 lg:py-16 min-h-[80vh] sm:min-h-[85vh] md:min-h-[90vh] lg:min-h-[70vh] h-auto flex flex-col items-center justify-center overflow-hidden"
     >
       <div className="sections-container w-[100%] flex flex-col lg:flex-row items-center lg:items-center justify-between gap-8 lg:gap-12 overflow-hidden">
         {/* Text and Buttons Section - Left side on desktop, above on mobile */}
