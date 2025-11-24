@@ -88,7 +88,7 @@ export default function Projects() {
         <section className="text-white w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start px-2 sm:px-4 order-1 lg:order-1">
           <div className="text-center lg:text-left mb-6 w-full">
             <SplitText
-              text="Төслсүүд"
+              text="Төслүүд"
               className="text-4xl sm:text-5xl font-bold text-center lg:text-left mb-4"
               delay={100}
               duration={0.2}
