@@ -39,7 +39,7 @@ export default function WinacademyPage() {
           <div className="absolute inset-0 flex items-end">
             <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-12">
               <Link
-                href="/projects"
+                href="/Projects"
                 className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors mb-6"
               >
                 <ArrowLeft className="w-4 h-4" />

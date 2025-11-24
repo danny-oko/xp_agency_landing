@@ -83,13 +83,13 @@ export default function Projects() {
       id="projects"
       className="w-full sm:w-[90%] md:w-[80%] mx-auto bg-black/20 bg-xp-bgSoft rounded-8xl px-4 sm:px-6 lg:px-10 py-8 md:py-12 lg:py-16 mt-12 sm:mt-8 min-h-[80vh] sm:min-h-[85vh] md:min-h-[90vh] lg:min-h-[70vh] h-auto flex flex-col items-center justify-center overflow-hidden"
     >
-      <div className="sections-container w-[100%] flex flex-col items-center gap-8 lg:gap-12 overflow-hidden">
-        {/* Text and Buttons Section */}
-        <section className="text-white w-full flex flex-col justify-center items-center px-2 sm:px-4">
-          <div className="text-center mb-6 w-full">
+      <div className="sections-container w-[100%] flex flex-col lg:flex-row items-center lg:items-center justify-between gap-8 lg:gap-12 overflow-hidden">
+        {/* Text and Buttons Section - Left side on desktop, above on mobile */}
+        <section className="text-white w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start px-2 sm:px-4 order-1 lg:order-1">
+          <div className="text-center lg:text-left mb-6 w-full">
             <SplitText
               text="Төслсүүд"
-              className="text-4xl sm:text-5xl font-bold text-center mb-4"
+              className="text-4xl sm:text-5xl font-bold text-center lg:text-left mb-4"
               delay={100}
               duration={0.2}
               ease="power3.out"
@@ -119,7 +119,7 @@ export default function Projects() {
           /> */}
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 w-full items-center justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 w-full items-center lg:items-start justify-center lg:justify-start">
             <button
               onClick={() => router.push("/Projects")}
               className="bg-gradient-to-b from-white to-gray-100 text-gray-800 border border-gray-300 rounded-full px-6 py-3 text-base sm:text-lg font-normal cursor-pointer shadow-inner transition-all duration-300 min-w-[200px] sm:min-w-[180px] w-full sm:w-auto h-12 flex items-center justify-center gap-2 hover:bg-white relative group overflow-hidden"
@@ -151,8 +151,8 @@ export default function Projects() {
           </div>
         </section>
 
-        {/* CardSwap Section - Below buttons and text, perfectly centered */}
-        <section className="flex w-full items-center justify-center mt-4 sm:mt-6 md:mt-8 overflow-hidden px-2 sm:px-4">
+        {/* CardSwap Section - Right side on desktop, below on mobile */}
+        <section className="flex w-full lg:w-1/2 items-center justify-center order-2 lg:order-2 overflow-hidden px-2 sm:px-4">
           <div className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[420px] xl:max-w-[480px] aspect-square relative mx-auto overflow-hidden">
             <style
               dangerouslySetInnerHTML={{
