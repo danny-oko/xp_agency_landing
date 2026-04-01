@@ -1,260 +1,186 @@
 "use client";
 import ShinyText from "@/components/ShinyText";
 import SplitText from "@/components/SplitText";
-import { ArrowRight, Calendar } from "lucide-react";
-import dynamic from "next/dynamic";
+import { ArrowRight, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-// Lazy load CardSwap (heavy GSAP animations)
-// Card is a simple component, so we import it directly
-import { Card } from "@/components/CardSwap";
-
-const CardSwap = dynamic(() => import("@/components/CardSwap"), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full max-w-[34rem] aspect-square flex items-center justify-center">
-      <div className="text-gray-400">Loading...</div>
-    </div>
-  ),
-});
-
-// Image sources - using Cloudinary URL for Sunrise, local imports for others
-const images = {
-  Sunrise:
-    "https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324102/Screenshot_2025-11-05_at_14.28.08_ndckm8.png",
-  Win: "https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324123/Screenshot_2025-11-05_at_14.28.37_voovcg.png",
-  Newera:
-    "https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324000/Screenshot_2025-11-05_at_14.26.22_xwakmu.png",
-  Hanedu:
-    "https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324019/Screenshot_2025-11-05_at_14.26.47_gjtbhr.png",
-};
-const logos = [
+const featuredProjects = [
   {
-    src: "https://winacademy.mn/images/win_logo_deault_red_bg.jpg",
-    alt: "Win Academy",
-    width: 56,
-    height: 56,
-    href: "https://winacademy.mn",
+    title: "Sunrise Mongolia",
+    description:
+      "Аяллын багц, маршрут, төлбөрийн мэдээлэл, мэдээллүүдээ удирдах боломжтой админ самбар болон бүтээгдэхүүн үйлчилгээгээ танилцуулах хялбар шийдэл",
+    image:
+      "https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324102/Screenshot_2025-11-05_at_14.28.08_ndckm8.png",
+    href: "/Projects/Sunrise",
   },
   {
-    src: "https://www.haneducation.mn/image-removebg-preview.png",
-    alt: "Han Education",
-    width: 64,
-    height: 64,
-    href: "https://haneducation.mn",
+    title: "Win Academy",
+    description:
+      "Онлайн сургалт,админ самбар, хичээлийн сан, төлбөрийн шийдэл, хэрэглэгчийн самбар бүхий онлайн сургалтын платформ.",
+    image:
+      "https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324123/Screenshot_2025-11-05_at_14.28.37_voovcg.png",
+    href: "/Projects/Winacademy",
   },
   {
-    src: "https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324411/user-profile-icon-vector-avatar-or-person-icon-profile-picture-portrait-symbol-vector_wdprsk.jpg",
-    alt: "Sunrise Mongolia",
-    width: 64,
-    height: 64,
-    href: "https://sunrisemongolia.com",
+    title: "New Era",
+    description:
+      "Админ самбар, хичээлийн сан, төлбөрийн шийдэл, хэрэглэгчийн самбар бүхий онлайн сургалтын платформ.",
+    image:
+      "https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324000/Screenshot_2025-11-05_at_14.26.22_xwakmu.png",
+    href: "/Projects/Newera",
+  },
+  {
+    title: "Han Education",
+    description:
+      "Монголын оюутнуудад гадаадын их сургуулиудад элсэхэд зөвлөгөө, мэдээлэл өгдөг цогц платформ. Оюутанд зориулсан хөтөлбөрийн мэдээлэл, зөвлөгөө авах урсгал, холбогдох форм бүхий боловсролын сайт бөгөөд гадаадын их сургуулиудад элсэхэд шаардлагатай бүх мэдээлэл, зөвлөгөөг нэг дор олж авах боломжийг олгодог.",
+    image:
+      "https://res.cloudinary.com/doxmbmqjm/image/upload/v1762324019/Screenshot_2025-11-05_at_14.26.47_gjtbhr.png",
+    href: "/Projects/Haneducation",
   },
 ];
 
 export default function Projects() {
   const router = useRouter();
-  const [cardDistance, setCardDistance] = useState(40);
-  const [verticalDistance, setVerticalDistance] = useState(50);
+  const [activeSlide, setActiveSlide] = useState(0);
 
   useEffect(() => {
-    const updateDistances = () => {
-      if (window.innerWidth >= 1024) {
-        setCardDistance(60);
-        setVerticalDistance(70);
-      } else if (window.innerWidth >= 768) {
-        setCardDistance(50);
-        setVerticalDistance(60);
-      } else {
-        setCardDistance(40);
-        setVerticalDistance(50);
-      }
-    };
-
-    updateDistances();
-    window.addEventListener("resize", updateDistances);
-    return () => window.removeEventListener("resize", updateDistances);
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % featuredProjects.length);
+    }, 3500);
+    return () => clearInterval(timer);
   }, []);
 
   return (
-    <div
+    <section
       id="projects"
-      className="w-full sm:w-[90%] md:w-[80%] mx-auto bg-black/20 bg-xp-bgSoft rounded-8xl px-4 sm:px-6 lg:px-10 py-8 md:py-12 lg:py-16 min-h-[80vh] sm:min-h-[85vh] md:min-h-[90vh] lg:min-h-[70vh] h-auto flex flex-col items-center justify-center overflow-hidden"
+      className="mx-auto flex w-full flex-col gap-6 rounded-[2rem] bg-xp-bgSoft px-4 py-8 sm:w-[90%] sm:px-6 sm:py-10 md:w-[75%]  lg:px-10"
     >
-      <div className="sections-container w-[100%] flex flex-col lg:flex-row items-center lg:items-center justify-between gap-8 lg:gap-12 overflow-hidden">
-        {/* Text and Buttons Section - Left side on desktop, above on mobile */}
-        <section className="text-white w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start px-2 sm:px-4 order-1 lg:order-1">
-          <div className="text-center lg:text-left mb-6 w-full">
-            <SplitText
-              text="Төслүүд"
-              className="text-4xl sm:text-5xl font-bold text-center lg:text-left mb-4"
-              delay={100}
-              duration={0.2}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 40 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0.1}
-              rootMargin="-100px"
-              textAlign="center"
-            />
-            {/* <BlurText
-              text="Хамтран ажилласан байгууллагууд:"
-              delay={60}
-              animateBy="words"
-              direction="bottom"
-              className="text-md text-gray-300 leading-relaxed text-left text-lg"
-            /> */}
-          </div>
-          {/* <LogoLoop
-            logos={logos}
-            speed={120}
-            direction="left"
-            width="100%"
-            logoHeight={48}
-            gap={48}
-            className="brightness-50 contrast-150 grayscale hover:brightness-75 transition-all duration-300 mb-4"
-          /> */}
+      <div className="flex flex-col gap-6 text-white">
+        <div className="text-center lg:text-left">
+          <h2 className="sr-only">Төслүүд</h2>
+          <SplitText
+            text="Төслүүд"
+            className="mb-4 text-4xl font-bold sm:text-5xl"
+            delay={100}
+            duration={0.2}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="center"
+          />
+        </div>
 
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 w-full items-center lg:items-start justify-center lg:justify-start">
-            <button
-              onClick={() => router.push("/Projects")}
-              className="bg-gradient-to-b from-white to-gray-100 text-gray-800 border border-gray-300 rounded-full px-6 py-3 text-base sm:text-lg font-normal cursor-pointer shadow-inner transition-all duration-300 min-w-[200px] sm:min-w-[180px] w-full sm:w-auto h-12 flex items-center justify-center gap-2 hover:bg-white relative group overflow-hidden"
-            >
-              <span className="transition-transform duration-300 ease-out group-hover:translate-x-[-3px] group-hover:scale-[1.02] whitespace-nowrap">
-                Төслүүдийг үзэх
-              </span>
-              <ArrowRight className="w-4 h-4 transition-all duration-300 group-hover:translate-x-2 group-hover:scale-110" />
-            </button>
-            <button
-              onClick={() =>
-                window.open(
-                  "https://calendly.com/danny-otgontsetseg/15min",
-                  "_blank"
-                )
-              }
-              className="bg-white/5 backdrop-blur-sm text-gray-400 border border-gray-400/50 rounded-full px-6 py-3 text-base sm:text-lg font-normal transition-all duration-300 min-w-[200px] sm:min-w-[180px] w-full sm:w-auto h-12 flex items-center justify-center gap-2 hover:bg-white/10 hover:text-white hover:border-gray-300 cursor-pointer relative group hover:[&_svg]:text-white overflow-hidden"
-            >
-              <span className="transition-transform duration-300 ease-out group-hover:translate-x-[-3px] group-hover:scale-[1.02] whitespace-nowrap">
-                <ShinyText
-                  text="Онлайн уулзат"
-                  disabled={false}
-                  speed={2}
-                  className="text-gray-400 font-normal hover:text-white"
-                />
-              </span>
-              <Calendar className="w-4 h-4 text-gray-400 transition-all duration-300 group-hover:translate-x-2 group-hover:scale-110" />
-            </button>
-          </div>
-        </section>
-
-        {/* CardSwap Section - Right side on desktop, below on mobile */}
-        <section className="flex w-full lg:w-1/2 items-center justify-center order-2 lg:order-2 overflow-hidden px-2 sm:px-4">
-          <div className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[420px] xl:max-w-[480px] aspect-square relative mx-auto overflow-hidden">
-            <style
-              dangerouslySetInnerHTML={{
-                __html: `
-              #projects .card-swap-center-wrapper {
-                position: relative !important;
-                width: 100% !important;
-                height: 100% !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-              }
-              #projects .card-swap-center-wrapper > * {
-                position: absolute !important;
-                bottom: auto !important;
-                right: auto !important;
-                top: 50% !important;
-                left: 50% !important;
-                transform: translate(-50%, -50%) !important;
-                transform-origin: center center !important;
-                margin: 0 !important;
-              }
-              #projects .card-swap-center-wrapper > div[class*="absolute"],
-              #projects .card-swap-center-wrapper > div[class*="bottom-0"],
-              #projects .card-swap-center-wrapper > div[class*="right-0"] {
-                bottom: auto !important;
-                right: auto !important;
-                top: 50% !important;
-                left: 50% !important;
-                transform: translate(-50%, -50%) !important;
-                transform-origin: center center !important;
-              }
-              @media (max-width: 768px) {
-                #projects .card-swap-center-wrapper > *,
-                #projects .card-swap-center-wrapper > div[class*="absolute"],
-                #projects .card-swap-center-wrapper > div[class*="bottom-0"],
-                #projects .card-swap-center-wrapper > div[class*="right-0"] {
-                  transform: translate(-50%, -50%) scale(0.75) !important;
-                }
-              }
-              @media (max-width: 480px) {
-                #projects .card-swap-center-wrapper > *,
-                #projects .card-swap-center-wrapper > div[class*="absolute"],
-                #projects .card-swap-center-wrapper > div[class*="bottom-0"],
-                #projects .card-swap-center-wrapper > div[class*="right-0"] {
-                  transform: translate(-50%, -50%) scale(0.55) !important;
-                }
-              }
-            `,
-              }}
-            />
-            <div className="card-swap-center-wrapper w-full h-full">
-              <CardSwap
-                cardDistance={cardDistance}
-                verticalDistance={verticalDistance}
-                delay={8000}
-                pauseOnHover={false}
+        <div className="relative overflow-hidden rounded-2xl border border-white/15 bg-white/5 shadow-lg shadow-black/20">
+          <div className="relative aspect-[16/9] w-full max-h-[360px] sm:max-h-[420px]">
+            {featuredProjects.map((project, index) => (
+              <Link
+                key={`slide-${project.title}`}
+                href={project.href}
+                className={`absolute inset-0 transition-opacity duration-500 ${
+                  activeSlide === index
+                    ? "pointer-events-auto opacity-100"
+                    : "pointer-events-none opacity-0"
+                }`}
               >
-                {/* Sunrise Mongolia */}
-                <Card className="overflow-hidden">
-                  <Image
-                    src={images.Sunrise}
-                    alt="Sunrise Mongolia"
-                    className="w-full h-full object-contain"
-                    fill
-                    sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 380px, 480px"
-                  />
-                </Card>
-                {/* Win Academy */}
-                <Card className="overflow-hidden">
-                  <Image
-                    src={images.Win}
-                    alt="Win Academy"
-                    className="w-full h-full object-contain"
-                    fill
-                    sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 380px, 480px"
-                  />
-                </Card>
-                {/* New Era */}
-                <Card className="overflow-hidden">
-                  <Image
-                    src={images.Newera}
-                    alt="New Era"
-                    className="w-full h-full object-contain"
-                    fill
-                    sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 380px, 480px"
-                  />
-                </Card>
-                <Card className="overflow-hidden">
-                  <Image
-                    src={images.Hanedu}
-                    alt="Han-Education"
-                    className="w-full h-full object-contain"
-                    fill
-                    sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 380px, 480px"
-                  />
-                </Card>
-              </CardSwap>
-            </div>
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 80vw"
+                  className="object-cover"
+                  priority={index === 0}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+                  <h3 className="mb-1 text-lg font-semibold text-white sm:text-xl">
+                    {project.title}
+                  </h3>
+                  <p className="line-clamp-2 max-w-[65ch] text-sm text-gray-200">
+                    {project.description}
+                  </p>
+                </div>
+              </Link>
+            ))}
           </div>
-        </section>
+
+          <button
+            type="button"
+            onClick={() =>
+              setActiveSlide(
+                (prev) =>
+                  (prev - 1 + featuredProjects.length) % featuredProjects.length
+              )
+            }
+            className="absolute left-3 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-black/40 text-white backdrop-blur-sm transition hover:bg-black/60"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() =>
+              setActiveSlide((prev) => (prev + 1) % featuredProjects.length)
+            }
+            className="absolute right-3 top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-black/40 text-white backdrop-blur-sm transition hover:bg-black/60"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </button>
+
+          <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-2">
+            {featuredProjects.map((project, index) => (
+              <button
+                key={`dot-${project.title}`}
+                type="button"
+                onClick={() => setActiveSlide(index)}
+                className={`h-2 rounded-full transition-all ${
+                  activeSlide === index
+                    ? "w-6 bg-white"
+                    : "w-2 bg-white/50 hover:bg-white/70"
+                }`}
+                aria-label={project.title}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-col items-stretch justify-center gap-3 pt-2 sm:flex-row sm:items-center sm:justify-start">
+          <button
+            onClick={() => router.push("/Projects")}
+            className="group inline-flex h-12 min-h-[44px] w-full items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-6 text-base font-medium text-gray-900 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-gray-100 active:translate-y-0 active:scale-[0.99] sm:w-auto sm:min-w-[190px]"
+          >
+            <span className="whitespace-nowrap transition-transform duration-200 group-hover:-translate-x-0.5">
+              Төслүүдийг үзэх
+            </span>
+            <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </button>
+          <button
+            onClick={() =>
+              window.open(
+                "https://calendly.com/danny-otgontsetseg/15min",
+                "_blank"
+              )
+            }
+            className="group inline-flex h-12 min-h-[44px] w-full items-center justify-center gap-2 rounded-2xl border border-white/25 bg-white/5 px-6 text-base font-medium text-gray-300 shadow-sm backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/10 hover:text-white active:translate-y-0 active:scale-[0.99] sm:w-auto sm:min-w-[190px]"
+          >
+            <span className="transition-transform duration-200 group-hover:-translate-x-0.5">
+              <ShinyText
+                text="Онлайн уулзат"
+                disabled={false}
+                speed={2}
+                className="font-medium text-gray-300 group-hover:text-white"
+              />
+            </span>
+            <Calendar className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
